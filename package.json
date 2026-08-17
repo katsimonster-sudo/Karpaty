@@ -1,0 +1,20 @@
+{
+  "name": "dozyty-do-finisha-carpathians",
+  "version": "1.0.0",
+  "description": "Багатосторінковий веб-сайт про карпатські походи (2024-2026), спорядження та спільноту «Дожити до фініша...»",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "dev": "npx serve -l 3000 .",
+    "serve:py": "python -m http.server 3000"
+  },
+  "keywords": [
+    "carpathians",
+    "hiking",
+    "travel",
+    "gear",
+    "ukraine"
+  ],
+  "author": "Oleksandr",
+  "license": "MIT"
+}
