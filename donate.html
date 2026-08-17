@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Донат на подорожі — «Дожити до фініша...»</title>
+  <meta name="description" content="Підтримати карпатські експедиції «Дожити до фініша...»: донат на Monobank, PrivatBank або PayPal. Збір на оновлення спорядження та нові маршрути.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#f59e0b">
+
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- 1. Навігаційна шапка -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">Дожити до <span>фініша...</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Головна</a></li>
+          <li><a href="trips.html" class="nav-link">Подорожі (15)</a></li>
+          <li><a href="gear.html" class="nav-link">Спорядження</a></li>
+          <li><a href="community.html" class="nav-link">Спільнота & Знайомства</a></li>
+          <li>
+            <a href="donate.html" class="nav-link donate-nav-link active">
+              <span>☕</span> Донат на подорожі
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://t.me/carpathian_trail" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          Telegram
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Головний вміст -->
+  <main class="main-content">
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        
+        <!-- Заголовок розділу -->
+        <div class="section-header">
+          <div class="section-tag" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); color: var(--accent-amber);">
+            ☕ Підтримка проекту & Експедицій
+          </div>
+          <h1 class="section-title">Донат на <span>подорожі</span></h1>
+          <p class="section-subtitle">
+            Ваша підтримка допомагає нам створювати нові детальні GPX-треки, тестувати спорядження в екстремальних умовах та організовувати спільні безкоштовні походи Карпатами.
+          </p>
+        </div>
+
+        <!-- Прогрес поточної експедиції -->
+        <div class="expedition-goal-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="section-tag" style="margin-bottom: 6px;">Поточна ціль</span>
+              <h3 style="font-size: 1.4rem;">🏔️ Осінній Мармароський рейд & Зимове спорядження 2026/2027</h3>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-amber);">20 400 ₴ <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">з 30 000 ₴</span></div>
+              <div style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 700;">68% зібрано</div>
+            </div>
+          </div>
+
+          <div class="goal-progress-track">
+            <div class="goal-progress-fill" style="width: 68%;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);">
+            <span>Залишилось зібрати: 9 600 ₴</span>
+            <span>Ціль: Снігоступи MSR + Зимовий пуховий намет</span>
+          </div>
+        </div>
+
+        <!-- Пресети швидких донатів -->
+        <div class="donate-presets-wrap">
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Оберіть зручний внесок:</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Кожна гривня наближає нові вершини та якісні звіти</p>
+          
+          <div class="donate-presets-grid">
+            <div class="donate-preset-chip" onclick="selectPreset(50, this)">
+              <span style="font-size: 1.5rem;">🍵</span>
+              <span class="preset-amount">50 ₴</span>
+              <span class="preset-desc">Карпатський чай на вершині</span>
+            </div>
+
+            <div class="donate-preset-chip active" onclick="selectPreset(150, this)">
+              <span style="font-size: 1.5rem;">🔥</span>
+              <span class="preset-amount">150 ₴</span>
+              <span class="preset-desc">Газовий балон для пальника</span>
+            </div>
+
+            <div class="donate-preset-chip" onclick="selectPreset(300, this)">
+              <span style="font-size: 1.5rem;">🔋</span>
+              <span class="preset-amount">300 ₴</span>
+              <span class="preset-desc">Батарейки для GPS-навігатора</span>
+            </div>
+
+            <div class="donate-preset-chip" onclick="selectPreset(1000, this)">
+              <span style="font-size: 1.5rem;">🎒</span>
+              <span class="preset-amount">1 000 ₴</span>
+              <span class="preset-desc">Внесок у бівачне спорядження</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Картки платіжних методів: Monobank, PrivatBank, PayPal -->
+        <div class="donate-methods-grid">
+          
+          <!-- 1. MONOBANK -->
+          <div class="donate-method-card mono">
+            <div class="donate-card-header">
+              <div class="donate-brand-badge" style="color: #eb5757;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+                Монобанк (Monobank)
+              </div>
+              <span class="weather-badge weather-badge-safe">Банка / Картка</span>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Найзручніший спосіб: прямий переказ на картку або поповнення офіційної банки збору.
+            </p>
+
+            <div class="donate-card-number-box">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Номер картки Monobank:</div>
+                <div class="donate-number-text" id="mono-card-num">4441 1144 5566 7788</div>
+              </div>
+              <button class="donate-copy-btn" onclick="copyCardNumber('4441114455667788', this)">
+                📋 Копіювати
+              </button>
+            </div>
+
+            <div style="margin-bottom: 18px; font-size: 0.85rem; color: var(--text-muted);">
+              👤 Отримувач: <strong>Олександр В. (Дожити до фініша)</strong>
+            </div>
+
+            <a href="https://send.monobank.ua/jar/example" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-mono">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+              Відкрити Банку в додатку Monobank →
+            </a>
+          </div>
+
+          <!-- 2. PRIVATBANK -->
+          <div class="donate-method-card privat">
+            <div class="donate-card-header">
+              <div class="donate-brand-badge" style="color: #5ebb3e;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+                ПриватБанк (PrivatBank)
+              </div>
+              <span class="weather-badge weather-badge-safe">Приват24</span>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Миттєве поповнення через Приват24, термінали самообслуговування або за номером картки.
+            </p>
+
+            <div class="donate-card-number-box">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Номер картки ПриватБанк:</div>
+                <div class="donate-number-text" id="privat-card-num">5168 7574 8899 0011</div>
+              </div>
+              <button class="donate-copy-btn" onclick="copyCardNumber('5168757488990011', this)">
+                📋 Копіювати
+              </button>
+            </div>
+
+            <div style="margin-bottom: 18px; font-size: 0.85rem; color: var(--text-muted);">
+              👤 Отримувач: <strong>Олександр В. (Приват24)</strong>
+            </div>
+
+            <a href="https://privat24.ua" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-privat">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              Перейти в Приват24 →
+            </a>
+          </div>
+
+          <!-- 3. PAYPAL -->
+          <div class="donate-method-card paypal">
+            <div class="donate-card-header">
+              <div class="donate-brand-badge" style="color: #38bdf8;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.293-.418 2.68-1.574 4.352-3.447 5.253-1.026.495-2.274.743-3.71.743h-2.12c-.443 0-.822.319-.89.757l-.87 5.568-.27 1.728a.64.64 0 0 1-.633.541z"/></svg>
+                PayPal (Міжнародний)
+              </div>
+              <span class="weather-badge weather-badge-safe">USD / EUR / PLN</span>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Для підтримки з-за кордону у будь-якій валюті (долари, євро, злоті). Швидко та безпечно.
+            </p>
+
+            <div class="donate-card-number-box">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">PayPal Email / Акаунт:</div>
+                <div class="donate-number-text" style="font-size: 1rem;">carpathian.trails.ua@gmail.com</div>
+              </div>
+              <button class="donate-copy-btn" onclick="copyCardNumber('carpathian.trails.ua@gmail.com', this)">
+                📋 Копіювати
+              </button>
+            </div>
+
+            <div style="margin-bottom: 18px; font-size: 0.85rem; color: var(--text-muted);">
+              🌍 Пряме посилання: <strong>paypal.me/carpathiantrail</strong>
+            </div>
+
+            <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-paypal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+              Надіслати через PayPal →
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Подяка та звітність -->
+        <div class="glass-card" style="padding: 36px; text-align: center; border-color: rgba(245, 158, 11, 0.3); margin-top: 40px;">
+          <h3 style="font-size: 1.6rem; margin-bottom: 12px; color: var(--accent-amber);">🤝 Щиро дякуємо за кожен внесок!</h3>
+          <p style="max-width: 700px; margin: 0 auto 20px; font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">
+            Усі отримані донати спрямовуються виключно на оновлення зношеного спорядження, технічне обслуговування GPS-обладнання, оплату прикордонних перепусток та розвідку нових диких стежок для спільноти.
+          </p>
+          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            <a href="trips.html" class="btn btn-primary">Дивитися наші походи</a>
+            <a href="https://t.me/carpathian_trail" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Написати автору в Telegram</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 3. Підвал -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 12px;">
+            <div class="brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+            </div>
+            <div class="brand-text">Дожити до <span>фініша...</span></div>
+          </div>
+          <p class="footer-desc">
+            Особистий щоденник гірських мандрівок Українськими Карпатами. 15 походів, практичні поради, вага спорядження та спільнота мандрівників.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="trips.html">Подорожі (2024–2026)</a></li>
+            <li><a href="gear.html">Каталог спорядження</a></li>
+            <li><a href="community.html">Спільнота & Знайомства</a></li>
+            <li><a href="donate.html" style="color: var(--accent-amber); font-weight: 700;">☕ Донат на подорожі</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Платіжні методи</h4>
+          <ul class="footer-links">
+            <li><a href="donate.html">Монобанк (Monobank)</a></li>
+            <li><a href="donate.html">ПриватБанк (Privat24)</a></li>
+            <li><a href="donate.html">PayPal (USD/EUR)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Контакти</h4>
+          <ul class="footer-links">
+            <li><a href="https://t.me/carpathian_trail" target="_blank" rel="noopener noreferrer">Telegram: @carpathian_trail</a></li>
+            <li><a href="community.html">Дошка знайомств</a></li>
+            <li><span>Локація: Українські Карпати</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2024–2026 «Дожити до фініша...». Всі права захищено.</div>
+        <div>Зроблено з любов'ю до Карпатських гір 🌲⛰️</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипти -->
+  <script src="js/data/trips-data.js"></script>
+  <script src="js/data/gear-data.js"></script>
+  <script src="js/data/community-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+
+  <script>
+    function copyCardNumber(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = `✓ Скопійовано!`;
+        btn.style.background = 'var(--accent-emerald)';
+        btn.style.color = '#fff';
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(() => {
+        alert('Реквізити скопійовано: ' + text);
+      });
+    }
+
+    function selectPreset(amount, el) {
+      document.querySelectorAll('.donate-preset-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>
