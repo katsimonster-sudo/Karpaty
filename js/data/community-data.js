@@ -12,7 +12,7 @@ window.COMMUNITY_DATA = [
     date: "25–27 Вересня 2026",
     groupSize: "3-4 особи (залишилось 2 місця)",
     pace: "Середній темп, автономні ночівлі в наметах",
-    contactTelegram: "@carpathian_trail",
+    contactTelegram: "@dozhyty_do_finisha_bot",
     description: "Шукаю 1-2 надійних попутників із власним бівачним спорядженням. Помилуємося багряною осінню та зробимо круті фото озер.",
     createdAt: "15.08.2026"
   },

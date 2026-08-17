@@ -123,7 +123,7 @@ function injectChatWidgetHTML() {
       </div>
 
       <div style="padding: 10px 16px; background: #070a0d; text-align: center; border-top: 1px solid var(--glass-border);">
-        <a href="https://t.me/carpathian_trail" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="width: 100%; font-size: 0.8rem; padding: 6px 12px;">
+        <a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="width: 100%; font-size: 0.8rem; padding: 6px 12px;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
           Відкрити Telegram діалог
         </a>
@@ -174,7 +174,7 @@ function generateAuthorResponse(input) {
   const text = input.toLowerCase();
 
   if (text.includes('похід') || text.includes('коли') || text.includes('наступн')) {
-    return 'Найближчий запланований вихід — наприкінці вересня на Свидовець (2 дні). Деталі та запис є на сторінці «Спільнота» або пиши в Telegram @carpathian_trail!';
+    return 'Найближчий запланований вихід — наприкінці вересня на Свидовець (2 дні). Деталі та запис є на сторінці «Спільнота» або пиши в Telegram @dozhyty_do_finisha_bot!';
   } else if (text.includes('вода') || text.includes('джерел') || text.includes('фільтр')) {
     return 'На Чорногорі надійні джерела є під Петросом (пол. Скопеська), біля озер Несамовите й Бребенескул, а також на пол. Веснарка. Рекомендую мати пляшку з мікрофільтром (наприклад, Katadyn BeFree).';
   } else if (text.includes('мармарос') || text.includes('дозвіл') || text.includes('прикордон')) {
@@ -192,9 +192,9 @@ function generateAuthorResponse(input) {
   } else if (text.includes('донат') || text.includes('підтрим') || text.includes('картк') || text.includes('моно') || text.includes('приват') || text.includes('paypal')) {
     return 'Щиро дякую за бажання підтримати проект! Переходь на нашу сторінку «Донат на подорожі» — там доступні реквізити Monobank (Банка/Картка), PrivatBank (Приват24) та PayPal!';
   } else if (text.includes('попут') || text.includes('компані') || text.includes('знайом')) {
-    return 'Шукаєш надійну компанію? Переходь на сторінку «Спільнота» — там відкрита дошка оголошень або напиши мені напряму в Telegram @carpathian_trail!';
+    return 'Шукаєш надійну компанію? Переходь на сторінку «Спільнота» — там відкрита дошка оголошень або напиши мені напряму в Telegram @dozhyty_do_finisha_bot!';
   } else {
-    return 'Чудове гірське запитання! Якщо потрібна термінова відповідь або порада щодо маршруту — пиши напряму в Telegram @carpathian_trail, завжди радий допомогти!';
+    return 'Чудове гірське запитання! Якщо потрібна термінова відповідь або порада щодо маршруту — пиши напряму в Telegram @dozhyty_do_finisha_bot, завжди радий допомогти!';
   }
 }
 
