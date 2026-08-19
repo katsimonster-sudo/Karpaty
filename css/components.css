@@ -68,18 +68,19 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   list-style: none;
 }
 
 .nav-link {
-  padding: 8px 18px;
+  padding: 7px 13px;
   border-radius: var(--radius-full);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   transition: var(--transition-fast);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -535,12 +536,13 @@
 
 /* 9. Спільнота та Дошка оголошень (Community Board) */
 .author-profile-card {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 30px;
-  padding: 36px;
-  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  padding: 32px;
+  margin-bottom: 40px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .author-avatar-wrap {
@@ -1618,6 +1620,8 @@
 /* ==========================================================================
    21. FAQ Аккордеон
    ========================================================================== */
+
+
 .faq-list {
   display: flex;
   flex-direction: column;

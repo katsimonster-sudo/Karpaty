@@ -120,32 +120,9 @@ window.closeModal = function(modalEl) {
   document.body.style.overflow = '';
 };
 
-/* 5. Індикатор мережі (Онлайн / Офлайн у горах) */
+/* 5. Індикатор мережі — приховано для чистоти шапки */
 function initNetworkStatus() {
-  const headerActions = document.querySelector('.header-actions');
-  if (!headerActions || document.querySelector('.network-status-badge')) return;
-
-  const badge = document.createElement('div');
-  badge.className = 'network-status-badge online';
-  badge.innerHTML = `<span class="status-dot"></span><span class="status-text">Онлайн</span>`;
-  badge.title = 'Стан підключення до мережі';
-  
-  // Вставляємо перед кнопкою Telegram
-  headerActions.insertBefore(badge, headerActions.firstChild);
-
-  function updateStatus() {
-    if (navigator.onLine) {
-      badge.className = 'network-status-badge online';
-      badge.innerHTML = `<span class="status-dot"></span><span class="status-text">Онлайн</span>`;
-    } else {
-      badge.className = 'network-status-badge offline';
-      badge.innerHTML = `<span class="status-dot"></span><span class="status-text">Офлайн Карпати ⛰️</span>`;
-    }
-  }
-
-  window.addEventListener('online', updateStatus);
-  window.addEventListener('offline', updateStatus);
-  updateStatus();
+  // приховано
 }
 
 /* 6. Реєстрація Service Worker для PWA */

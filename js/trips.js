@@ -5,11 +5,6 @@
 let currentYearFilter = 'all';
 let currentRegionFilter = 'all';
 let currentSearchQuery = '';
-let currentSort = 'default';
-let showOnlyFavorites = false;
-
-let carpathianMap = null;
-let mapMarkers = [];
 
 // Lightbox стан
 let lightboxImages = [];
@@ -27,14 +22,8 @@ function initTripsPage() {
 
   const yearButtons = document.querySelectorAll('.filter-btn[data-year]');
   const regionButtons = document.querySelectorAll('.region-filter-btn[data-region]');
-  const favoritesBtn = document.getElementById('filter-favorites-btn');
   const searchInput = document.getElementById('trips-search-input');
-  const sortSelect = document.getElementById('trips-sort-select');
   const countBadge = document.getElementById('trips-count-badge');
-
-  const viewGridBtn = document.getElementById('view-grid-btn');
-  const viewMapBtn = document.getElementById('view-map-btn');
-  const mapContainer = document.getElementById('trips-map-container');
 
   // Перевірка URL параметрів (?year=2024 або ?id=trip-2024-1)
   const urlParams = new URLSearchParams(window.location.search);
@@ -48,85 +37,33 @@ function initTripsPage() {
     });
   }
 
-  // Оновлення лічильника обраного
-  updateFavoriteBadge();
-
   // Рендеринг карток
   renderTrips(container, countBadge);
 
-  // 1. Обробка перемикання виду (Сітка / Карта)
-  if (viewGridBtn && viewMapBtn && mapContainer) {
-    viewGridBtn.addEventListener('click', () => {
-      viewGridBtn.classList.add('active');
-      viewMapBtn.classList.remove('active');
-      mapContainer.classList.remove('active');
-      container.style.display = 'grid';
-    });
-
-    viewMapBtn.addEventListener('click', () => {
-      viewMapBtn.classList.add('active');
-      viewGridBtn.classList.remove('active');
-      mapContainer.classList.add('active');
-      if (!carpathianMap) {
-        initLeafletMap();
-      } else {
-        setTimeout(() => carpathianMap.invalidateSize(), 200);
-      }
-    });
-  }
-
-  // 2. Обробка фільтрів за роками
+  // 1. Обробка фільтрів за роками
   yearButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       yearButtons.forEach(b => b.classList.remove('active'));
-      if (favoritesBtn) favoritesBtn.classList.remove('active');
       btn.classList.add('active');
-      showOnlyFavorites = false;
       currentYearFilter = btn.getAttribute('data-year');
       renderTrips(container, countBadge);
-      updateMapMarkers();
     });
   });
 
-  // 3. Обробка фільтра «Обране»
-  if (favoritesBtn) {
-    favoritesBtn.addEventListener('click', () => {
-      yearButtons.forEach(b => b.classList.remove('active'));
-      favoritesBtn.classList.toggle('active');
-      showOnlyFavorites = favoritesBtn.classList.contains('active');
-      if (!showOnlyFavorites) {
-        currentYearFilter = 'all';
-        document.querySelector('.filter-btn[data-year="all"]')?.classList.add('active');
-      }
-      renderTrips(container, countBadge);
-      updateMapMarkers();
-    });
-  }
-
-  // 4. Обробка фільтрів за регіонами / масивами
+  // 2. Обробка фільтрів за регіонами / масивами
   regionButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       regionButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentRegionFilter = btn.getAttribute('data-region');
       renderTrips(container, countBadge);
-      updateMapMarkers();
     });
   });
 
-  // 5. Живий пошук
+  // 3. Живий пошук
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       currentSearchQuery = e.target.value.toLowerCase().trim();
-      renderTrips(container, countBadge);
-      updateMapMarkers();
-    });
-  }
-
-  // 6. Сортування
-  if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
-      currentSort = e.target.value;
       renderTrips(container, countBadge);
     });
   }
@@ -145,17 +82,11 @@ function initTripsPage() {
    ========================================================================== */
 function getFilteredTrips() {
   let list = [...window.TRIPS_DATA];
-  const favorites = getFavoritesList();
 
   // Фільтр за роком
-  if (!showOnlyFavorites && currentYearFilter !== 'all') {
+  if (currentYearFilter !== 'all') {
     const yearNum = parseInt(currentYearFilter, 10);
     list = list.filter(trip => trip.year === yearNum);
-  }
-
-  // Фільтр за обраним
-  if (showOnlyFavorites) {
-    list = list.filter(trip => favorites.includes(trip.id));
   }
 
   // Фільтр за регіоном
@@ -176,17 +107,6 @@ function getFilteredTrips() {
       const matchPoi = trip.poi.some(p => p.toLowerCase().includes(currentSearchQuery));
       return matchTitle || matchRegion || matchRoute || matchPoi;
     });
-  }
-
-  // Сортування
-  if (currentSort === 'dist-desc') {
-    list.sort((a, b) => b.distanceKm - a.distanceKm);
-  } else if (currentSort === 'dist-asc') {
-    list.sort((a, b) => a.distanceKm - b.distanceKm);
-  } else if (currentSort === 'elev-desc') {
-    list.sort((a, b) => b.elevationGainM - a.elevationGainM);
-  } else if (currentSort === 'days-desc') {
-    list.sort((a, b) => b.durationDays - a.durationDays);
   }
 
   return list;
@@ -212,19 +132,13 @@ function renderTrips(container, countBadge) {
   }
 
   container.innerHTML = filtered.map(trip => {
-    const isFav = favorites.includes(trip.id);
-    const userReaction = getUserReaction(trip.id);
-    const reactions = getTripReactions(trip);
 
     return `
       <div class="glass-card trip-card">
         <div class="trip-card-image-wrap">
-          <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy" onclick="openLightboxFromTrip('${trip.id}', 0)">
+          <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy" onclick="openTripById('${trip.id}')" style="cursor: pointer;">
           <span class="trip-year-badge">${trip.season}</span>
           <span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
-          <button class="trip-fav-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite('${trip.id}', event)" title="${isFav ? 'Видалити з обраного' : 'Додати в обране (Хочу пройти)'}">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? '#ef4444' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          </button>
         </div>
         <div class="trip-card-body">
           <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
@@ -257,21 +171,6 @@ function renderTrips(container, countBadge) {
               ${trip.poi.slice(0, 3).map(p => `<span class="poi-tag">${p}</span>`).join('')}
               ${trip.poi.length > 3 ? `<span class="poi-tag">+${trip.poi.length - 3}</span>` : ''}
             </div>
-          </div>
-
-          <div class="trip-reactions-row">
-            <button class="reaction-btn reaction-fire ${userReaction === 'fire' ? 'user-reacted' : ''}" onclick="toggleReaction('${trip.id}', 'fire', event)" title="Вогонь!">
-              🔥 <span>${reactions.fire}</span>
-            </button>
-            <button class="reaction-btn reaction-mountain ${userReaction === 'mountain' ? 'user-reacted' : ''}" onclick="toggleReaction('${trip.id}', 'mountain', event)" title="Справжні гори!">
-              ⛰️ <span>${reactions.mountain}</span>
-            </button>
-            <button class="reaction-btn ${userReaction === 'tent' ? 'user-reacted' : ''}" onclick="toggleReaction('${trip.id}', 'tent', event)" title="Затишний табір">
-              ⛺ <span>${reactions.tent}</span>
-            </button>
-            <button class="reaction-btn ${userReaction === 'snow' ? 'user-reacted' : ''}" onclick="toggleReaction('${trip.id}', 'snow', event)" title="Зимовий екстрим">
-              ❄️ <span>${reactions.snow}</span>
-            </button>
           </div>
 
           <div class="trip-card-footer" style="margin-top: 14px;">
@@ -400,9 +299,6 @@ function openTripDetailsModal(trip) {
         <span class="trip-year-badge" style="position: static;">${trip.season}</span>
         <span class="trip-diff-badge diff-${trip.difficulty}" style="position: static;">${trip.difficultyLabel}</span>
         <span style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 600;">${trip.region}</span>
-        <button class="trip-fav-btn ${isFav ? 'active' : ''}" style="position: static; margin-left: auto;" onclick="toggleFavorite('${trip.id}', event)" title="В обране">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? '#ef4444' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
       </div>
       <h2 style="font-size: 2rem; margin-bottom: 12px;">${trip.title}</h2>
       
@@ -413,6 +309,30 @@ function openTripDetailsModal(trip) {
       </div>
     </div>
 
+    <!-- GPS Метрики (Реальні зі Strava або розрахункові) -->
+    ${trip.stats ? `
+    <div style="margin-bottom: 20px;">
+      <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-emerald); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.05em;">📊 Фіксовані GPS-метрики (Strava Tracking):</div>
+      <div class="trip-calc-row" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.4);">
+        <div class="calc-box">
+          <div class="calc-value">🏃 ${trip.stats.movingTime}</div>
+          <div class="calc-label">Час у русі</div>
+        </div>
+        <div class="calc-box">
+          <div class="calc-value">⏱️ ${trip.stats.totalTime}</div>
+          <div class="calc-label">Загальний час</div>
+        </div>
+        <div class="calc-box">
+          <div class="calc-value">👣 ${trip.stats.steps ? trip.stats.steps.toLocaleString('uk-UA') : '—'}</div>
+          <div class="calc-label">Кроки</div>
+        </div>
+        <div class="calc-box">
+          <div class="calc-value">🔥 ${trip.stats.calories ? trip.stats.calories.toLocaleString('uk-UA') + ' ккал' : '—'}</div>
+          <div class="calc-label">Витрата енергії</div>
+        </div>
+      </div>
+    </div>
+    ` : `
     <!-- Калькулятор ходового часу (Naismith Rule) та калорій -->
     <div class="trip-calc-row">
       <div class="calc-box">
@@ -428,6 +348,7 @@ function openTripDetailsModal(trip) {
         <div class="calc-label">Рекомендована вода</div>
       </div>
     </div>
+    `}
 
     <!-- Маршрут, кнопки GPX та Копіювання -->
     <div style="margin-bottom: 24px; padding: 18px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md); border-left: 3px solid var(--accent-emerald); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
@@ -445,6 +366,37 @@ function openTripDetailsModal(trip) {
         </button>
       </div>
     </div>
+
+    <!-- Поденний детальний розбір маршруту (якщо є) -->
+    ${trip.daysBreakdown && trip.daysBreakdown.length > 0 ? `
+    <div style="margin-bottom: 24px;">
+      <h4 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-emerald); display: flex; align-items: center; gap: 8px;">
+        <span>🗓️</span> Щоденний розбір етапів (${trip.daysBreakdown.length} дні):
+      </h4>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        ${trip.daysBreakdown.map(d => `
+          <div style="padding: 14px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-md); transition: var(--transition-fast);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+              <span style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">
+                День ${d.day} — ${d.date} ${d.start ? `<span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(Старт: ${d.start})</span>` : ''}
+              </span>
+              <div style="display: flex; gap: 8px; font-size: 0.85rem;">
+                <span style="padding: 2px 8px; background: rgba(16, 185, 129, 0.15); border-radius: 4px; color: var(--accent-emerald); font-weight: 600;">${d.distanceKm} км</span>
+                <span style="padding: 2px 8px; background: rgba(245, 158, 11, 0.15); border-radius: 4px; color: var(--accent-amber); font-weight: 600;">+${d.elevationM} м</span>
+                ${d.maxAltM ? `<span style="padding: 2px 8px; background: rgba(59, 130, 246, 0.15); border-radius: 4px; color: #93c5fd; font-weight: 600;">⛰️ ${d.maxAltM}м</span>` : ''}
+              </div>
+            </div>
+            <div style="font-size: 0.88rem; color: var(--accent-amber); font-weight: 600; margin-bottom: 4px;">
+              📍 ${d.route}
+            </div>
+            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+              ${d.notes}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    ` : ''}
 
     <!-- Графік перепаду висот (Elevation Profile) -->
     <div class="elevation-card">
