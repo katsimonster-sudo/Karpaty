@@ -1,46 +1,46 @@
 /* ==========================================================================
-   Сайт «Дожити до фініша...» — Головні стилі (Design System & Base Tokens)
+   Сайт «Дожити до фініша...» — Головні стилі (Aurora Blue Design System)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Базові кольори фону (Карпатська ніч та скелі) */
-  --bg-dark: #070a0d;
-  --bg-primary: #0b1015;
-  --bg-surface: #10171e;
-  --bg-surface-elevated: #16202a;
+  /* Базові кольори фону — Aurora Night */
+  --bg-dark: #06080f;
+  --bg-primary: #080c18;
+  --bg-surface: #0d1220;
+  --bg-surface-elevated: #111827;
   
   /* Скляні ефекти (Glassmorphism) */
-  --glass-bg: rgba(16, 24, 32, 0.72);
-  --glass-bg-hover: rgba(22, 33, 44, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-hover: rgba(16, 185, 129, 0.35);
-  --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
-  --glass-glow: 0 0 35px rgba(16, 185, 129, 0.15);
+  --glass-bg: rgba(10, 15, 35, 0.75);
+  --glass-bg-hover: rgba(15, 22, 48, 0.88);
+  --glass-border: rgba(99, 102, 241, 0.12);
+  --glass-border-hover: rgba(99, 102, 241, 0.4);
+  --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55);
+  --glass-glow: 0 0 35px rgba(59, 130, 246, 0.12);
 
-  /* Смарагдові та хвойні акценти (Ліси Карпат) */
-  --accent-emerald: #10b981;
-  --accent-emerald-hover: #059669;
-  --accent-emerald-light: rgba(16, 185, 129, 0.15);
-  --accent-pine: #064e3b;
+  /* Electric Blue та Indigo акценти */
+  --accent-emerald: #3b82f6;
+  --accent-emerald-hover: #2563eb;
+  --accent-emerald-light: rgba(59, 130, 246, 0.12);
+  --accent-pine: #1e3a6e;
 
-  /* Бурштинові акценти (Вогнище, гірське сонце) */
+  /* Бурштинові акценти (залишаємо для Donate) */
   --accent-amber: #f59e0b;
   --accent-amber-hover: #d97706;
   --accent-amber-light: rgba(245, 158, 11, 0.15);
   
   /* Текстові кольори */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #8092a4;
-  --text-inverse: #0b1015;
+  --text-primary: #f0f4ff;
+  --text-secondary: #c4cfe8;
+  --text-muted: #6b7fa8;
+  --text-inverse: #06080f;
 
   /* Функціональні бейджі складності */
-  --diff-easy: #10b981;
+  --diff-easy: #22d3ee;
   --diff-medium: #f59e0b;
-  --diff-hard: #ef4444;
-  --diff-extreme: #a855f7;
+  --diff-hard: #f87171;
+  --diff-extreme: #a78bfa;
 
   /* Типографіка */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -78,9 +78,14 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-dark);
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.05) 0%, transparent 45%),
-    radial-gradient(circle at 85% 65%, rgba(245, 158, 11, 0.04) 0%, transparent 40%),
-    linear-gradient(180deg, #070a0d 0%, #0b1015 50%, #070a0d 100%);
+    /* Aurora glow — верхній лівий синій */
+    radial-gradient(ellipse at 10% 0%, rgba(59, 130, 246, 0.18) 0%, transparent 55%),
+    /* Aurora glow — правий індиго */
+    radial-gradient(ellipse at 90% 20%, rgba(99, 102, 241, 0.14) 0%, transparent 50%),
+    /* Aurora glow — центральний фіолетовий */
+    radial-gradient(ellipse at 50% 80%, rgba(139, 92, 246, 0.07) 0%, transparent 45%),
+    /* Базовий градієнт */
+    linear-gradient(180deg, #06080f 0%, #080c18 50%, #06080f 100%);
   background-attachment: fixed;
   min-height: 100vh;
   line-height: 1.6;
@@ -90,6 +95,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 
 /* Скролбар */
 ::-webkit-scrollbar {
@@ -187,7 +193,7 @@ button, input, textarea, select {
 }
 
 .section-title span {
-  background: linear-gradient(135deg, #ffffff 0%, var(--accent-amber) 100%);
+  background: linear-gradient(135deg, #93c5fd 0%, #a5b4fc 50%, #c4b5fd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
