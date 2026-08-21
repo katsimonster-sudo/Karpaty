@@ -414,28 +414,6 @@ function openTripDetailsModal(trip) {
       </div>
     </div>
 
-    <!-- Рекомендований чек-лист для цього походу -->
-    <div style="margin-bottom: 24px;">
-      <h4 style="font-size: 0.95rem; margin-bottom: 10px; color: var(--accent-amber);">🎒 Обов'язкове спорядження для цього виходу:</h4>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        ${gearChecklist.map(item => `<span style="padding: 5px 12px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); font-size: 0.85rem; color: #fef08a;">✓ ${item}</span>`).join('')}
-      </div>
-    </div>
-
-    <!-- Визначні місця -->
-    <div style="margin-bottom: 24px;">
-      <h4 style="font-size: 0.95rem; margin-bottom: 10px; color: var(--text-primary);">Визначні місця та локації (POI):</h4>
-      <div class="trip-poi-list">
-        ${trip.poi.map(p => `<span class="poi-tag" style="padding: 6px 14px; font-size: 0.85rem; background: var(--bg-surface-elevated); border-color: rgba(16, 185, 129, 0.3); color: #ffffff;">📍 ${p}</span>`).join('')}
-      </div>
-    </div>
-
-    <!-- Розповідь про похід -->
-    <div style="margin-bottom: 28px;">
-      <h4 style="font-size: 0.95rem; margin-bottom: 10px; color: var(--text-primary);">Враження та особливості маршруту:</h4>
-      <p style="line-height: 1.7; color: var(--text-secondary); font-size: 1rem;">${trip.fullStory}</p>
-    </div>
-
     <!-- Фотозвіт (Клік відкриває Lightbox) -->
     <div style="margin-bottom: 20px;">
       <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-primary);">Фотозвіт з походу (клік для повноекранного перегляду):</h4>
