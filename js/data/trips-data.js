@@ -719,7 +719,7 @@ window.TRIPS_DATA = [
       }
     ],
     reactions: { fire: 68, mountain: 79, tent: 47, snow: 31 },
-    coverImage: "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-01.jpg",
+    coverImage: "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-02.jpg",
     images: [
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-01.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-02.jpg",
