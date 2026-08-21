@@ -300,12 +300,12 @@ function openTripDetailsModal(trip) {
         <span class="trip-diff-badge diff-${trip.difficulty}" style="position: static;">${trip.difficultyLabel}</span>
         <span style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 600;">${trip.region}</span>
       </div>
-      <h2 style="font-size: 2rem; margin-bottom: 12px;">${trip.title}</h2>
+      <h2 style="font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; line-height: 1.35; font-family: var(--font-sans, inherit);">${trip.title}</h2>
       
-      <div class="trip-metrics" style="padding: 12px 0; font-size: 0.95rem;">
-        <div class="metric-item"><strong>Тривалість:</strong> <span>${trip.durationDays} дні</span></div>
-        <div class="metric-item"><strong>Дистанція:</strong> <span>${trip.distanceKm} км</span></div>
-        <div class="metric-item"><strong>Набір висоти:</strong> <span>+${trip.elevationGainM} м</span></div>
+      <div class="trip-metrics" style="padding: 14px 0; font-size: 1.15rem; font-weight: 700; display: flex; flex-wrap: wrap; gap: 16px 28px;">
+        <div class="metric-item"><strong style="color: var(--accent-emerald);">Тривалість:</strong> <span>${trip.durationDays} дні</span></div>
+        <div class="metric-item"><strong style="color: var(--accent-emerald);">Дистанція:</strong> <span>${trip.distanceKm} км</span></div>
+        <div class="metric-item"><strong style="color: var(--accent-emerald);">Набір висоти:</strong> <span>+${trip.elevationGainM} м</span></div>
       </div>
     </div>
 
