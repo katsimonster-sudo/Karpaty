@@ -726,7 +726,6 @@ window.TRIPS_DATA = [
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-03.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-04.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-05.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-06.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-07.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-08.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-09.jpg",
