@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 1. Топ-3 походи
 const container = document.getElementById('featured-trips-container');
 if (container && window.TRIPS_DATA) {
-const featured = [window.TRIPS_DATA[0], window.TRIPS_DATA[5], window.TRIPS_DATA[14]];
+const featured = window.TRIPS_DATA.filter(t => t.year === 2026).slice(0, 3);
 container.innerHTML = featured.map(trip => `
 <div class="glass-card trip-card">
 <div class="trip-card-image-wrap">
