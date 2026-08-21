@@ -1,812 +1,466 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PW603MSJ0"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0PW603MSJ0');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Дожити до фініша... — Карпатські мандри та спільнота</title>
-  <meta name="description" content="Особистий веб-сайт про 15 гірських походів Карпатами (2024–2026 рр.), огляд спорядження з вагами, дошка знайомств для пошуку попутників та чат.">
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://dozhity.space/index.html">
-
-  <!-- Open Graph / Facebook, Telegram, тощо -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dozhity.space/index.html">
-  <meta property="og:site_name" content="Дожити до фініша...">
-  <meta property="og:title" content="Дожити до фініша... — Карпатські мандри та спільнота">
-  <meta property="og:description" content="Хроніка 15 гірських походів Карпатами (2024–2026). Маршрути, спорядження, спільнота попутників та безпека в горах.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="uk_UA">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Дожити до фініша... — Карпатські мандри та спільнота">
-  <meta name="twitter:description" content="Хроніка 15 гірських походів Карпатами (2024–2026). Маршрути, спорядження, спільнота попутників та безпека в горах.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80">
-
-  <!-- CSS Styles -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#10b981">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/responsive.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PW603MSJ0"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0PW603MSJ0');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дожити до фініша... — Карпатські мандри та спільнота</title>
+<meta name="description" content="Особистий веб-сайт про 15 гірських походів Карпатами (2024–2026 рр.), огляд спорядження з вагами, дошка знайомств для пошуку попутників та чат.">
+<!-- CSS Styles -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#10b981">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-
-  <!-- 1. Навігаційна шапка -->
-  <header class="site-header">
-    <div class="container header-container">
-      <a href="index.html" class="brand-logo">
-        <div class="brand-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
-          </svg>
-        </div>
-        <div class="brand-text">Дожити до <span>фініша...</span></div>
-      </a>
-
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link active">Головна</a></li>
-          <li><a href="trips.html" class="nav-link">Подорожі (15)</a></li>
-          <li><a href="gear.html" class="nav-link">Спорядження</a></li>
-          <li><a href="community.html" class="nav-link">Спільнота & Знайомства</a></li>
-          <li><a href="donate.html" class="nav-link donate-nav-link"><span>☕</span> Донат на подорожі</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-          Telegram
-        </a>
-        <button class="mobile-menu-toggle" aria-label="Меню">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- 2. Головний вміст -->
-  <main class="main-content">
-    
-    <!-- Hero Секція -->
-    <section class="section" style="padding-top: 40px; padding-bottom: 60px;">
-      <div class="container">
-        <div style="text-align: center; max-width: 860px; margin: 0 auto;">
-          <div class="section-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z"/></svg>
-            Усе, що нас не вбиває — робить чудовий фотоальбом.
-          </div>
-          <h1 class="section-title" style="font-size: 3.4rem; margin-bottom: 24px;">
-            «Дожити до <span>фініша...»</span>
-          </h1>
-          <p style="font-size: 1.05rem; font-style: italic; color: var(--accent-amber); margin-top: -8px; margin-bottom: 20px;">
-            Готовий потрапити в наступний альбом?
-          </p>
-          <p class="section-subtitle" style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 36px; color: var(--text-secondary);">
-            Хроніка 15 гірських походів Карпатами за три роки (2024–2026).
-          </p>
-          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <a href="trips.html" class="btn btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              Всі 15 походів (2024–2026)
-            </a>
-            <a href="community.html" class="btn btn-amber">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              Знайти попутників
-            </a>
-            <a href="gear.html" class="btn btn-secondary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
-              Огляд спорядження
-            </a>
-            <a href="donate.html" class="btn btn-outline" style="border-color: rgba(245, 158, 11, 0.6); color: var(--accent-amber); background: rgba(245, 158, 11, 0.1);">
-              <span>☕</span> Донат на подорожі
-            </a>
-          </div>
-        </div>
-
-        <!-- Лічильники статистики — реальні дані 2026 рік -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Походів у 2026 році</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">633 км</div>
-            <div class="stat-label">Пройдено стежками</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">30к+ м</div>
-            <div class="stat-label">Сумарний набір висоти</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">32 дні</div>
-            <div class="stat-label">У горах за рік</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секція філософії назви -->
-    <section class="section" style="background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Філософія проекту</div>
-          <h2 class="section-title">Чому саме <span>«Дожити до фініша...»?</span></h2>
-          <p class="section-subtitle">
-            Гори не прощають самовпевненості. Кожен вихід у Карпати — це перевірка на витривалість, характер і надійність команди.
-          </p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-          <div class="glass-card" style="padding: 32px;">
-            <div style="width: 48px; height: 48px; border-radius: var(--radius-md); background: rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-emerald); margin-bottom: 20px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            </div>
-            <h3 style="font-size: 1.3rem; margin-bottom: 12px;">Справжні маршрути без прикрас</h3>
-            <p>Чесні звіти про стан карпатських стежок, завали у жерепі, круті підйоми та реальний кілометраж з GPS-трекерів.</p>
-          </div>
-
-          <div class="glass-card" style="padding: 32px;">
-            <div style="width: 48px; height: 48px; border-radius: var(--radius-md); background: rgba(245, 158, 11, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-amber); margin-bottom: 20px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            </div>
-            <h3 style="font-size: 1.3rem; margin-bottom: 12px;">Випробування спорядження</h3>
-            <p>Жодної реклами — лише спорядження, перевірене затяжними карпатськими зливами, морозом -18°C та гострим камінням.</p>
-          </div>
-
-          <div class="glass-card" style="padding: 32px;">
-            <div style="width: 48px; height: 48px; border-radius: var(--radius-md); background: rgba(168, 85, 247, 0.2); display: flex; align-items: center; justify-content: center; color: #c084fc; margin-bottom: 20px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3 style="font-size: 1.3rem; margin-bottom: 12px;">Спільнота однодумців</h3>
-            <p>Гори об'єднують надійних людей. Тут можна знайти компанію на наступний вихід або запропонувати свій маршрут.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секція вибраних походів (Highlights) -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Хайлайти походів</div>
-          <h2 class="section-title">Яскраві <span>вершини Карпат</span></h2>
-          <p class="section-subtitle">
-            Погляньте на вибрані експедиції з 15 пройдених маршрутів за 2024–2026 роки.
-          </p>
-        </div>
-
-        <div class="trips-grid" id="featured-trips-container">
-          <!-- Динамічно завантажуються топ-3 походи -->
-        </div>
-
-        <div style="text-align: center; margin-top: 40px;">
-          <a href="trips.html" class="btn btn-primary">
-            Переглянути повну хронологію всіх 15 походів →
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секція: Інтерактивний погодний інформер Карпатських хребтів -->
-    <section class="section" style="background: rgba(0, 0, 0, 0.25); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Гірський інформер</div>
-          <h2 class="section-title">Погода на <span>хребтах Карпат</span></h2>
-          <p class="section-subtitle">
-            Оцінка умов для безпечного виходу в гори. Перевіряйте вітер та рівень безпеки перед виходом на маршрут.
-          </p>
-        </div>
-
-        <div class="weather-grid" id="weather-grid">
-          <!-- Чорногора -->
-          <div class="weather-card" data-region="chornohora" data-lat="48.1614" data-lon="24.5003">
-            <div class="weather-header">
-              <div>
-                <div class="weather-region-name">⛰️ Чорногора</div>
-                <div class="weather-altitude">г. Говерла / г. Піп Іван (2028м)</div>
-              </div>
-              <span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
-            </div>
-            <div class="weather-body">
-              <div class="weather-temp-wrap">
-                <div class="weather-temp js-weather-temp">—°C</div>
-                <div class="weather-condition js-weather-condition">Отримуємо дані…</div>
-              </div>
-              <div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
-            </div>
-            <div class="weather-metrics-row">
-              <span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-              <span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-              <span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
-            </div>
-          </div>
-
-          <!-- Ґорґани -->
-          <div class="weather-card" data-region="gorgany" data-lat="48.5511" data-lon="24.2814">
-            <div class="weather-header">
-              <div>
-                <div class="weather-region-name">🪨 Ґорґани</div>
-                <div class="weather-altitude">г. Велика Сивуля (1836м)</div>
-              </div>
-              <span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
-            </div>
-            <div class="weather-body">
-              <div class="weather-temp-wrap">
-                <div class="weather-temp js-weather-temp">—°C</div>
-                <div class="weather-condition js-weather-condition">Отримуємо дані…</div>
-              </div>
-              <div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
-            </div>
-            <div class="weather-metrics-row">
-              <span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-              <span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-              <span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
-            </div>
-          </div>
-
-          <!-- Свидовець -->
-          <div class="weather-card" data-region="svydovets" data-lat="48.3467" data-lon="23.9522">
-            <div class="weather-header">
-              <div>
-                <div class="weather-region-name">🌊 Свидовець</div>
-                <div class="weather-altitude">г. Близниця (1881м)</div>
-              </div>
-              <span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
-            </div>
-            <div class="weather-body">
-              <div class="weather-temp-wrap">
-                <div class="weather-temp js-weather-temp">—°C</div>
-                <div class="weather-condition js-weather-condition">Отримуємо дані…</div>
-              </div>
-              <div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
-            </div>
-            <div class="weather-metrics-row">
-              <span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-              <span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-              <span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
-            </div>
-          </div>
-
-          <!-- Хребет Станимир -->
-          <div class="weather-card" data-region="stanymyr" data-lat="48.5628" data-lon="24.2500">
-            <div class="weather-header">
-              <div>
-                <div class="weather-region-name">🏔️ Хребет Станимир</div>
-                <div class="weather-altitude">г. Станимир (1546м)</div>
-              </div>
-              <span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
-            </div>
-            <div class="weather-body">
-              <div class="weather-temp-wrap">
-                <div class="weather-temp js-weather-temp">—°C</div>
-                <div class="weather-condition js-weather-condition">Отримуємо дані…</div>
-              </div>
-              <div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
-            </div>
-            <div class="weather-metrics-row">
-              <span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-              <span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-              <span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
-            </div>
-          </div>
-        </div>
-        <p style="text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 16px;">
-          Дані: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Open-Meteo</a> · оновлюється при кожному завантаженні сторінки
-        </p>
-      </div>
-    </section>
-
-
-    <!-- Секція: Інтерактивний підбір походу (Trail Matcher) -->
-    <section class="section">
-      <div class="container">
-        <div class="trail-matcher-card">
-          <div style="text-align: center; max-width: 650px; margin: 0 auto 30px;">
-            <div class="section-tag">Інтерактивний помічник</div>
-            <h2 style="font-size: 2rem; margin-bottom: 12px;">Не знаєш, куди піти? <span>Підберемо маршрут!</span></h2>
-            <p style="font-size: 0.95rem; color: var(--text-secondary);">
-              Оберіть свій рівень підготовки та бажану тривалість виходу — алгоритм запропонує найкращий похід з нашої колекції 15 маршрутів.
-            </p>
-          </div>
-
-          <div class="matcher-steps">
-            <div class="matcher-group">
-              <label for="matcher-exp">1. Досвід у горах:</label>
-              <select id="matcher-exp" class="matcher-select">
-                <option value="easy">Початківець (Легкі стежки, полонини)</option>
-                <option value="medium" selected>Любитель (Середній темп, намети)</option>
-                <option value="hard">Досвідчений (Складні хребти, висота)</option>
-                <option value="extreme">Екстремал (Курумники, зима, повна автономія)</option>
-              </select>
-            </div>
-
-            <div class="matcher-group">
-              <label for="matcher-days">2. Тривалість (дні):</label>
-              <select id="matcher-days" class="matcher-select">
-                <option value="2">2 дні (Похід вихідного дня)</option>
-                <option value="3" selected>3 дні (Повноцінний вихід)</option>
-                <option value="4">4+ дні (Грандіозний траверс)</option>
-              </select>
-            </div>
-
-            <div class="matcher-group">
-              <label for="matcher-region">3. Бажаний район:</label>
-              <select id="matcher-region" class="matcher-select">
-                <option value="all">Будь-який район Карпат</option>
-                <option value="chornohora">Чорногора (Найвищі 2000-ники)</option>
-                <option value="gorgany">Ґорґани (Дике каміння та смереки)</option>
-                <option value="svydovets">Свидовець (Озера та панорами)</option>
-                <option value="marmarosy">Мармароси (Скелясті Гуцульські Альпи)</option>
-                <option value="borzhava">Боржава (Оксамитові чорничні схили)</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="text-align: center;">
-            <button id="find-trip-btn" class="btn btn-amber">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              Знайти ідеальний похід
-            </button>
-          </div>
-
-          <div id="matcher-result" class="matcher-result-box">
-            <!-- Заповнюється в JS -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секція: Карпатські поради & FAQ -->
-    <section class="section" style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid var(--glass-border);">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Гірська мудрість</div>
-          <h2 class="section-title">Часті запитання <span>та Безпека</span></h2>
-          <p class="section-subtitle">
-            Усе, що потрібно знати перед виходом на карпатські стежки: від питної води до прикордонних перепусток.
-          </p>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Як правильно зареєструвати похід у ДСНС?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Перед виходом на складні маршрути (особливо в міжсезоння та взимку) обов'язково зареєструйте групу через додаток «Порятунок у горах» або зателефонуйте на найближчий пошуково-рятувальний пост (Чорногорський, Ворохтянський, Ясінянський). Повідомте нитку маршруту, кількість учасників та контрольний час повернення.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Де шукати питну воду на Чорногірському хребті?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              На самому гребені води немає! Надійні джерела є на полонині Скопеській (під Петросом), біля озера Несамовите, в урочищі Гаджина під Шпицями, біля озера Бребенескул та під Попом Іваном (пол. Шешул та озеро Марічейка). Завжди беріть запас мінімум 1.5–2 л на переходи між джерелами.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Чи потрібен дозвіл для походу на Мармароси?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Так! Мармароський масив проходить уздовж державного кордону з Румунією. Необхідно заздалегідь (за 7-10 днів) надіслати електронну заяву до 27-го прикордонного загону (м. Мукачево) або оформити дозвіл на заставі в с. Ділове перед виходом, маючи при собі паспорт громадянина України.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Що робити під час раптової грози на хребті?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Негайно зійдіть з найвищих точок та гребеня вниз по схилу у зону жерепу або лісу. Складіть металеві трекінгові палиці та зніміть рюкзак, відійшовши від нього на 10-15 метрів. Не ховайтеся під поодинокими смереками. Сядьте навпочіпки на сухий каремат, згрупувавшись.
-            </div>
-          </div>
-        </div>
-
-        <!-- Контакти рятувальників -->
-        <div style="margin-top: 50px;">
-          <h3 style="text-align: center; font-size: 1.3rem; margin-bottom: 20px;">🚨 Екстрені контакти рятувальних постів Карпат (ДПРЧ / ДСНС):</h3>
-          <div class="rescue-grid">
-            <div class="rescue-card">
-              <div class="rescue-title">🏔️ Чорногірський рятувальний пост</div>
-              <p style="font-size: 0.85rem;">Пошуково-рятувальне відділення на горі Піп Іван (обсерваторія «Білий Слон»).</p>
-              <a href="tel:+380673420491" class="rescue-phone-btn">📞 +38 (067) 342-04-91</a>
-            </div>
-            <div class="rescue-card">
-              <div class="rescue-title">🌲 Ворохтянське ПРВ (Івано-Франківськ)</div>
-              <p style="font-size: 0.85rem;">Зона відповідальності: Говерла, Заросляк, Кукул, Кострича, Східні Ґорґани.</p>
-              <a href="tel:+380673420492" class="rescue-phone-btn">📞 +38 (067) 342-04-92</a>
-            </div>
-            <div class="rescue-card">
-              <div class="rescue-title">🌊 Ясінянське ПРВ (Закарпаття)</div>
-              <p style="font-size: 0.85rem;">Зона відповідальності: Свидовець, Близниця, Драгобрат, Петрос, Чорна Тиса.</p>
-              <a href="tel:+380673420493" class="rescue-phone-btn">📞 +38 (067) 342-04-93</a>
-            </div>
-            <div class="rescue-card">
-              <div class="rescue-title">🆘 Єдиний номер порятунку</div>
-              <p style="font-size: 0.85rem;">Екстрена допомога рятувальників по всій території України (безкоштовно з мобільного).</p>
-              <a href="tel:112" class="rescue-phone-btn" style="background: #ef4444;">🚨 112 / 101</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Заклик до знайомств (CTA) -->
-    <section class="section" style="background: linear-gradient(180deg, transparent 0%, rgba(16, 185, 129, 0.06) 100%);">
-      <div class="container">
-        <div class="glass-card" style="padding: 48px 36px; text-align: center; border-color: rgba(16, 185, 129, 0.3);">
-          <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Шукаєш надійних попутників у Карпати?</h2>
-          <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; color: var(--text-secondary);">
-            Долучайся до нашої дошки знайомств. Створюй власне оголошення, обирай спільні дати та підкорюй вершини разом!
-          </p>
-          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-            <a href="community.html" class="btn btn-amber">
-              Дошка оголошень & Пошук компанії
-            </a>
-            <a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              Написати в Telegram
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секція «Донат на подорожі» (Підтримка карпатських експедицій) -->
-    <section class="section" id="donation-section" style="background: linear-gradient(180deg, rgba(7, 10, 13, 0.6) 0%, rgba(22, 32, 42, 0.8) 100%);">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag" style="color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.15);">
-            ☕ Підтримка проекту
-          </div>
-          <h2 class="section-title">Донат на <span>подорожі</span></h2>
-          <p class="section-subtitle">
-            Підтримайте нові сходження, створення безкоштовних GPX-треків та тестування спорядження в Карпатах!
-          </p>
-        </div>
-
-        <div class="donate-methods-grid">
-          <!-- Monobank -->
-          <div class="donate-method-card mono">
-            <div class="donate-card-header">
-              <div class="donate-brand-badge" style="color: #eb5757;">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
-                Монобанк (Monobank)
-              </div>
-              <span class="weather-badge weather-badge-safe">Банка / Картка</span>
-            </div>
-            <div class="donate-card-number-box">
-              <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Номер картки:</div>
-                <div class="donate-number-text">4441 1111 4381 4170</div>
-              </div>
-              <button class="donate-copy-btn" onclick="navigator.clipboard.writeText('4441111143814170'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
-            </div>
-            <a href="https://send.monobank.ua/jar/6fnNdeHKGa" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-mono">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
-              Задонатити в Monobank (Банка) →
-            </a>
-          </div>
-
-          <!-- PrivatBank -->
-          <div class="donate-method-card privat">
-            <div class="donate-card-header">
-              <div class="donate-brand-badge" style="color: #5ebb3e;">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
-                ПриватБанк (Privat24)
-              </div>
-              <span class="weather-badge weather-badge-safe">Приват24</span>
-            </div>
-            <div class="donate-card-number-box">
-              <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Номер картки:</div>
-                <div class="donate-number-text">4149 6090 6510 1349</div>
-              </div>
-              <button class="donate-copy-btn" onclick="navigator.clipboard.writeText('4149609065101349'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
-            </div>
-            <a href="https://www.privat24.ua/send/477n8" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-privat">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-              Задонатити через Приват24 →
-            </a>
-          </div>
-
-          <!-- PayPal -->
-          <div class="donate-method-card paypal">
-            <div class="donate-card-header">
-              <div class="donate-brand-badge" style="color: #38bdf8;">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.293-.418 2.68-1.574 4.352-3.447 5.253-1.026.495-2.274.743-3.71.743h-2.12c-.443 0-.822.319-.89.757l-.87 5.568-.27 1.728a.64.64 0 0 1-.633.541z"/></svg>
-                PayPal (Міжнародний)
-              </div>
-              <span class="weather-badge weather-badge-safe">USD / EUR / PLN</span>
-            </div>
-            <div class="donate-card-number-box">
-              <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">PayPal:</div>
-                <div class="donate-number-text" style="font-size: 0.95rem;">katsimonster@gmail.com</div>
-              </div>
-              <button class="donate-copy-btn" onclick="navigator.clipboard.writeText('katsimonster@gmail.com'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
-            </div>
-            <a href="https://paypal.me/katsimonster" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-paypal">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
-              Задонатити через PayPal →
-            </a>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 24px;">
-          <a href="donate.html" class="btn btn-amber">
-            <span>☕</span> Відкрити повну сторінку донатів & цілей збору →
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- 3. Підвал (Footer) -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="brand-logo" style="margin-bottom: 12px;">
-            <div class="brand-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
-            </div>
-            <div class="brand-text">Дожити до <span>фініша...</span></div>
-          </div>
-          <p class="footer-desc">
-            Особистий щоденник гірських мандрівок Українськими Карпатами. 15 походів, практичні поради, вага спорядження та спільнота мандрівників.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Навігація</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Головна</a></li>
-            <li><a href="trips.html">Подорожі (2024–2026)</a></li>
-            <li><a href="gear.html">Каталог спорядження</a></li>
-            <li><a href="community.html">Спільнота & Знайомства</a></li>
-            <li><a href="donate.html" style="color: var(--accent-amber); font-weight: 700;">☕ Донат на подорожі</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Сезони</h4>
-          <ul class="footer-links">
-            <li><a href="trips.html?year=2024">Походи 2024 (5)</a></li>
-            <li><a href="trips.html?year=2025">Походи 2025 (5)</a></li>
-            <li><a href="trips.html?year=2026">Походи 2026 (5)</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Контакти</h4>
-          <ul class="footer-links">
-            <li><a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer">Telegram: @dozhyty_do_finisha_bot</a></li>
-            <li><a href="community.html">Дошка оголошень</a></li>
-            <li><span>Локація: Українські Карпати</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>© 2024–2026 «Дожити до фініша...». Всі права захищено.</div>
-        <div>Зроблено з любов'ю до Карпатських гір 🌲⛰️</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Скрипти -->
-  <script src="js/data/trips-data.js"></script>
-  <script src="js/data/gear-data.js"></script>
-  <script src="js/data/community-data.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/chat.js"></script>
-
-  <script>
-    // Жива погода для 4 карпатських масивів через Open-Meteo (без API-ключа)
-    function loadMountainWeather() {
-      const cards = document.querySelectorAll('#weather-grid .weather-card');
-      if (!cards.length) return;
-
-      // WMO weather_code -> опис + іконка
-      function describeWeatherCode(code) {
-        if (code === 0) return { text: 'Ясно', icon: '☀️' };
-        if ([1, 2].includes(code)) return { text: 'Мінлива хмарність', icon: '🌤️' };
-        if (code === 3) return { text: 'Хмарно', icon: '☁️' };
-        if ([45, 48].includes(code)) return { text: 'Туман', icon: '🌫️' };
-        if ([51, 53, 55, 56, 57].includes(code)) return { text: 'Мряка', icon: '🌦️' };
-        if ([61, 63, 65, 66, 67].includes(code)) return { text: 'Дощ', icon: '🌧️' };
-        if ([71, 73, 75, 77].includes(code)) return { text: 'Сніг', icon: '🌨️' };
-        if ([80, 81, 82].includes(code)) return { text: 'Зливи', icon: '🌦️' };
-        if ([85, 86].includes(code)) return { text: 'Снігові заряди', icon: '🌨️' };
-        if ([95, 96, 99].includes(code)) return { text: 'Гроза', icon: '⛈️' };
-        return { text: 'Дані недоступні', icon: '❓' };
-      }
-
-      // Оцінка ризику виходу в гори за вітром та типом опадів
-      function assessRisk(windMs, code) {
-        const isStorm = [95, 96, 99].includes(code);
-        const isSnow = [71, 73, 75, 77, 85, 86].includes(code);
-        const isFog = [45, 48].includes(code);
-        if (isStorm || windMs >= 15) {
-          return { label: 'Високий', badge: 'Небезпечно', badgeClass: 'weather-badge-danger' };
-        }
-        if (windMs >= 10 || isSnow || isFog) {
-          return { label: 'Середній', badge: isFog ? 'Можливий туман' : (isSnow ? 'Сніг у горах' : 'Сильний вітер'), badgeClass: 'weather-badge-warning' };
-        }
-        if (windMs >= 7) {
-          return { label: 'Низький', badge: 'Помірний вітер', badgeClass: 'weather-badge-warning' };
-        }
-        return { label: 'Мінімальний', badge: 'Сприятливо', badgeClass: 'weather-badge-safe' };
-      }
-
-      cards.forEach(async (card) => {
-        const lat = card.dataset.lat;
-        const lon = card.dataset.lon;
-        const badgeEl = card.querySelector('.js-weather-badge');
-        const tempEl = card.querySelector('.js-weather-temp');
-        const condEl = card.querySelector('.js-weather-condition');
-        const iconEl = card.querySelector('.js-weather-icon');
-        const windEl = card.querySelector('.js-weather-wind');
-        const humidityEl = card.querySelector('.js-weather-humidity');
-        const riskEl = card.querySelector('.js-weather-risk');
-
-        try {
-          const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto`;
-          const res = await fetch(url);
-          if (!res.ok) throw new Error('Weather API error');
-          const data = await res.json();
-          const cur = data.current;
-
-          const windMs = Math.round((cur.wind_speed_10m / 3.6) * 10) / 10; // км/год -> м/с
-          const weatherInfo = describeWeatherCode(cur.weather_code);
-          const risk = assessRisk(windMs, cur.weather_code);
-
-          tempEl.textContent = `${Math.round(cur.temperature_2m) >= 0 ? '+' : ''}${Math.round(cur.temperature_2m)}°C`;
-          condEl.textContent = weatherInfo.text;
-          iconEl.textContent = weatherInfo.icon;
-          windEl.textContent = windMs;
-          humidityEl.textContent = Math.round(cur.relative_humidity_2m);
-          riskEl.textContent = risk.label;
-
-          badgeEl.textContent = risk.badge;
-          badgeEl.classList.remove('weather-badge-safe', 'weather-badge-warning', 'weather-badge-danger');
-          badgeEl.classList.add(risk.badgeClass);
-        } catch (err) {
-          condEl.textContent = 'Не вдалося завантажити';
-          tempEl.textContent = '—°C';
-          iconEl.textContent = '⚠️';
-          badgeEl.textContent = 'Немає даних';
-        }
-      });
-    }
-  </script>
-
-  <script>
-    // Рендеринг 3 топ-походів на головній та ініціалізація віджетів
-    document.addEventListener('DOMContentLoaded', () => {
-      loadMountainWeather();
-
-      // 1. Топ-3 походи
-      const container = document.getElementById('featured-trips-container');
-      if (container && window.TRIPS_DATA) {
-        const featured = [window.TRIPS_DATA[0], window.TRIPS_DATA[5], window.TRIPS_DATA[14]];
-        container.innerHTML = featured.map(trip => `
-          <div class="glass-card trip-card">
-            <div class="trip-card-image-wrap">
-              <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy">
-              <span class="trip-year-badge">${trip.season}</span>
-              <span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
-            </div>
-            <div class="trip-card-body">
-              <h3 class="trip-title">${trip.title}</h3>
-              <div class="trip-metrics">
-                <div class="metric-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                  <span>${trip.durationDays} дні</span>
-                </div>
-                <div class="metric-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-                  <span>${trip.distanceKm} км</span>
-                </div>
-                <div class="metric-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
-                  <span>+${trip.elevationGainM} м</span>
-                </div>
-              </div>
-              <p style="font-size: 0.9rem; margin-bottom: 18px; color: var(--text-secondary);">${trip.shortDesc}</p>
-              <div class="trip-card-footer">
-                <a href="trips.html?id=${trip.id}" class="btn btn-sm btn-outline">Деталі маршруту →</a>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-
-      // 2. Логіка Trail Matcher Quiz
-      const findBtn = document.getElementById('find-trip-btn');
-      const resultBox = document.getElementById('matcher-result');
-      if (findBtn && resultBox && window.TRIPS_DATA) {
-        findBtn.addEventListener('click', () => {
-          const exp = document.getElementById('matcher-exp').value;
-          const days = parseInt(document.getElementById('matcher-days').value, 10);
-          const region = document.getElementById('matcher-region').value;
-
-          let matches = window.TRIPS_DATA.filter(t => {
-            const matchDiff = t.difficulty === exp;
-            const matchDays = days === 4 ? t.durationDays >= 4 : t.durationDays === days;
-            const matchReg = region === 'all' || t.regionKey === region;
-            return matchDiff && matchDays && matchReg;
-          });
-
-          // Якщо точного збігу нема, пом'якшуємо критерії
-          if (!matches.length) {
-            matches = window.TRIPS_DATA.filter(t => {
-              const matchReg = region === 'all' || t.regionKey === region;
-              const matchDiff = t.difficulty === exp;
-              return matchReg || matchDiff;
-            });
-          }
-
-          const chosen = matches.length ? matches[0] : window.TRIPS_DATA[0];
-
-          resultBox.innerHTML = `
-            <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-              <div style="width: 120px; height: 90px; border-radius: var(--radius-md); overflow: hidden; flex-shrink: 0;">
-                <img src="${chosen.coverImage}" alt="${chosen.title}" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-              <div style="flex: 1; min-width: 220px;">
-                <div style="font-size: 0.8rem; color: var(--accent-amber); font-weight: 700; text-transform: uppercase;">🎯 Ідеальний варіант для вас:</div>
-                <h3 style="font-size: 1.3rem; margin: 4px 0 8px;">${chosen.title}</h3>
-                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px;">
-                  📍 ${chosen.region} • ⏱️ ${chosen.durationDays} дні • 📏 ${chosen.distanceKm} км • ⛰️ +${chosen.elevationGainM} м
-                </div>
-              </div>
-              <a href="trips.html?id=${chosen.id}" class="btn btn-sm btn-primary">
-                Переглянути деталі походу →
-              </a>
-            </div>
-          `;
-          resultBox.classList.add('active');
-        });
-      }
-
-      // 3. Логіка FAQ Accordion
-      document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const item = btn.closest('.faq-item');
-          const isOpen = item.classList.contains('active');
-          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-          if (!isOpen) {
-            item.classList.add('active');
-          }
-        });
-      });
-    });
-  </script>
+<!-- 1. Навігаційна шапка -->
+<header class="site-header">
+<div class="container header-container">
+<a href="index.html" class="brand-logo">
+<div class="brand-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+</svg>
+</div>
+<div class="brand-text">Дожити до <span>фініша...</span></div>
+</a>
+<nav>
+<ul class="nav-menu">
+<li><a href="index.html" class="nav-link active">Головна</a></li>
+<li><a href="trips.html" class="nav-link">Подорожі (15)</a></li>
+<li><a href="gear.html" class="nav-link">Спорядження</a></li>
+<li><a href="community.html" class="nav-link">Спільнота & Знайомства</a></li>
+<li><a href="donate.html" class="nav-link donate-nav-link"><span>☕</span> Донат на подорожі</a></li>
+</ul>
+</nav>
+<div class="header-actions">
+<a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+Telegram
+</a>
+<button class="mobile-menu-toggle" aria-label="Меню">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="3" y1="12" x2="21" y2="12"></line>
+<line x1="3" y1="6" x2="21" y2="6"></line>
+<line x1="3" y1="18" x2="21" y2="18"></line>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- 2. Головний вміст -->
+<main class="main-content">
+<!-- Hero Секція -->
+<section class="section" style="padding-top: 40px; padding-bottom: 60px;">
+<div class="container">
+<div style="text-align: center; max-width: 860px; margin: 0 auto;">
+<div class="section-tag">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z"/></svg>
+Карпатські гори • Мандри з 2024 року
+</div>
+<h1 class="section-title" style="font-size: 3.4rem; margin-bottom: 24px;">
+«Дожити до <span>фініша...»</span>
+</h1>
+<p class="section-subtitle" style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 36px; color: var(--text-secondary);">
+Хроніка 15 гірських походів Карпатами за три роки (2024–2026). Справжній досвід випробувань: штормові вітри Чорногори, дикі курумники Ґорґан, скелі Мармаросів, перевірене спорядження та пошук однодумців для нових вершин.
+</p>
+<div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+<a href="trips.html" class="btn btn-primary">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+Всі 15 походів (2024–2026)
+</a>
+<a href="community.html" class="btn btn-amber">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+Знайти попутників
+</a>
+<a href="gear.html" class="btn btn-secondary">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
+Огляд спорядження
+</a>
+<a href="donate.html" class="btn btn-outline" style="border-color: rgba(245, 158, 11, 0.6); color: var(--accent-amber); background: rgba(245, 158, 11, 0.1);">
+<span>☕</span> Донат на подорожі
+</a>
+</div>
+</div>
+<!-- Лічильники статистики — реальні дані 2026 рік -->
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">5</div>
+<div class="stat-label">Походів у 2026 році</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">633 км</div>
+<div class="stat-label">Пройдено стежками</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">30к+ м</div>
+<div class="stat-label">Сумарний набір висоти</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">32 дні</div>
+<div class="stat-label">У горах за рік</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Секція вибраних походів (Highlights) -->
+<section class="section">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">Хайлайти походів</div>
+<h2 class="section-title">Яскраві <span>вершини Карпат</span></h2>
+<p class="section-subtitle">
+Погляньте на вибрані експедиції з 15 пройдених маршрутів за 2024–2026 роки.
+</p>
+</div>
+<div class="trips-grid" id="featured-trips-container">
+<!-- Динамічно завантажуються топ-3 походи -->
+</div>
+<div style="text-align: center; margin-top: 40px;">
+<a href="trips.html" class="btn btn-primary">
+Переглянути повну хронологію всіх 15 походів →
+</a>
+</div>
+</div>
+</section>
+<!-- Секція: Інтерактивний погодний інформер Карпатських хребтів -->
+<section class="section" style="background: rgba(0, 0, 0, 0.25); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">Гірський інформер</div>
+<h2 class="section-title">Погода на <span>хребтах Карпат</span></h2>
+<p class="section-subtitle">
+Оцінка умов для безпечного виходу в гори. Перевіряйте вітер та рівень безпеки перед виходом на маршрут.
+</p>
+</div>
+<div class="weather-grid">
+<!-- Чорногора -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">⛰️ Чорногора</div>
+<div class="weather-altitude">г. Говерла / г. Піп Іван (2028м)</div>
+</div>
+<span class="weather-badge weather-badge-warning">Помірний вітер</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+11°C</div>
+<div class="weather-condition">Мінлива хмарність</div>
+</div>
+<div style="font-size: 2.2rem;">🌤️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 12 м/с</span>
+<span>💧 Вологість: 68%</span>
+<span>⚠️ Ризик: Низький</span>
+</div>
+</div>
+<!-- Ґорґани -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">🪨 Ґорґани</div>
+<div class="weather-altitude">г. Велика Сивуля (1836м)</div>
+</div>
+<span class="weather-badge weather-badge-safe">Сприятливо</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+14°C</div>
+<div class="weather-condition">Ясно, сухий курумник</div>
+</div>
+<div style="font-size: 2.2rem;">☀️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 6 м/с</span>
+<span>💧 Вологість: 52%</span>
+<span>⚠️ Ризик: Мінімальний</span>
+</div>
+</div>
+<!-- Свидовець -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">🌊 Свидовець</div>
+<div class="weather-altitude">г. Близниця (1881м)</div>
+</div>
+<span class="weather-badge weather-badge-safe">Комфортно</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+15°C</div>
+<div class="weather-condition">Сонячно, теплий вітер</div>
+</div>
+<div style="font-size: 2.2rem;">🌤️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 8 м/с</span>
+<span>💧 Вологість: 58%</span>
+<span>⚠️ Ризик: Мінімальний</span>
+</div>
+</div>
+<!-- Мармароси -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">🧗 Мармароси</div>
+<div class="weather-altitude">Піп Іван Мармароський (1936м)</div>
+</div>
+<span class="weather-badge weather-badge-warning">Можливий туман</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+12°C</div>
+<div class="weather-condition">Ранковий туман</div>
+</div>
+<div style="font-size: 2.2rem;">🌫️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 10 м/с</span>
+<span>💧 Вологість: 75%</span>
+<span>⚠️ Ризик: Середній</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Секція: Карпатські поради & Безпека -->
+<section class="section" style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid var(--glass-border);">
+<div class="container">
+<!-- Контакти рятувальників -->
+<div>
+<h3 style="text-align: center; font-size: 1.3rem; margin-bottom: 20px;">🚨 Екстрені контакти рятувальних постів Карпат (ДПРЧ / ДСНС):</h3>
+<div class="rescue-grid">
+<div class="rescue-card">
+<div class="rescue-title">🏔️ Чорногірський рятувальний пост</div>
+<p style="font-size: 0.85rem;">Пошуково-рятувальне відділення на горі Піп Іван (обсерваторія «Білий Слон»).</p>
+<a href="tel:+380673420491" class="rescue-phone-btn">📞 +38 (067) 342-04-91</a>
+</div>
+<div class="rescue-card">
+<div class="rescue-title">🌲 Ворохтянське ПРВ (Івано-Франківськ)</div>
+<p style="font-size: 0.85rem;">Зона відповідальності: Говерла, Заросляк, Кукул, Кострича, Східні Ґорґани.</p>
+<a href="tel:+380673420492" class="rescue-phone-btn">📞 +38 (067) 342-04-92</a>
+</div>
+<div class="rescue-card">
+<div class="rescue-title">🌊 Ясінянське ПРВ (Закарпаття)</div>
+<p style="font-size: 0.85rem;">Зона відповідальності: Свидовець, Близниця, Драгобрат, Петрос, Чорна Тиса.</p>
+<a href="tel:+380673420493" class="rescue-phone-btn">📞 +38 (067) 342-04-93</a>
+</div>
+<div class="rescue-card">
+<div class="rescue-title">🆘 Єдиний номер порятунку</div>
+<p style="font-size: 0.85rem;">Екстрена допомога рятувальників по всій території України (безкоштовно з мобільного).</p>
+<a href="tel:112" class="rescue-phone-btn" style="background: #ef4444;">🚨 112 / 101</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Заклик до знайомств (CTA) -->
+<section class="section" style="background: linear-gradient(180deg, transparent 0%, rgba(16, 185, 129, 0.06) 100%);">
+<div class="container">
+<div class="glass-card" style="padding: 48px 36px; text-align: center; border-color: rgba(16, 185, 129, 0.3);">
+<h2 style="font-size: 2.2rem; margin-bottom: 16px;">Шукаєш надійних попутників у Карпати?</h2>
+<p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; color: var(--text-secondary);">
+Долучайся до нашої дошки знайомств. Створюй власне оголошення, обирай спільні дати та підкорюй вершини разом!
+</p>
+<div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+<a href="community.html" class="btn btn-amber">
+Дошка оголошень & Пошук компанії
+</a>
+<a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+Написати в Telegram
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Секція «Донат на подорожі» (Підтримка карпатських експедицій) -->
+<section class="section" id="donation-section" style="background: linear-gradient(180deg, rgba(7, 10, 13, 0.6) 0%, rgba(22, 32, 42, 0.8) 100%);">
+<div class="container">
+<div class="section-header">
+<div class="section-tag" style="color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.15);">
+☕ Підтримка проекту
+</div>
+<h2 class="section-title">Донат на <span>подорожі</span></h2>
+<p class="section-subtitle">
+Підтримайте нові сходження, створення безкоштовних GPX-треків та тестування спорядження в Карпатах!
+</p>
+</div>
+<div class="donate-methods-grid">
+<!-- Monobank -->
+<div class="donate-method-card mono">
+<div class="donate-card-header">
+<div class="donate-brand-badge" style="color: #eb5757;">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+Монобанк (Monobank)
+</div>
+<span class="weather-badge weather-badge-safe">Банка / Картка</span>
+</div>
+<div class="donate-card-number-box">
+<div>
+<div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Номер картки:</div>
+<div class="donate-number-text">4441 1111 4381 4170</div>
+</div>
+<button class="donate-copy-btn" onclick="navigator.clipboard.writeText('4441111143814170'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
+</div>
+<a href="https://send.monobank.ua/jar/6fnNdeHKGa" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-mono">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+Задонатити в Monobank (Банка) →
+</a>
+</div>
+<!-- PrivatBank -->
+<div class="donate-method-card privat">
+<div class="donate-card-header">
+<div class="donate-brand-badge" style="color: #5ebb3e;">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+ПриватБанк (Privat24)
+</div>
+<span class="weather-badge weather-badge-safe">Приват24</span>
+</div>
+<div class="donate-card-number-box">
+<div>
+<div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Номер картки:</div>
+<div class="donate-number-text">4149 6090 6510 1349</div>
+</div>
+<button class="donate-copy-btn" onclick="navigator.clipboard.writeText('4149609065101349'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
+</div>
+<a href="https://www.privat24.ua/send/477n8" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-privat">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+Задонатити через Приват24 →
+</a>
+</div>
+<!-- PayPal -->
+<div class="donate-method-card paypal">
+<div class="donate-card-header">
+<div class="donate-brand-badge" style="color: #38bdf8;">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.293-.418 2.68-1.574 4.352-3.447 5.253-1.026.495-2.274.743-3.71.743h-2.12c-.443 0-.822.319-.89.757l-.87 5.568-.27 1.728a.64.64 0 0 1-.633.541z"/></svg>
+PayPal (Міжнародний)
+</div>
+<span class="weather-badge weather-badge-safe">USD / EUR / PLN</span>
+</div>
+<div class="donate-card-number-box">
+<div>
+<div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">PayPal:</div>
+<div class="donate-number-text" style="font-size: 0.95rem;">katsimonster@gmail.com</div>
+</div>
+<button class="donate-copy-btn" onclick="navigator.clipboard.writeText('katsimonster@gmail.com'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
+</div>
+<a href="https://paypal.me/katsimonster" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-paypal">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+Задонатити через PayPal →
+</a>
+</div>
+</div>
+<div style="text-align: center; margin-top: 24px;">
+<a href="donate.html" class="btn btn-amber">
+<span>☕</span> Відкрити повну сторінку донатів & цілей збору →
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- 3. Підвал (Footer) -->
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col">
+<div class="brand-logo" style="margin-bottom: 12px;">
+<div class="brand-icon">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+</div>
+<div class="brand-text">Дожити до <span>фініша...</span></div>
+</div>
+<p class="footer-desc">
+Особистий щоденник гірських мандрівок Українськими Карпатами. 15 походів, практичні поради, вага спорядження та спільнота мандрівників.
+</p>
+</div>
+<div class="footer-col">
+<h4>Навігація</h4>
+<ul class="footer-links">
+<li><a href="index.html">Головна</a></li>
+<li><a href="trips.html">Подорожі (2024–2026)</a></li>
+<li><a href="gear.html">Каталог спорядження</a></li>
+<li><a href="community.html">Спільнота & Знайомства</a></li>
+<li><a href="donate.html" style="color: var(--accent-amber); font-weight: 700;">☕ Донат на подорожі</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Сезони</h4>
+<ul class="footer-links">
+<li><a href="trips.html?year=2024">Походи 2024 (5)</a></li>
+<li><a href="trips.html?year=2025">Походи 2025 (5)</a></li>
+<li><a href="trips.html?year=2026">Походи 2026 (5)</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Контакти</h4>
+<ul class="footer-links">
+<li><a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer">Telegram: @dozhyty_do_finisha_bot</a></li>
+<li><a href="community.html">Дошка оголошень</a></li>
+<li><span>Локація: Українські Карпати</span></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2024–2026 «Дожити до фініша...». Всі права захищено.</div>
+<div>Зроблено з любов'ю до Карпатських гір 🌲⛰️</div>
+</div>
+</div>
+</footer>
+<!-- Скрипти -->
+<script src="js/data/trips-data.js"></script>
+<script src="js/data/gear-data.js"></script>
+<script src="js/data/community-data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chat.js"></script>
+<script>
+// Рендеринг 3 топ-походів на головній
+document.addEventListener('DOMContentLoaded', () => {
+// 1. Топ-3 походи
+const container = document.getElementById('featured-trips-container');
+if (container && window.TRIPS_DATA) {
+const featured = [window.TRIPS_DATA[0], window.TRIPS_DATA[5], window.TRIPS_DATA[14]];
+container.innerHTML = featured.map(trip => `
+<div class="glass-card trip-card">
+<div class="trip-card-image-wrap">
+<img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy">
+<span class="trip-year-badge">${trip.season}</span>
+<span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
+</div>
+<div class="trip-card-body">
+<h3 class="trip-title">${trip.title}</h3>
+<div class="trip-metrics">
+<div class="metric-item">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>${trip.durationDays} дні</span>
+</div>
+<div class="metric-item">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+<span>${trip.distanceKm} км</span>
+</div>
+<div class="metric-item">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+<span>+${trip.elevationGainM} м</span>
+</div>
+</div>
+<p style="font-size: 0.9rem; margin-bottom: 18px; color: var(--text-secondary);">${trip.shortDesc}</p>
+<div class="trip-card-footer">
+<a href="trips.html?id=${trip.id}" class="btn btn-sm btn-outline">Деталі маршруту →</a>
+</div>
+</div>
+</div>
+`).join('');
+}
+});
+</script>
 </body>
 </html>
