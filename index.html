@@ -26,21 +26,23 @@ position: absolute; inset: 0;
 background-size: cover;
 background-position: center;
 opacity: 0;
-animation: heroFade 32s infinite;
+animation: heroFade 150s infinite;
 }
 .hero-slide:nth-child(1) { animation-delay: 0s; }
-.hero-slide:nth-child(2) { animation-delay: 4s; }
-.hero-slide:nth-child(3) { animation-delay: 8s; }
-.hero-slide:nth-child(4) { animation-delay: 12s; }
-.hero-slide:nth-child(5) { animation-delay: 16s; }
-.hero-slide:nth-child(6) { animation-delay: 20s; }
-.hero-slide:nth-child(7) { animation-delay: 24s; }
-.hero-slide:nth-child(8) { animation-delay: 28s; }
+.hero-slide:nth-child(2) { animation-delay: 15s; }
+.hero-slide:nth-child(3) { animation-delay: 30s; }
+.hero-slide:nth-child(4) { animation-delay: 45s; }
+.hero-slide:nth-child(5) { animation-delay: 60s; }
+.hero-slide:nth-child(6) { animation-delay: 75s; }
+.hero-slide:nth-child(7) { animation-delay: 90s; }
+.hero-slide:nth-child(8) { animation-delay: 105s; }
+.hero-slide:nth-child(9) { animation-delay: 120s; }
+.hero-slide:nth-child(10) { animation-delay: 135s; }
 @keyframes heroFade {
 0% { opacity: 0; }
-3.125% { opacity: 1; }
-9.375% { opacity: 1; }
-12.5% { opacity: 0; }
+1.333% { opacity: 1; }
+8.667% { opacity: 1; }
+10% { opacity: 0; }
 100% { opacity: 0; }
 }
 .hero-bg-overlay {
@@ -49,6 +51,16 @@ background: linear-gradient(180deg, rgba(7,10,13,0.65) 0%, rgba(7,10,13,0.55) 40
 }
 .hero-slideshow-section { position: relative; overflow: hidden; }
 .hero-slideshow-section .container { position: relative; z-index: 2; }
+@media (max-width: 768px) {
+.hero-slide {
+background-size: contain;
+background-repeat: no-repeat;
+background-color: #070a0d;
+}
+.hero-slideshow-section {
+min-height: 480px;
+}
+}
 </style>
 </head>
 <body>
@@ -92,14 +104,16 @@ Telegram
 <!-- Hero Секція -->
 <section class="section hero-slideshow-section" style="padding-top: 40px; padding-bottom: 60px;">
 <div class="hero-bg-slideshow">
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-01.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-05.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-09.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-13.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-17.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-21.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-25.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-29.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-01.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-02.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-03.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-04.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-05.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-06.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-07.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-08.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-09.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/highlight/highlight-10.jpg');"></div>
 </div>
 <div class="hero-bg-overlay"></div>
 <div class="container">
