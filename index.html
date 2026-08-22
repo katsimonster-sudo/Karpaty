@@ -104,16 +104,16 @@ Telegram
 <!-- Hero Секція -->
 <section class="section hero-slideshow-section" style="padding-top: 40px; padding-bottom: 60px;">
 <div class="hero-bg-slideshow">
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-01.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-02.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-03.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-04.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-05.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-06.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-07.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-08.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-09.jpg');"></div>
-<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-10.jpg');"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
 </div>
 <div class="hero-bg-overlay"></div>
 <div class="container">
@@ -517,6 +517,29 @@ PayPal (Міжнародний)
 <script>
 // Рендеринг 3 топ-походів на головній
 document.addEventListener('DOMContentLoaded', () => {
+// 0. Випадковий порядок фото у hero-слайдшоу
+const heroPhotoUrls = [
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-01.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-02.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-03.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-04.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-05.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-06.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-07.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-08.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-09.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-10.jpg"
+];
+// Fisher-Yates shuffle — новий випадковий порядок при кожному завантаженні сторінки
+for (let i = heroPhotoUrls.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[heroPhotoUrls[i], heroPhotoUrls[j]] = [heroPhotoUrls[j], heroPhotoUrls[i]];
+}
+document.querySelectorAll('.hero-slide').forEach((slide, i) => {
+if (heroPhotoUrls[i]) {
+slide.style.backgroundImage = `url('${heroPhotoUrls[i]}')`;
+}
+});
 // 1. Топ-3 походи
 const container = document.getElementById('featured-trips-container');
 if (container && window.TRIPS_DATA) {
