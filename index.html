@@ -51,14 +51,35 @@ background: linear-gradient(180deg, rgba(7,10,13,0.42) 0%, rgba(7,10,13,0.32) 40
 }
 .hero-slideshow-section { position: relative; overflow: hidden; }
 .hero-slideshow-section .container { position: relative; z-index: 2; }
-@media (max-width: 768px) {
-.hero-slide {
+.hero-bg-slideshow-mobile { position: absolute; inset: 0; z-index: 0; overflow: hidden; display: none; }
+.hero-slide-mobile {
+position: absolute; inset: 0;
 background-size: cover;
-background-position: top center;
-background-repeat: no-repeat;
+background-position: center;
+opacity: 0;
+animation: heroFadeMobile 135s infinite;
 }
+.hero-slide-mobile:nth-child(1) { animation-delay: 0s; }
+.hero-slide-mobile:nth-child(2) { animation-delay: 15s; }
+.hero-slide-mobile:nth-child(3) { animation-delay: 30s; }
+.hero-slide-mobile:nth-child(4) { animation-delay: 45s; }
+.hero-slide-mobile:nth-child(5) { animation-delay: 60s; }
+.hero-slide-mobile:nth-child(6) { animation-delay: 75s; }
+.hero-slide-mobile:nth-child(7) { animation-delay: 90s; }
+.hero-slide-mobile:nth-child(8) { animation-delay: 105s; }
+.hero-slide-mobile:nth-child(9) { animation-delay: 120s; }
+@keyframes heroFadeMobile {
+0% { opacity: 0; }
+0.741% { opacity: 1; }
+10.370% { opacity: 1; }
+11.111% { opacity: 0; }
+100% { opacity: 0; }
+}
+@media (max-width: 768px) {
+.hero-bg-slideshow { display: none; }
+.hero-bg-slideshow-mobile { display: block; }
 .hero-slideshow-section {
-min-height: 320px;
+min-height: 480px;
 }
 }
 </style>
@@ -114,6 +135,17 @@ Telegram
 <div class="hero-slide"></div>
 <div class="hero-slide"></div>
 <div class="hero-slide"></div>
+</div>
+<div class="hero-bg-slideshow-mobile">
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
 </div>
 <div class="hero-bg-overlay"></div>
 <div class="container">
@@ -538,6 +570,27 @@ const j = Math.floor(Math.random() * (i + 1));
 document.querySelectorAll('.hero-slide').forEach((slide, i) => {
 if (heroPhotoUrls[i]) {
 slide.style.backgroundImage = `url('${heroPhotoUrls[i]}')`;
+}
+});
+// Мобільні вертикальні фото — окремий набір, теж у випадковому порядку
+const heroMobilePhotoUrls = [
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-01.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-02.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-03.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-04.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-05.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-06.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-07.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-08.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-09.jpg"
+];
+for (let i = heroMobilePhotoUrls.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[heroMobilePhotoUrls[i], heroMobilePhotoUrls[j]] = [heroMobilePhotoUrls[j], heroMobilePhotoUrls[i]];
+}
+document.querySelectorAll('.hero-slide-mobile').forEach((slide, i) => {
+if (heroMobilePhotoUrls[i]) {
+slide.style.backgroundImage = `url('${heroMobilePhotoUrls[i]}')`;
 }
 });
 // 1. Топ-3 походи
