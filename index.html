@@ -19,6 +19,37 @@ gtag('config', 'G-0PW603MSJ0');
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/responsive.css">
+<style>
+.hero-bg-slideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-slide {
+position: absolute; inset: 0;
+background-size: cover;
+background-position: center;
+opacity: 0;
+animation: heroFade 32s infinite;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 4s; }
+.hero-slide:nth-child(3) { animation-delay: 8s; }
+.hero-slide:nth-child(4) { animation-delay: 12s; }
+.hero-slide:nth-child(5) { animation-delay: 16s; }
+.hero-slide:nth-child(6) { animation-delay: 20s; }
+.hero-slide:nth-child(7) { animation-delay: 24s; }
+.hero-slide:nth-child(8) { animation-delay: 28s; }
+@keyframes heroFade {
+0% { opacity: 0; }
+3.125% { opacity: 1; }
+9.375% { opacity: 1; }
+12.5% { opacity: 0; }
+100% { opacity: 0; }
+}
+.hero-bg-overlay {
+position: absolute; inset: 0; z-index: 1;
+background: linear-gradient(180deg, rgba(7,10,13,0.65) 0%, rgba(7,10,13,0.55) 40%, rgba(7,10,13,0.85) 100%);
+}
+.hero-slideshow-section { position: relative; overflow: hidden; }
+.hero-slideshow-section .container { position: relative; z-index: 2; }
+</style>
 </head>
 <body>
 <!-- 1. Навігаційна шапка -->
@@ -42,7 +73,7 @@ gtag('config', 'G-0PW603MSJ0');
 </ul>
 </nav>
 <div class="header-actions">
-<a href="https://t.me/Dovig" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+<a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
 Telegram
 </a>
@@ -59,7 +90,18 @@ Telegram
 <!-- 2. Головний вміст -->
 <main class="main-content">
 <!-- Hero Секція -->
-<section class="section" style="padding-top: 40px; padding-bottom: 60px;">
+<section class="section hero-slideshow-section" style="padding-top: 40px; padding-bottom: 60px;">
+<div class="hero-bg-slideshow">
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-01.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-05.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-09.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-13.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-17.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-21.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-25.jpg');"></div>
+<div class="hero-slide" style="background-image: url('https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march-2026-29.jpg');"></div>
+</div>
+<div class="hero-bg-overlay"></div>
 <div class="container">
 <div style="text-align: center; max-width: 860px; margin: 0 auto;">
 <div class="section-tag">
@@ -196,99 +238,96 @@ Telegram
 Оцінка умов для безпечного виходу в гори. Перевіряйте вітер та рівень безпеки перед виходом на маршрут.
 </p>
 </div>
-<div class="weather-grid" id="weather-grid">
+<div class="weather-grid">
 <!-- Чорногора -->
-<div class="weather-card" data-lat="48.1614" data-lon="24.5003">
+<div class="weather-card">
 <div class="weather-header">
 <div>
 <div class="weather-region-name">⛰️ Чорногора</div>
 <div class="weather-altitude">г. Говерла / г. Піп Іван (2028м)</div>
 </div>
-<span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
+<span class="weather-badge weather-badge-warning">Помірний вітер</span>
 </div>
 <div class="weather-body">
 <div class="weather-temp-wrap">
-<div class="weather-temp js-weather-temp">—°C</div>
-<div class="weather-condition js-weather-condition">Отримуємо дані…</div>
+<div class="weather-temp">+11°C</div>
+<div class="weather-condition">Мінлива хмарність</div>
 </div>
-<div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
+<div style="font-size: 2.2rem;">🌤️</div>
 </div>
 <div class="weather-metrics-row">
-<span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-<span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-<span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
+<span>💨 Вітер: 12 м/с</span>
+<span>💧 Вологість: 68%</span>
+<span>⚠️ Ризик: Низький</span>
 </div>
 </div>
 <!-- Ґорґани -->
-<div class="weather-card" data-lat="48.5511" data-lon="24.2814">
+<div class="weather-card">
 <div class="weather-header">
 <div>
 <div class="weather-region-name">🪨 Ґорґани</div>
 <div class="weather-altitude">г. Велика Сивуля (1836м)</div>
 </div>
-<span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
+<span class="weather-badge weather-badge-safe">Сприятливо</span>
 </div>
 <div class="weather-body">
 <div class="weather-temp-wrap">
-<div class="weather-temp js-weather-temp">—°C</div>
-<div class="weather-condition js-weather-condition">Отримуємо дані…</div>
+<div class="weather-temp">+14°C</div>
+<div class="weather-condition">Ясно, сухий курумник</div>
 </div>
-<div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
+<div style="font-size: 2.2rem;">☀️</div>
 </div>
 <div class="weather-metrics-row">
-<span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-<span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-<span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
+<span>💨 Вітер: 6 м/с</span>
+<span>💧 Вологість: 52%</span>
+<span>⚠️ Ризик: Мінімальний</span>
 </div>
 </div>
 <!-- Свидовець -->
-<div class="weather-card" data-lat="48.3467" data-lon="23.9522">
+<div class="weather-card">
 <div class="weather-header">
 <div>
 <div class="weather-region-name">🌊 Свидовець</div>
 <div class="weather-altitude">г. Близниця (1881м)</div>
 </div>
-<span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
+<span class="weather-badge weather-badge-safe">Комфортно</span>
 </div>
 <div class="weather-body">
 <div class="weather-temp-wrap">
-<div class="weather-temp js-weather-temp">—°C</div>
-<div class="weather-condition js-weather-condition">Отримуємо дані…</div>
+<div class="weather-temp">+15°C</div>
+<div class="weather-condition">Сонячно, теплий вітер</div>
 </div>
-<div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
+<div style="font-size: 2.2rem;">🌤️</div>
 </div>
 <div class="weather-metrics-row">
-<span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-<span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-<span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
+<span>💨 Вітер: 8 м/с</span>
+<span>💧 Вологість: 58%</span>
+<span>⚠️ Ризик: Мінімальний</span>
 </div>
 </div>
-<!-- Хребет Станимир -->
-<div class="weather-card" data-lat="48.5628" data-lon="24.2500">
+<!-- Мармароси -->
+<div class="weather-card">
 <div class="weather-header">
 <div>
-<div class="weather-region-name">🏔️ Хребет Станимир</div>
-<div class="weather-altitude">г. Станимир (1546м)</div>
+<div class="weather-region-name">🧗 Мармароси</div>
+<div class="weather-altitude">Піп Іван Мармароський (1936м)</div>
 </div>
-<span class="weather-badge weather-badge-warning js-weather-badge">Завантаження…</span>
+<span class="weather-badge weather-badge-warning">Можливий туман</span>
 </div>
 <div class="weather-body">
 <div class="weather-temp-wrap">
-<div class="weather-temp js-weather-temp">—°C</div>
-<div class="weather-condition js-weather-condition">Отримуємо дані…</div>
+<div class="weather-temp">+12°C</div>
+<div class="weather-condition">Ранковий туман</div>
 </div>
-<div style="font-size: 2.2rem;" class="js-weather-icon">⏳</div>
+<div style="font-size: 2.2rem;">🌫️</div>
 </div>
 <div class="weather-metrics-row">
-<span>💨 Вітер: <span class="js-weather-wind">—</span> м/с</span>
-<span>💧 Вологість: <span class="js-weather-humidity">—</span>%</span>
-<span>⚠️ Ризик: <span class="js-weather-risk">—</span></span>
+<span>💨 Вітер: 10 м/с</span>
+<span>💧 Вологість: 75%</span>
+<span>⚠️ Ризик: Середній</span>
 </div>
 </div>
 </div>
-<p style="text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 16px;">
-Дані: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Open-Meteo</a> · оновлюється при кожному завантаженні сторінки
-</p>
 </div>
 </section>
 <!-- Секція: Карпатські поради & Безпека -->
@@ -443,7 +482,7 @@ PayPal (Міжнародний)
 <div class="footer-col">
 <h4>Контакти</h4>
 <ul class="footer-links">
-<li><a href="https://t.me/Dovig" target="_blank" rel="noopener noreferrer">Telegram: @Dovig</a></li>
+<li><a href="https://t.me/dozhyty_do_finisha_bot" target="_blank" rel="noopener noreferrer">Telegram: @dozhyty_do_finisha_bot</a></li>
 <li><a href="community.html">Дошка оголошень</a></li>
 <li><span>Локація: Українські Карпати</span></li>
 </ul>
@@ -461,84 +500,6 @@ PayPal (Міжнародний)
 <script src="js/data/community-data.js"></script>
 <script src="js/main.js"></script>
 <script src="js/chat.js"></script>
-<script>
-// Жива погода для 4 карпатських масивів через Open-Meteo (без API-ключа)
-function loadMountainWeather() {
-const cards = document.querySelectorAll('#weather-grid .weather-card');
-if (!cards.length) return;
-
-function describeWeatherCode(code) {
-if (code === 0) return { text: 'Ясно', icon: '☀️' };
-if ([1, 2].includes(code)) return { text: 'Мінлива хмарність', icon: '🌤️' };
-if (code === 3) return { text: 'Хмарно', icon: '☁️' };
-if ([45, 48].includes(code)) return { text: 'Туман', icon: '🌫️' };
-if ([51, 53, 55, 56, 57].includes(code)) return { text: 'Мряка', icon: '🌦️' };
-if ([61, 63, 65, 66, 67].includes(code)) return { text: 'Дощ', icon: '🌧️' };
-if ([71, 73, 75, 77].includes(code)) return { text: 'Сніг', icon: '🌨️' };
-if ([80, 81, 82].includes(code)) return { text: 'Зливи', icon: '🌦️' };
-if ([85, 86].includes(code)) return { text: 'Снігові заряди', icon: '🌨️' };
-if ([95, 96, 99].includes(code)) return { text: 'Гроза', icon: '⛈️' };
-return { text: 'Дані недоступні', icon: '❓' };
-}
-
-function assessRisk(windMs, code) {
-const isStorm = [95, 96, 99].includes(code);
-const isSnow = [71, 73, 75, 77, 85, 86].includes(code);
-const isFog = [45, 48].includes(code);
-if (isStorm || windMs >= 15) {
-return { label: 'Високий', badge: 'Небезпечно', badgeClass: 'weather-badge-danger' };
-}
-if (windMs >= 10 || isSnow || isFog) {
-return { label: 'Середній', badge: isFog ? 'Можливий туман' : (isSnow ? 'Сніг у горах' : 'Сильний вітер'), badgeClass: 'weather-badge-warning' };
-}
-if (windMs >= 7) {
-return { label: 'Низький', badge: 'Помірний вітер', badgeClass: 'weather-badge-warning' };
-}
-return { label: 'Мінімальний', badge: 'Сприятливо', badgeClass: 'weather-badge-safe' };
-}
-
-cards.forEach(async (card) => {
-const lat = card.dataset.lat;
-const lon = card.dataset.lon;
-const badgeEl = card.querySelector('.js-weather-badge');
-const tempEl = card.querySelector('.js-weather-temp');
-const condEl = card.querySelector('.js-weather-condition');
-const iconEl = card.querySelector('.js-weather-icon');
-const windEl = card.querySelector('.js-weather-wind');
-const humidityEl = card.querySelector('.js-weather-humidity');
-const riskEl = card.querySelector('.js-weather-risk');
-
-try {
-const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto`;
-const res = await fetch(url);
-if (!res.ok) throw new Error('Weather API error');
-const data = await res.json();
-const cur = data.current;
-
-const windMs = Math.round((cur.wind_speed_10m / 3.6) * 10) / 10;
-const weatherInfo = describeWeatherCode(cur.weather_code);
-const risk = assessRisk(windMs, cur.weather_code);
-
-tempEl.textContent = `${Math.round(cur.temperature_2m) >= 0 ? '+' : ''}${Math.round(cur.temperature_2m)}°C`;
-condEl.textContent = weatherInfo.text;
-iconEl.textContent = weatherInfo.icon;
-windEl.textContent = windMs;
-humidityEl.textContent = Math.round(cur.relative_humidity_2m);
-riskEl.textContent = risk.label;
-
-badgeEl.textContent = risk.badge;
-badgeEl.classList.remove('weather-badge-safe', 'weather-badge-warning', 'weather-badge-danger');
-badgeEl.classList.add(risk.badgeClass);
-} catch (err) {
-condEl.textContent = 'Не вдалося завантажити';
-tempEl.textContent = '—°C';
-iconEl.textContent = '⚠️';
-badgeEl.textContent = 'Немає даних';
-}
-});
-}
-document.addEventListener('DOMContentLoaded', loadMountainWeather);
-</script>
 <script>
 // Рендеринг 3 топ-походів на головній
 document.addEventListener('DOMContentLoaded', () => {
