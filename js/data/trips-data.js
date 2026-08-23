@@ -161,24 +161,105 @@ window.TRIPS_DATA = [
   {
     id: "trip-2025-3",
     year: 2025,
-    season: "2025 рік (дані уточнюються)",
-    title: "Похід №3 — інформація уточнюється",
-    region: "Карпати",
-    regionKey: "unspecified",
-    difficulty: "medium",
-    difficultyLabel: "Уточнюється",
-    distanceKm: 0,
-    elevationGainM: 0,
-    durationDays: 0,
-    coordinates: [48.25, 24.38],
-    elevationProfile: [],
+    season: "9–15 серпня 2025",
+    title: "Літній Трансверс: Синьогора — Ґорґани — Тавпиширка — Свидовець",
+    region: "Синьогора — Ґорґани — Свидовець",
+    regionKey: "gorgany",
+    difficulty: "extreme",
+    difficultyLabel: "Важкий (142.1 км)",
+    distanceKm: 142.09,
+    elevationGainM: 6902,
+    durationDays: 7,
+    coordinates: [48.35, 24.30],
+    stats: {
+      movingTime: "38г 19хв",
+      totalTime: "53г 13хв",
+      steps: 227740,
+      calories: 10129,
+      maxAlt: 1870
+    },
+    elevationProfile: [
+      { point: "Старт, Яремче (день 1)", alt: 550 },
+      { point: "хребет (день 1, пік)", alt: 1487 },
+      { point: "НПП «Синьогора», Пасічна (день 2)", alt: 1795 },
+      { point: "траверс Ґорґан, Солотвин (день 3)", alt: 1786 },
+      { point: "заказник «Тавпиширківський» (день 4)", alt: 1457 },
+      { point: "Поляниця (день 5)", alt: 1562 },
+      { point: "Поляниці (день 6)", alt: 1400 },
+      { point: "Свидовецький масив, Ясіня → Кваси (день 7)", alt: 1870 }
+    ],
+    daysBreakdown: [
+      {
+        day: 1,
+        date: "9 серпня",
+        distanceKm: 37.59,
+        elevationM: 2175,
+        maxAltM: 1487,
+        route: "Яремче — старт",
+        notes: "Найдовший день усього походу за дистанцією (54 450 кроків) і найважчий за набором висоти (2175 м). Потужний стартовий вихід із повним ваговим навантаженням."
+      },
+      {
+        day: 2,
+        date: "10 серпня",
+        distanceKm: 23.20,
+        elevationM: 1251,
+        maxAltM: 1795,
+        route: "Пасічна — НПП «Синьогора»",
+        notes: "Прохід через національний природний парк «Синьогора» з виходом на найвищу точку перших двох днів (1795 м)."
+      },
+      {
+        day: 3,
+        date: "11 серпня",
+        distanceKm: 14.95,
+        elevationM: 379,
+        maxAltM: 1786,
+        route: "Солотвин — траверс Ґорґан",
+        notes: "Траверс хребтами Ґорґан на висоті близько 1786 м з невеликим набором висоти відносно дистанції — переважно гребеневий рух."
+      },
+      {
+        day: 4,
+        date: "12 серпня",
+        distanceKm: 16.87,
+        elevationM: 781,
+        maxAltM: 1457,
+        route: "Солотвин — заказник «Тавпиширківський»",
+        notes: "Перетин ботанічного заказника «Тавпиширківський» з помірним набором висоти та поступовим переходом до Поляницької громади."
+      },
+      {
+        day: 5,
+        date: "13 серпня",
+        distanceKm: 6.31,
+        elevationM: 539,
+        maxAltM: 1562,
+        route: "Поляниця",
+        notes: "Найкоротший день усього походу (6.31 км, лише 450 ккал) — короткий, але концентрований набір висоти (539 м) невеликою дистанцією."
+      },
+      {
+        day: 6,
+        date: "14 серпня",
+        distanceKm: 20.76,
+        elevationM: 1015,
+        maxAltM: null,
+        route: "Поляниці",
+        notes: "Середній за навантаженням день (33 930 кроків, 1480 ккал). Дані про максимальну висоту та розріз темпу відсутні — не зберігся скріншот деталізації цього дня."
+      },
+      {
+        day: 7,
+        date: "15 серпня",
+        distanceKm: 22.41,
+        elevationM: 762,
+        maxAltM: 1870,
+        route: "Ясіня — Свидовецький масив — фініш у Кваси",
+        notes: "Фінішний день через Свидовецький масив із виходом на найвищу точку всього походу (1870 м) і завершенням маршруту в с. Кваси."
+      }
+    ],
     reactions: { fire: 0, mountain: 0, tent: 0, snow: 0 },
     coverImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
     images: [],
-    route: "Маршрут уточнюється",
-    poi: [],
-    shortDesc: "Дані про цей похід зараз уточнюються та скоро з'являться.",
-    fullStory: "Ми оновлюємо архів походів 2025 року. Деталі, фото та GPS-трек цього виходу з'являться найближчим часом — слідкуйте за оновленнями в Telegram."
+    route: "Яремче — Пасічна (НПП «Синьогора») — Солотвин (Ґорґани, заказник «Тавпиширківський») — Поляниця — Поляниці — Ясіня — Свидовецький масив — с. Кваси",
+    poi: ["НПП «Синьогора»", "Хребти Ґорґан", "Заказник «Тавпиширківський»", "Свидовецький масив", "с. Кваси"],
+    shortDesc: "7-денний літній трансверс через Синьогору, Ґорґани та Свидовець — 142.1 км і 6902 м набору висоти з фінішем у Квасах.",
+    fullStory: "Класична літня багатоденка Карпатами: старт із Яремче потужним 37-кілометровим днем, прохід через національний парк «Синьогора», траверс хребтів Ґорґан, перетин заказника «Тавпиширківський», два дні через Поляницьку громаду (включно з найкоротшим днем походу — лише 6.31 км) і фінішний вихід на Свидовецький масив із найвищою точкою маршруту (1870 м) та завершенням у с. Кваси. Дані для дня 6 (14 серпня) неповні — не зберігся скріншот з деталізацією темпу та максимальної висоти."
   },
   {
     id: "trip-2025-4",
@@ -355,15 +436,6 @@ window.TRIPS_DATA = [
       },
       {
         day: 2,
-        date: "2 листопада",
-        distanceKm: 0,
-        elevationM: 0,
-        maxAltM: 1532,
-        route: "Денна база в районі хребтів Ґорґан",
-        notes: "День відпочинку та відновлення сил перед продовженням маршруту в бік НПП «Синьогора»."
-      },
-      {
-        day: 3,
         date: "3 листопада",
         distanceKm: 19.96,
         elevationM: 992,
@@ -372,7 +444,7 @@ window.TRIPS_DATA = [
         notes: "Солотвинська громада, межі НПП «Синьогора». Стрімкий спуск у долину гірського потічка та новий затяжний підйом хребтом південно-східніше с. Стара Гута."
       },
       {
-        day: 4,
+        day: 3,
         date: "4 листопада",
         distanceKm: 11.66,
         elevationM: 585,
@@ -381,7 +453,7 @@ window.TRIPS_DATA = [
         notes: "Перетин ботанічного заказника «Тавпиширківський» з підйомом на однойменний хребет, далі рух хребтом із поступовим скиданням висоти."
       },
       {
-        day: 5,
+        day: 4,
         date: "5 листопада",
         distanceKm: 5.24,
         elevationM: 460,
@@ -390,7 +462,7 @@ window.TRIPS_DATA = [
         notes: "Короткий, але важкий день: перехід на Закарпаття та підйом на хребет Дурня з тривалою зупинкою на відпочинок на висоті."
       },
       {
-        day: 6,
+        day: 5,
         date: "6 листопада",
         distanceKm: 13.76,
         elevationM: 338,
@@ -399,7 +471,7 @@ window.TRIPS_DATA = [
         notes: "Рух хребтом у напрямку присілків Згари / Климпуші. У цей день стався технічний збій GPS-сигналу — дистанція вказана по прямій."
       },
       {
-        day: 7,
+        day: 6,
         date: "7 листопада",
         distanceKm: 22.30,
         elevationM: 730,
@@ -508,15 +580,6 @@ window.TRIPS_DATA = [
       },
       {
         day: 7,
-        date: "16 червня",
-        distanceKm: 0,
-        elevationM: 0,
-        maxAltM: 1547,
-        route: "Денна база на Свидовецькому масиві",
-        notes: "День відпочинку та відновлення сил перед фінальним виходом на кульмінаційну точку маршруту."
-      },
-      {
-        day: 8,
         date: "17 червня",
         start: "10:28",
         distanceKm: 14.02,
@@ -697,15 +760,6 @@ window.TRIPS_DATA = [
       },
       {
         day: 5,
-        date: "7 травня",
-        distanceKm: 0,
-        elevationM: 0,
-        maxAltM: 1783,
-        route: "Денна база в районі Перегінських хребтів",
-        notes: "День відпочинку та поповнення запасів перед фінальним переходом до Славська."
-      },
-      {
-        day: 6,
         date: "8 травня",
         start: "09:00",
         distanceKm: 32.47,
@@ -832,36 +886,11 @@ window.TRIPS_DATA = [
       }
     ],
     reactions: { fire: 74, mountain: 88, tent: 52, snow: 21 },
-    coverImage: "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-01.jpg",
+    coverImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
     images: [
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-01.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-02.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-03.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-04.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-05.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-06.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-07.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-08.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-09.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-10.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-11.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-12.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-13.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-14.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-15.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-16.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-17.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-18.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-19.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-20.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-21.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-22.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-23.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-24.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-25.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-26.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-27.jpg",
-      "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/march2-2026-28.jpg"
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&w=1200&q=80"
     ],
     videoEmbed: "",
     route: "смт Воловець — Боржавський хребет — пд.-сх. сідловини — Міжгір'я — Стригальня / Заверхня Кичера — Синевирська Поляна (1517м) — Лопушне — Торунь — Торунський перевал — г. Тростян — смт Славсько",
@@ -913,15 +942,6 @@ window.TRIPS_DATA = [
       },
       {
         day: 2,
-        date: "5 березня",
-        distanceKm: 0,
-        elevationM: 0,
-        maxAltM: 1313,
-        route: "Денна база на хребті Ґорґан",
-        notes: "День відпочинку перед спуском у долину с. Зелена."
-      },
-      {
-        day: 3,
         date: "6 березня",
         start: "09:00",
         distanceKm: 16.58,
@@ -931,7 +951,7 @@ window.TRIPS_DATA = [
         notes: "Спуск у долину с. Зелена з найшвидшим сплітом походу — 7:51 хв/км! Поповнення запасів та стрімкий підйом на хребет Станимир. Загальний темп: 33:26 хв/км (довга зупинка)."
       },
       {
-        day: 4,
+        day: 3,
         date: "7 березня",
         start: "09:00",
         distanceKm: 28.32,
@@ -941,16 +961,7 @@ window.TRIPS_DATA = [
         notes: "Найдовший та найбільш енерговитратний день (28.32 км, 39 382 кроки, 2018 ккал). Транзит через с. Максимець і Бистриця з виходом на межу заповідника «Ґорґани». Темп: 13:52 хв/км."
       },
       {
-        day: 5,
-        date: "8 березня",
-        distanceKm: 0,
-        elevationM: 0,
-        maxAltM: 1552,
-        route: "Денна база біля межі заповідника «Ґорґани»",
-        notes: "День відпочинку та поповнення запасів перед штурмовим високогірним днем."
-      },
-      {
-        day: 6,
+        day: 4,
         date: "9 березня",
         start: "09:00",
         distanceKm: 13.57,
@@ -960,16 +971,7 @@ window.TRIPS_DATA = [
         notes: "Штурмовий високогірний день з найбільшим питомим набором висоти (+1213 м) та виходом на найвищу точку маршруту (1692 м). Темп: 18:10 хв/км — рельєф вимагав максимальних зусиль."
       },
       {
-        day: 7,
-        date: "10 березня",
-        distanceKm: 0,
-        elevationM: 0,
-        maxAltM: 1692,
-        route: "Денна база на найвищій точці маршруту",
-        notes: "Останній день відпочинку перед фінальним спуском до Ясіні."
-      },
-      {
-        day: 8,
+        day: 5,
         date: "11 березня",
         start: "09:00",
         distanceKm: 14.14,
