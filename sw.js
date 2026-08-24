@@ -3,7 +3,7 @@
    Забезпечує роботу в горах без мобільного зв'язку (Офлайн-режим)
    ========================================================================== */
 
-const CACHE_NAME = 'carpathian-trail-v3.2';
+const CACHE_NAME = 'carpathian-trail-v3.3';
 
 const STATIC_ASSETS = [
   './',
