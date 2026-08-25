@@ -95,16 +95,20 @@ function renderGear(container, countBadge) {
     filtered.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  const isEn = document.documentElement.lang === 'en';
+
   if (countBadge) {
-    countBadge.textContent = `Показано: ${filtered.length} з ${window.GEAR_DATA.length} од.`;
+    countBadge.textContent = isEn 
+      ? `Shown: ${filtered.length} of ${window.GEAR_DATA.length} items`
+      : `Показано: ${filtered.length} з ${window.GEAR_DATA.length} од.`;
   }
 
   if (filtered.length === 0) {
     container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;" class="glass-card">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin-bottom: 16px;"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-        <h3 style="margin-bottom: 8px;">Спорядження не знайдено</h3>
-        <p style="color: var(--text-muted);">Спробуйте змінити фільтри або пошуковий запит.</p>
+        <h3 style="margin-bottom: 8px;">${isEn ? 'Gear not found' : 'Спорядження не знайдено'}</h3>
+        <p style="color: var(--text-muted);">${isEn ? 'Try changing filters or search query.' : 'Спробуйте змінити фільтри або пошуковий запит.'}</p>
       </div>
     `;
     return;
@@ -115,10 +119,10 @@ function renderGear(container, countBadge) {
       <div class="gear-header">
         <span class="gear-category-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-          ${item.categoryLabel}
+          ${isEn && item.categoryLabelEn ? item.categoryLabelEn : item.categoryLabel}
         </span>
         <span class="gear-status-badge ${item.status === 'owned' ? 'status-owned' : 'status-planned'}">
-          ${item.status === 'owned' ? '✓ У моєму рюкзаку' : '★ У планах придбати'}
+          ${item.status === 'owned' ? (isEn ? '✓ In my backpack' : '✓ У моєму рюкзаку') : (isEn ? '★ Planned to buy' : '★ У планах придбати')}
         </span>
       </div>
 
@@ -131,7 +135,7 @@ function renderGear(container, countBadge) {
           <h3 class="gear-name">${item.name}</h3>
           <div class="gear-weight-pill">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-amber)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
-            ${item.weightGrams >= 1000 ? (item.weightGrams / 1000).toFixed(2) + ' кг' : item.weightGrams + ' г'}
+            ${item.weightGrams >= 1000 ? (item.weightGrams / 1000).toFixed(2) + (isEn ? ' kg' : ' кг') : item.weightGrams + (isEn ? ' g' : ' г')}
           </div>
         </div>
       </div>
@@ -139,11 +143,11 @@ function renderGear(container, countBadge) {
       <p class="gear-desc">${item.description}</p>
 
       <div class="gear-verdict">
-        <strong>Особистий досвід:</strong> «${item.verdict}»
+        <strong>${isEn ? 'Personal experience' : 'Особистий досвід'}:</strong> «${item.verdict}»
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--glass-border); font-size: 0.85rem;">
-        <span style="color: var(--text-muted);">Надійність:</span>
+        <span style="color: var(--text-muted);">${isEn ? 'Reliability' : 'Надійність'}:</span>
         <span style="color: var(--accent-amber); letter-spacing: 2px;">★★★★★</span>
       </div>
     </div>
@@ -208,6 +212,7 @@ function initPackBuilder() {
   if (customForm) {
     customForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const isEn = document.documentElement.lang === 'en';
       const name = document.getElementById('custom-item-name').value.trim();
       const weight = parseInt(document.getElementById('custom-item-weight').value, 10);
       if (!name || isNaN(weight)) return;
@@ -215,9 +220,10 @@ function initPackBuilder() {
       const newItem = {
         id: 'custom-' + Date.now(),
         name: name,
-        brand: 'Власне спорядження',
+        brand: isEn ? 'My gear' : 'Власне спорядження',
         weightGrams: weight,
-        categoryLabel: 'Кастомне',
+        categoryLabel: isEn ? 'Custom' : 'Кастомне',
+        categoryLabelEn: 'Custom',
         isCustom: true
       };
 
@@ -243,12 +249,13 @@ function initPackBuilder() {
 function renderPackChecklist(container, selectedIds) {
   const customItems = getCustomGearItems();
   const allItems = [...window.GEAR_DATA, ...customItems];
+  const isEn = document.documentElement.lang === 'en';
 
   container.innerHTML = allItems.map(item => {
     const isChecked = selectedIds.includes(item.id);
     const weightStr = item.weightGrams >= 1000 
-      ? (item.weightGrams / 1000).toFixed(2) + ' кг' 
-      : item.weightGrams + ' г';
+      ? (item.weightGrams / 1000).toFixed(2) + (isEn ? ' kg' : ' кг') 
+      : item.weightGrams + (isEn ? ' g' : ' г');
 
     return `
       <div class="gear-check-item ${isChecked ? 'selected' : ''}" onclick="togglePackItem('${item.id}')">
@@ -285,6 +292,7 @@ function updateWeightGauge(selectedIds) {
   const customItems = getCustomGearItems();
   const allItems = [...window.GEAR_DATA, ...customItems];
   const selectedItems = allItems.filter(i => selectedIds.includes(i.id));
+  const isEn = document.documentElement.lang === 'en';
 
   const totalGrams = selectedItems.reduce((acc, item) => acc + item.weightGrams, 0);
   const totalKg = totalGrams / 1000;
@@ -294,7 +302,7 @@ function updateWeightGauge(selectedIds) {
   const gaugeFillEl = document.getElementById('weight-gauge-fill');
 
   if (totalWeightEl) {
-    totalWeightEl.textContent = `${totalKg.toFixed(2)} кг`;
+    totalWeightEl.textContent = isEn ? `${totalKg.toFixed(2)} kg` : `${totalKg.toFixed(2)} кг`;
   }
 
   // Розрахунок відсотка шкали (макс шкала 15 кг)
@@ -305,16 +313,16 @@ function updateWeightGauge(selectedIds) {
 
   if (catNameEl) {
     if (totalKg < 5) {
-      catNameEl.textContent = '🟢 Ультралайт (UltraLight < 5 кг)';
+      catNameEl.textContent = isEn ? '🟢 UltraLight (< 5 kg)' : '🟢 Ультралайт (UltraLight < 5 кг)';
       catNameEl.style.color = '#10b981';
     } else if (totalKg < 8) {
-      catNameEl.textContent = '🔵 Легкохід (Light 5–8 кг)';
+      catNameEl.textContent = isEn ? '🔵 Light (5–8 kg)' : '🔵 Легкохід (Light 5–8 кг)';
       catNameEl.style.color = '#38bdf8';
     } else if (totalKg < 12) {
-      catNameEl.textContent = '🟡 Традиційний сетап (8–12 кг)';
+      catNameEl.textContent = isEn ? '🟡 Traditional Setup (8–12 kg)' : '🟡 Традиційний сетап (8–12 кг)';
       catNameEl.style.color = '#f59e0b';
     } else {
-      catNameEl.textContent = '🔴 Експедиційний / Важкий (> 12 кг)';
+      catNameEl.textContent = isEn ? '🔴 Expedition / Heavy (> 12 kg)' : '🔴 Експедиційний / Важкий (> 12 кг)';
       catNameEl.style.color = '#ef4444';
     }
   }
@@ -325,15 +333,20 @@ function exportPackChecklist() {
   const customItems = getCustomGearItems();
   const allItems = [...window.GEAR_DATA, ...customItems];
   const selectedItems = allItems.filter(i => selectedIds.includes(i.id));
+  const isEn = document.documentElement.lang === 'en';
 
   const totalGrams = selectedItems.reduce((acc, item) => acc + item.weightGrams, 0);
   const totalKg = (totalGrams / 1000).toFixed(2);
 
-  let text = `🎒 Мій пакувальний лист у Карпати («Дожити до фініша...»)\n`;
-  text += `⚖️ Базова вага: ${totalKg} кг (${selectedItems.length} предметів)\n\n`;
+  let text = isEn 
+    ? `🎒 My Carpathian Packing List (“Dozhyty do finisha...”)\n`
+    : `🎒 Мій пакувальний лист у Карпати («Дожити до фініша...»)\n`;
+  text += isEn
+    ? `⚖️ Base weight: ${totalKg} kg (${selectedItems.length} items)\n\n`
+    : `⚖️ Базова вага: ${totalKg} кг (${selectedItems.length} предметів)\n\n`;
 
   selectedItems.forEach((item, idx) => {
-    const w = item.weightGrams >= 1000 ? (item.weightGrams / 1000).toFixed(2) + ' кг' : item.weightGrams + ' г';
+    const w = item.weightGrams >= 1000 ? (item.weightGrams / 1000).toFixed(2) + (isEn ? ' kg' : ' кг') : item.weightGrams + (isEn ? ' g' : ' г');
     text += `${idx + 1}. [ ] ${item.name} (${item.brand}) — ${w}\n`;
   });
 
@@ -341,11 +354,11 @@ function exportPackChecklist() {
     const btn = document.getElementById('export-checklist-btn');
     if (btn) {
       const orig = btn.innerHTML;
-      btn.innerHTML = `✓ Чек-лист скопійовано!`;
+      btn.innerHTML = isEn ? `✓ Checklist copied!` : `✓ Чек-лист скопійовано!`;
       setTimeout(() => btn.innerHTML = orig, 2000);
     }
   }).catch(() => {
-    alert('Чек-лист скопійовано!');
+    alert(isEn ? 'Checklist copied!' : 'Чек-лист скопійовано!');
   });
 }
 

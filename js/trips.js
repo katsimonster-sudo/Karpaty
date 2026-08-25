@@ -116,16 +116,20 @@ function renderTrips(container, countBadge) {
   const filtered = getFilteredTrips();
   const favorites = getFavoritesList();
 
+  const isEn = document.documentElement.lang === 'en';
+
   if (countBadge) {
-    countBadge.textContent = `Знайдено: ${filtered.length} з ${window.TRIPS_DATA.length}`;
+    countBadge.textContent = isEn 
+      ? `Found: ${filtered.length} of ${window.TRIPS_DATA.length}`
+      : `Знайдено: ${filtered.length} з ${window.TRIPS_DATA.length}`;
   }
 
   if (filtered.length === 0) {
     container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;" class="glass-card">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin-bottom: 16px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <h3 style="margin-bottom: 8px;">Походів не знайдено</h3>
-        <p style="color: var(--text-muted);">Спробуйте змінити фільтри, обрати інший масив або скинути пошук.</p>
+        <h3 style="margin-bottom: 8px;">${isEn ? 'No trips found' : 'Походів не знайдено'}</h3>
+        <p style="color: var(--text-muted);">${isEn ? 'Try changing filters, choosing another region, or resetting search.' : 'Спробуйте змінити фільтри, обрати інший масив або скинути пошук.'}</p>
       </div>
     `;
     return;
@@ -147,17 +151,17 @@ function renderTrips(container, countBadge) {
           <h3 class="trip-title">${trip.title}</h3>
           
           <div class="trip-metrics">
-            <div class="metric-item" title="Тривалість">
+            <div class="metric-item" title="${isEn ? 'Duration' : 'Тривалість'}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>${trip.durationDays} дн.</span>
+              <span>${trip.durationDays} ${isEn ? (trip.durationDays === 1 ? 'day' : 'days') : 'дн.'}</span>
             </div>
-            <div class="metric-item" title="Дистанція">
+            <div class="metric-item" title="${isEn ? 'Distance' : 'Дистанція'}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-              <span>${trip.distanceKm} км</span>
+              <span>${trip.distanceKm} ${isEn ? 'km' : 'км'}</span>
             </div>
-            <div class="metric-item" title="Набір висоти">
+            <div class="metric-item" title="${isEn ? 'Elevation gain' : 'Набір висоти'}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
-              <span>+${trip.elevationGainM} м</span>
+              <span>+${trip.elevationGainM} ${isEn ? 'm' : 'м'}</span>
             </div>
           </div>
 
@@ -166,7 +170,7 @@ function renderTrips(container, countBadge) {
           </p>
 
           <div style="margin-bottom: 16px;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; font-weight: 600;">Визначні точки:</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; font-weight: 600;">${isEn ? 'Key landmarks:' : 'Визначні точки:'}</div>
             <div class="trip-poi-list">
               ${trip.poi.slice(0, 3).map(p => `<span class="poi-tag">${p}</span>`).join('')}
               ${trip.poi.length > 3 ? `<span class="poi-tag">+${trip.poi.length - 3}</span>` : ''}
@@ -176,7 +180,7 @@ function renderTrips(container, countBadge) {
           <div class="trip-card-footer" style="margin-top: 14px;">
             <button class="btn btn-sm btn-primary" onclick="openTripById('${trip.id}')" style="width: 100%;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              Деталі, графік висот & GPX
+              ${isEn ? 'Details, Elevation & GPX' : 'Деталі, графік висот & GPX'}
             </button>
           </div>
         </div>
@@ -274,6 +278,7 @@ function openTripDetailsModal(trip) {
   const modalBody = document.getElementById('trip-modal-body');
   if (!modal || !modalBody) return;
 
+  const isEn = document.documentElement.lang === 'en';
   const isFav = getFavoritesList().includes(trip.id);
   const elevationSvgHtml = renderElevationProfileSvg(trip.elevationProfile || []);
 
@@ -282,15 +287,21 @@ function openTripDetailsModal(trip) {
   const estCalories = Math.round(trip.distanceKm * 65 + trip.elevationGainM * 0.55);
 
   // Специфічний чек-лист під тип маршруту
-  let gearChecklist = ["Пальник та газ", "Аптечка", "Мембранна куртка", "Налобний ліхтар"];
+  let gearChecklist = isEn 
+    ? ["Stove & gas", "First aid kit", "Rain jacket", "Headlamp"]
+    : ["Пальник та газ", "Аптечка", "Мембранна куртка", "Налобний ліхтар"];
   if (trip.regionKey === 'gorgany') {
-    gearChecklist.push("Гамаші від каміння", "Трекінгові палиці", "Черевики з жорстким рантом");
+    if (isEn) gearChecklist.push("Gaiters", "Trekking poles", "Stiff boots");
+    else gearChecklist.push("Гамаші від каміння", "Трекінгові палиці", "Черевики з жорстким рантом");
   } else if (trip.regionKey === 'marmarosy') {
-    gearChecklist.push("Паспорт / дозвіл ДПСУ", "Супутниковий GPS", "Фільтр для води");
-  } else if (trip.difficulty === 'extreme' || trip.season.toLowerCase().includes('січень') || trip.season.toLowerCase().includes('зимов')) {
-    gearChecklist.push("Кішки альпіністські", "Снігоступи", "Термос 1л", "Зимовий пуховик");
+    if (isEn) gearChecklist.push("Passport / border permit", "Satellite GPS", "Water filter");
+    else gearChecklist.push("Паспорт / дозвіл ДПСУ", "Супутниковий GPS", "Фільтр для води");
+  } else if (trip.difficulty === 'extreme' || trip.season.toLowerCase().includes('січень') || trip.season.toLowerCase().includes('зимов') || trip.season.toLowerCase().includes('january') || trip.season.toLowerCase().includes('winter')) {
+    if (isEn) gearChecklist.push("Crampons", "Snowshoes", "Thermos 1L", "Winter down jacket");
+    else gearChecklist.push("Кішки альпіністські", "Снігоступи", "Термос 1л", "Зимовий пуховик");
   } else {
-    gearChecklist.push("Запас води 2л", "Крем від сонця", "Легкий спальник");
+    if (isEn) gearChecklist.push("Water supply 2L", "Sunscreen", "Light sleeping bag");
+    else gearChecklist.push("Запас води 2л", "Крем від сонця", "Легкий спальник");
   }
 
   modalBody.innerHTML = `
@@ -303,32 +314,32 @@ function openTripDetailsModal(trip) {
       <h2 style="font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; line-height: 1.35; font-family: var(--font-sans, inherit);">${trip.title}</h2>
       
       <div class="trip-metrics" style="padding: 14px 0; font-size: 1.15rem; font-weight: 700; display: flex; flex-wrap: wrap; gap: 16px 28px;">
-        <div class="metric-item"><strong style="color: var(--accent-emerald);">Тривалість:</strong> <span>${trip.durationDays} дні</span></div>
-        <div class="metric-item"><strong style="color: var(--accent-emerald);">Дистанція:</strong> <span>${trip.distanceKm} км</span></div>
-        <div class="metric-item"><strong style="color: var(--accent-emerald);">Набір висоти:</strong> <span>+${trip.elevationGainM} м</span></div>
+        <div class="metric-item"><strong style="color: var(--accent-emerald);">${isEn ? 'Duration' : 'Тривалість'}:</strong> <span>${trip.durationDays} ${isEn ? (trip.durationDays === 1 ? 'day' : 'days') : (trip.durationDays === 1 || trip.durationDays >= 5 ? 'днів' : 'дні')}</span></div>
+        <div class="metric-item"><strong style="color: var(--accent-emerald);">${isEn ? 'Distance' : 'Дистанція'}:</strong> <span>${trip.distanceKm} ${isEn ? 'km' : 'км'}</span></div>
+        <div class="metric-item"><strong style="color: var(--accent-emerald);">${isEn ? 'Elevation gain' : 'Набір висоти'}:</strong> <span>+${trip.elevationGainM} ${isEn ? 'm' : 'м'}</span></div>
       </div>
     </div>
 
     <!-- GPS Метрики (Реальні зі Strava або розрахункові) -->
     ${trip.stats ? `
     <div style="margin-bottom: 20px;">
-      <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-emerald); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.05em;">📊 Фіксовані GPS-метрики (Strava Tracking):</div>
+      <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-emerald); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.05em;">📊 ${isEn ? 'Strava GPS Tracking Metrics:' : '📊 Фіксовані GPS-метрики (Strava Tracking):'}</div>
       <div class="trip-calc-row" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.4);">
         <div class="calc-box">
           <div class="calc-value">🏃 ${trip.stats.movingTime}</div>
-          <div class="calc-label">Час у русі</div>
+          <div class="calc-label">${isEn ? 'Moving Time' : 'Час у русі'}</div>
         </div>
         <div class="calc-box">
           <div class="calc-value">⏱️ ${trip.stats.totalTime}</div>
-          <div class="calc-label">Загальний час</div>
+          <div class="calc-label">${isEn ? 'Total Time' : 'Загальний час'}</div>
         </div>
         <div class="calc-box">
-          <div class="calc-value">👣 ${trip.stats.steps ? trip.stats.steps.toLocaleString('uk-UA') : '—'}</div>
-          <div class="calc-label">Кроки</div>
+          <div class="calc-value">👣 ${trip.stats.steps ? trip.stats.steps.toLocaleString(isEn ? 'en-US' : 'uk-UA') : '—'}</div>
+          <div class="calc-label">${isEn ? 'Steps' : 'Кроки'}</div>
         </div>
         <div class="calc-box">
-          <div class="calc-value">🔥 ${trip.stats.calories ? trip.stats.calories.toLocaleString('uk-UA') + ' ккал' : '—'}</div>
-          <div class="calc-label">Витрата енергії</div>
+          <div class="calc-value">🔥 ${trip.stats.calories ? trip.stats.calories.toLocaleString(isEn ? 'en-US' : 'uk-UA') + (isEn ? ' kcal' : ' ккал') : '—'}</div>
+          <div class="calc-label">${isEn ? 'Energy Burnt' : 'Витрата енергії'}</div>
         </div>
       </div>
     </div>
@@ -336,16 +347,16 @@ function openTripDetailsModal(trip) {
     <!-- Калькулятор ходового часу (Naismith Rule) та калорій -->
     <div class="trip-calc-row">
       <div class="calc-box">
-        <div class="calc-value">⏱️ ~${walkHours} год</div>
-        <div class="calc-label">Чистий час ходи</div>
+        <div class="calc-value">⏱️ ~${walkHours} ${isEn ? 'h' : 'год'}</div>
+        <div class="calc-label">${isEn ? 'Est. Moving Time' : 'Чистий час ходи'}</div>
       </div>
       <div class="calc-box">
-        <div class="calc-value">🔥 ~${estCalories} ккал</div>
-        <div class="calc-label">Енерговитрати</div>
+        <div class="calc-value">🔥 ~${estCalories} ${isEn ? 'kcal' : 'ккал'}</div>
+        <div class="calc-label">${isEn ? 'Est. Energy Burnt' : 'Енерговитрати'}</div>
       </div>
       <div class="calc-box">
-        <div class="calc-value">💧 2.5–3 л/день</div>
-        <div class="calc-label">Рекомендована вода</div>
+        <div class="calc-value">💧 2.5–3 ${isEn ? 'l/day' : 'л/день'}</div>
+        <div class="calc-label">${isEn ? 'Recommended Water' : 'Рекомендована вода'}</div>
       </div>
     </div>
     `}
@@ -353,16 +364,16 @@ function openTripDetailsModal(trip) {
     <!-- Маршрут, кнопки GPX та Копіювання -->
     <div style="margin-bottom: 24px; padding: 18px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md); border-left: 3px solid var(--accent-emerald); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
       <div style="flex: 1; min-width: 260px;">
-        <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--accent-emerald); margin-bottom: 6px; letter-spacing: 0.05em;">Нить маршруту (GPS трек):</h4>
+        <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--accent-emerald); margin-bottom: 6px; letter-spacing: 0.05em;">${isEn ? 'Route path (GPS track):' : 'Нить маршруту (GPS трек):'}</h4>
         <p style="font-size: 0.95rem; color: #ffffff; font-weight: 500;">${trip.route}</p>
       </div>
       <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-        <button class="btn btn-sm btn-gpx" onclick="downloadTripGpx('${trip.id}')" title="Завантажити для Garmin / OsmAnd / Gaia GPS">
+        <button class="btn btn-sm btn-gpx" onclick="downloadTripGpx('${trip.id}')" title="${isEn ? 'Download for Garmin / OsmAnd / Gaia GPS' : 'Завантажити для Garmin / OsmAnd / Gaia GPS'}">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          GPX трек
+          ${isEn ? 'GPX track' : 'GPX трек'}
         </button>
-        <button class="btn btn-sm btn-secondary" onclick="copyTripRoute('${trip.id}', this)" title="Скопіювати опис для друзів у чат">
-          📋 Скопіювати
+        <button class="btn btn-sm btn-secondary" onclick="copyTripRoute('${trip.id}', this)" title="${isEn ? 'Copy route description to clipboard' : 'Скопіювати опис для друзів у чат'}">
+          📋 ${isEn ? 'Copy' : 'Скопіювати'}
         </button>
       </div>
     </div>
@@ -371,19 +382,19 @@ function openTripDetailsModal(trip) {
     ${trip.daysBreakdown && trip.daysBreakdown.length > 0 ? `
     <div style="margin-bottom: 24px;">
       <h4 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-emerald); display: flex; align-items: center; gap: 8px;">
-        <span>🗓️</span> Щоденний розбір етапів (${trip.daysBreakdown.length} дні):
+        <span>🗓️</span> ${isEn ? 'Daily Breakdown' : 'Щоденний розбір етапів'} (${trip.daysBreakdown.length} ${isEn ? (trip.daysBreakdown.length === 1 ? 'day' : 'days') : 'дні'}):
       </h4>
       <div style="display: flex; flex-direction: column; gap: 10px;">
         ${trip.daysBreakdown.map(d => `
           <div style="padding: 14px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-md); transition: var(--transition-fast);">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
               <span style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">
-                День ${d.day} — ${d.date} ${d.start ? `<span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(Старт: ${d.start})</span>` : ''}
+                ${isEn ? 'Day' : 'День'} ${d.day} — ${d.date} ${d.start ? `<span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(${isEn ? 'Start:' : 'Старт:'} ${d.start})</span>` : ''}
               </span>
               <div style="display: flex; gap: 8px; font-size: 0.85rem;">
-                <span style="padding: 2px 8px; background: rgba(16, 185, 129, 0.15); border-radius: 4px; color: var(--accent-emerald); font-weight: 600;">${d.distanceKm} км</span>
-                <span style="padding: 2px 8px; background: rgba(245, 158, 11, 0.15); border-radius: 4px; color: var(--accent-amber); font-weight: 600;">+${d.elevationM} м</span>
-                ${d.maxAltM ? `<span style="padding: 2px 8px; background: rgba(59, 130, 246, 0.15); border-radius: 4px; color: #93c5fd; font-weight: 600;">⛰️ ${d.maxAltM}м</span>` : ''}
+                <span style="padding: 2px 8px; background: rgba(16, 185, 129, 0.15); border-radius: 4px; color: var(--accent-emerald); font-weight: 600;">${d.distanceKm} ${isEn ? 'km' : 'км'}</span>
+                <span style="padding: 2px 8px; background: rgba(245, 158, 11, 0.15); border-radius: 4px; color: var(--accent-amber); font-weight: 600;">+${d.elevationM} ${isEn ? 'm' : 'м'}</span>
+                ${d.maxAltM ? `<span style="padding: 2px 8px; background: rgba(59, 130, 246, 0.15); border-radius: 4px; color: #93c5fd; font-weight: 600;">⛰️ ${d.maxAltM}${isEn ? 'm' : 'м'}</span>` : ''}
               </div>
             </div>
             <div style="font-size: 0.88rem; color: var(--accent-amber); font-weight: 600; margin-bottom: 4px;">
@@ -403,10 +414,10 @@ function openTripDetailsModal(trip) {
       <div class="elevation-header">
         <div class="elevation-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          Профіль перепаду висот маршруту
+          ${isEn ? 'Route Elevation Profile' : 'Профіль перепаду висот маршруту'}
         </div>
         <div class="elevation-max-badge">
-          Макс. висота: ${Math.max(...(trip.elevationProfile || [{alt: 2000}]).map(p => p.alt))} м
+          ${isEn ? 'Max alt:' : 'Макс. висота:'} ${Math.max(...(trip.elevationProfile || [{alt: 2000}]).map(p => p.alt))} ${isEn ? 'm' : 'м'}
         </div>
       </div>
       <div class="elevation-chart-wrap">
@@ -416,11 +427,11 @@ function openTripDetailsModal(trip) {
 
     <!-- Фотозвіт (Клік відкриває Lightbox) -->
     <div style="margin-bottom: 20px;">
-      <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-primary);">Фотозвіт з походу (клік для повноекранного перегляду):</h4>
+      <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-primary);">${isEn ? 'Photos from the trip (click to view full size):' : 'Фотозвіт з походу (клік для повноекранного перегляду):'}</h4>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
         ${trip.images.map((img, idx) => `
           <div style="border-radius: var(--radius-md); overflow: hidden; height: 160px; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightboxFromTrip('${trip.id}', ${idx})">
-            <img src="${img}" alt="Фото ${idx + 1}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-fast);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+            <img src="${img}" alt="${isEn ? 'Photo' : 'Фото'} ${idx + 1}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-fast);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
           </div>
         `).join('')}
       </div>
@@ -434,16 +445,23 @@ function openTripDetailsModal(trip) {
 window.copyTripRoute = function(tripId, btn) {
   const trip = window.TRIPS_DATA.find(t => t.id === tripId);
   if (!trip) return;
+  const isEn = document.documentElement.lang === 'en';
 
-  const textToCopy = `⛰️ «${trip.title}» (${trip.season})\n` +
-    `📍 Район: ${trip.region}\n` +
-    `📏 Дистанція: ${trip.distanceKm} км | Набір: +${trip.elevationGainM} м | ${trip.durationDays} дні\n` +
-    `🧭 Маршрут: ${trip.route}\n` +
-    `🔗 Дивитися деталі: ${window.location.origin}/trips.html?id=${trip.id}`;
+  const textToCopy = isEn
+    ? `⛰️ “${trip.title}” (${trip.season})\n` +
+      `📍 Region: ${trip.region}\n` +
+      `📏 Distance: ${trip.distanceKm} km | Elevation gain: +${trip.elevationGainM} m | ${trip.durationDays} days\n` +
+      `🧭 Route: ${trip.route}\n` +
+      `🔗 View details: ${window.location.origin}/en/trips.html?id=${trip.id}`
+    : `⛰️ «${trip.title}» (${trip.season})\n` +
+      `📍 Район: ${trip.region}\n` +
+      `📏 Дистанція: ${trip.distanceKm} км | Набір: +${trip.elevationGainM} м | ${trip.durationDays} дні\n` +
+      `🧭 Маршрут: ${trip.route}\n` +
+      `🔗 Дивитися деталі: ${window.location.origin}/trips.html?id=${trip.id}`;
 
   navigator.clipboard.writeText(textToCopy).then(() => {
     const originalText = btn.innerHTML;
-    btn.innerHTML = `✓ Скопійовано!`;
+    btn.innerHTML = isEn ? `✓ Copied!` : `✓ Скопійовано!`;
     btn.style.background = 'var(--accent-emerald)';
     btn.style.color = '#fff';
     setTimeout(() => {
@@ -452,7 +470,7 @@ window.copyTripRoute = function(tripId, btn) {
       btn.style.color = '';
     }, 2000);
   }).catch(() => {
-    alert('Маршрут скопійовано!');
+    alert(isEn ? 'Route copied!' : 'Маршрут скопійовано!');
   });
 };
 
@@ -460,8 +478,9 @@ window.copyTripRoute = function(tripId, btn) {
    Генерація динамічного SVG Elevation Profile
    ========================================================================== */
 function renderElevationProfileSvg(points) {
+  const isEn = document.documentElement.lang === 'en';
   if (!points || points.length < 2) {
-    return `<p style="color: var(--text-muted); font-size: 0.85rem;">Дані профілю висот формуються...</p>`;
+    return `<p style="color: var(--text-muted); font-size: 0.85rem;">${isEn ? 'Elevation profile data is loading...' : 'Дані профілю висот формуються...'}</p>`;
   }
 
   const width = 640;
@@ -532,7 +551,7 @@ window.downloadTripGpx = function(tripId) {
   <wpt lat="${lat}" lon="${lng}">
     <ele>${ele}</ele>
     <name>${trip.title}</name>
-    <desc>Регіон: ${trip.region} | Дистанція: ${trip.distanceKm}км | Набір: +${trip.elevationGainM}м</desc>
+    <desc>Region: ${trip.region} | Distance: ${trip.distanceKm}km | Elevation gain: +${trip.elevationGainM}m</desc>
     <sym>Summit</sym>
   </wpt>
   ${(trip.elevationProfile || []).map((pt, idx) => `
@@ -727,7 +746,12 @@ function updateLightboxContent() {
   const captionEl = document.getElementById('lightbox-caption');
   const counterEl = document.getElementById('lightbox-counter');
 
+  const isEn = document.documentElement.lang === 'en';
   if (imgEl) imgEl.src = lightboxImages[currentLightboxIndex];
   if (captionEl) captionEl.textContent = currentLightboxCaption;
-  if (counterEl) counterEl.textContent = `Фото ${currentLightboxIndex + 1} з ${lightboxImages.length}`;
+  if (counterEl) {
+    counterEl.textContent = isEn 
+      ? `Photo ${currentLightboxIndex + 1} of ${lightboxImages.length}`
+      : `Фото ${currentLightboxIndex + 1} з ${lightboxImages.length}`;
+  }
 }

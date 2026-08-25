@@ -129,10 +129,12 @@ function initNetworkStatus() {
 function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
+      const isEnPage = window.location.pathname.includes('/en/');
+      const swPath = isEnPage ? '../sw.js' : './sw.js';
+      navigator.serviceWorker.register(swPath)
         .then((reg) => {
           reg.update();
-          console.log('[PWA] Service Worker v2.5 зареєстровано успішно:', reg.scope);
+          console.log('[PWA] Service Worker зареєстровано успішно:', reg.scope);
         })
         .catch((err) => {
           console.log('[PWA] Помилка реєстрації Service Worker:', err);

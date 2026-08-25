@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PW603MSJ0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PW603MSJ0');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carpathian Hiking Gear — Dozhyty do finisha...</title>
+  <meta name="description" content="Personal catalog of mountain gear: tents, sleeping bags, shoes, cooking, electronics, and first aid kits. Exact weight and reviews from actual trips.">
+  
+  <!-- CSS Styles -->
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#10b981">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <!-- 1. Навігаційна шапка -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">Dozhyty do <span>finisha...</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="trips.html" class="nav-link">Trips (15)</a></li>
+          <li><a href="gear.html" class="nav-link active">Gear</a></li>
+          <li><a href="community.html" class="nav-link">Community & Partners</a></li>
+          <li><a href="donate.html" class="nav-link donate-nav-link"><span>☕</span> Donate to trips</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher">
+          <a href="../gear.html" class="lang-btn">UA</a>
+          <span class="lang-btn active">EN</span>
+        </div>
+        <a href="https://t.me/Dovig" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          Telegram
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Головний контент -->
+  <main class="main-content">
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        
+        <!-- Заголовок розділу -->
+        <div class="section-header">
+          <div class="section-tag">My Gear Setup</div>
+          <h1 class="section-title">What's in the <span>backpack?</span></h1>
+          <p class="section-subtitle">
+            Overview of the gear I use in Carpathian hikes or plan to add to my arsenal. Real weight, honest reviews, and functionality.
+          </p>
+        </div>
+
+        <!-- Інтерактивний конструктор рюкзака та аналізатор ваги (Ultralight Analyzer) -->
+        <div class="pack-builder-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+            <div>
+              <div class="section-tag" style="margin-bottom: 6px;">Interactive Calculator</div>
+              <h2 style="font-size: 1.6rem; margin-bottom: 4px;">Build Your Pack (Pack Weight Analyzer)</h2>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">
+                Select the gear below to calculate the total base weight of your setup.
+              </p>
+            </div>
+
+            <div style="text-align: right;">
+              <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Base weight of setup:</div>
+              <div id="builder-total-weight" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-amber); line-height: 1.1;">0.00 kg</div>
+              <div id="builder-category-name" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-emerald);">🟢 UltraLight</div>
+            </div>
+          </div>
+
+          <!-- Шкала ваги (Gauge Bar) -->
+          <div class="gauge-bar-wrapper">
+            <div class="gauge-track">
+              <div class="gauge-fill" id="weight-gauge-fill" style="width: 35%;"></div>
+            </div>
+            <div class="gauge-labels">
+              <span>0 kg</span>
+              <span>🟢 UltraLight (&lt;5 kg)</span>
+              <span>🔵 Light (5–8 kg)</span>
+              <span>🟡 Traditional (8–12 kg)</span>
+              <span>🔴 Expedition (&gt;12 kg)</span>
+            </div>
+          </div>
+
+          <!-- Чек-лист елементів для вибору -->
+          <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">
+            Select items for your backpack:
+          </div>
+          <div class="gear-checklist-container" id="gear-checklist-container">
+            <!-- Генерується динамічно в JS -->
+          </div>
+
+          <!-- Форма додавання власного спорядження -->
+          <form id="custom-gear-form" class="custom-item-form" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--glass-border); align-items: center;">
+            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">+ Add your own item:</span>
+            <input type="text" id="custom-item-name" placeholder="Name (e.g. Deuter Sleeping Bag)" required style="flex: 2; min-width: 180px; padding: 8px 14px; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); color: #fff; font-size: 0.85rem;">
+            <input type="number" id="custom-item-weight" placeholder="Weight (g)" required min="1" max="10000" style="flex: 1; min-width: 100px; padding: 8px 14px; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); color: #fff; font-size: 0.85rem;">
+            <button type="submit" class="btn btn-sm btn-primary">+ Add</button>
+            <button type="button" id="export-checklist-btn" class="btn btn-sm btn-outline" style="margin-left: auto;">
+              📋 Copy checklist
+            </button>
+          </form>
+        </div>
+
+        <!-- Пошук та сортування каталогу спорядження -->
+        <div style="display: flex; gap: 16px; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+          <div class="search-bar-wrapper" style="margin: 0; flex: 1; min-width: 260px;">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="gear-search-input" class="search-input" placeholder="Search (e.g. MSR, tent, Gore-Tex, Garmin)...">
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <div class="sort-select-wrapper">
+              <select id="gear-sort-select" class="sort-select">
+                <option value="default">Sort: Default</option>
+                <option value="weight-asc">Weight: lightest first ↑</option>
+                <option value="weight-desc">Weight: heaviest first ↓</option>
+                <option value="name-asc">Name (A-Z)</option>
+              </select>
+            </div>
+            <button id="open-care-guide-btn" class="btn btn-sm btn-secondary">
+              🧰 Care & Repair Guide
+            </button>
+          </div>
+        </div>
+
+        <!-- Перемикач статусів -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="filter-btn status-filter-btn active" data-status="all">All statuses</button>
+            <button class="filter-btn status-filter-btn" data-status="owned">✓ In my backpack</button>
+            <button class="filter-btn status-filter-btn" data-status="planned">★ Planned to buy</button>
+          </div>
+          <div id="gear-count-badge" style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">
+            Shown: 0 items
+          </div>
+        </div>
+
+        <!-- Фільтри категорій -->
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-category="all">All categories</button>
+          <button class="filter-btn" data-category="shelter">⛺ Shelter & Tents</button>
+          <button class="filter-btn" data-category="clothing">🧥 Clothing & Footwear</button>
+          <button class="filter-btn" data-category="cooking">🍳 Cooking & Water</button>
+          <button class="filter-btn" data-category="electronics">🧭 Electronics & GPS</button>
+          <button class="filter-btn" data-category="safety">🩹 Safety & First Aid</button>
+        </div>
+
+        <!-- Сітка карток спорядження -->
+        <div class="gear-grid" id="gear-grid-container">
+          <!-- Рендериться динамічно через gear.js -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Модальне вікно: Гід по догляду за спорядженням -->
+  <div class="modal-overlay" id="care-guide-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+        <span style="font-size: 1.8rem;">🧰</span>
+        <h2 style="font-size: 1.8rem;">Care & Field Repair Guide</h2>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+        Proven rules for extending the life of your favorite gear in Carpathian conditions.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div class="glass-card" style="padding: 18px; border-left: 3px solid var(--accent-emerald);">
+          <h4 style="color: var(--accent-emerald); margin-bottom: 6px;">⛺ How to dry a tent properly</h4>
+          <p style="font-size: 0.9rem;">Never store a tent wet for more than 24 hours — this destroys the PU/silicone coating. Dry it pitched or spread in the shade, avoiding direct sunlight.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 18px; border-left: 3px solid var(--accent-amber);">
+          <h4 style="color: var(--accent-amber); margin-bottom: 6px;">🧥 Washing Gore-Tex membranes</h4>
+          <p style="font-size: 0.9rem;">Wash only with special liquid detergents (Nikwax Tech Wash or Grangers) at 30°C without spinning. Never use regular washing powders or conditioners — they clog membrane pores.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 18px; border-left: 3px solid #38bdf8);">
+          <h4 style="color: #38bdf8; margin-bottom: 6px;">🛏️ Storing down sleeping bags</h4>
+          <p style="font-size: 0.9rem;">Between trips, a down sleeping bag must be stored exclusively in a large mesh storage bag, not in a compression sack, so that the down does not compress and lose its loft (Fill Power).</p>
+        </div>
+
+        <div class="glass-card" style="padding: 18px; border-left: 3px solid #ef4444);">
+          <h4 style="color: #ef4444; margin-bottom: 6px;">🩹 Emergency repair of tent pole and sleeping pad</h4>
+          <p style="font-size: 0.9rem;">Always carry an aluminum repair sleeve for tent poles and self-adhesive patches (Tear-Aid or Tenacious Tape). They allow you to repair a broken pole or a punctured sleeping pad on the ridge within 2 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Підвал -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 12px;">
+            <div class="brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+            </div>
+            <div class="brand-text">Dozhyty do <span>finisha...</span></div>
+          </div>
+          <p class="footer-desc">
+            Reliable gear is the key to a safe and comfortable return from mountain journeys.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trips.html">Trips (2024–2026)</a></li>
+            <li><a href="gear.html">Gear Inventory</a></li>
+            <li><a href="community.html">Community & Partners</a></li>
+            <li><a href="donate.html" style="color: var(--accent-amber); font-weight: 700;">☕ Donate to trips</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="gear.html">Tents & Sleeping Bags</a></li>
+            <li><a href="gear.html">Storm Clothing</a></li>
+            <li><a href="gear.html">Cooking Systems</a></li>
+            <li><a href="gear.html">GPS & Safety</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacts</h4>
+          <ul class="footer-links">
+            <li><a href="https://t.me/Dovig" target="_blank" rel="noopener noreferrer">Telegram: @Dovig</a></li>
+            <li><a href="community.html">Find Travel Companions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2024–2026 «Dozhyty do finisha...».</div>
+        <div>Every gram in the backpack matters ⚖️</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипти -->
+  <script src="../js/data/trips-data.js"></script>
+  <script src="../js/data/trips-data-en.js"></script>
+  <script src="../js/data/gear-data.js"></script>
+  <script src="../js/data/gear-data-en.js"></script>
+  <script src="../js/data/community-data.js"></script>
+  <script src="../js/data/community-data-en.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/gear.js"></script>
+</body>
+</html>

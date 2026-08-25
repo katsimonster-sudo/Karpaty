@@ -3,7 +3,7 @@
    Забезпечує роботу в горах без мобільного зв'язку (Офлайн-режим)
    ========================================================================== */
 
-const CACHE_NAME = 'carpathian-trail-v3.3';
+const CACHE_NAME = 'carpathian-trail-v3.4';
 
 const STATIC_ASSETS = [
   './',
@@ -12,6 +12,12 @@ const STATIC_ASSETS = [
   './gear.html',
   './community.html',
   './donate.html',
+  './en/',
+  './en/index.html',
+  './en/trips.html',
+  './en/gear.html',
+  './en/community.html',
+  './en/donate.html',
   './manifest.json',
   './css/main.css',
   './css/components.css',
@@ -23,7 +29,10 @@ const STATIC_ASSETS = [
   './js/chat.js',
   './js/data/trips-data.js',
   './js/data/gear-data.js',
-  './js/data/community-data.js'
+  './js/data/community-data.js',
+  './js/data/trips-data-en.js',
+  './js/data/gear-data-en.js',
+  './js/data/community-data-en.js'
 ];
 
 // 1. Встановлення Service Worker та кешування основних ресурсів

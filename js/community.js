@@ -52,6 +52,7 @@ function initCommunityPage() {
   if (postForm && postModal) {
     postForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const isEn = document.documentElement.lang === 'en';
 
       const authorName = document.getElementById('post-form-author').value.trim();
       const postTitle = document.getElementById('post-form-title').value.trim();
@@ -63,17 +64,17 @@ function initCommunityPage() {
       const postDesc = document.getElementById('post-form-desc').value.trim();
 
       if (!authorName || !postTitle || !postRoute || !postContact) {
-        alert('Будь ласка, заповніть обов\'язкові поля.');
+        alert(isEn ? 'Please fill in all required fields.' : 'Будь ласка, заповніть обов\'язкові поля.');
         return;
       }
 
       // Визначення ключа регіону за маршрутом
       let regionKey = 'other';
       const lower = (postTitle + ' ' + postRoute).toLowerCase();
-      if (lower.includes('чорногор') || lower.includes('говерл') || lower.includes('петрос') || lower.includes('піп іван')) regionKey = 'chornohora';
-      else if (lower.includes('ґорґан') || lower.includes('сивул') || lower.includes('хом') || lower.includes('довбуш')) regionKey = 'gorgany';
-      else if (lower.includes('свидовець') || lower.includes('близниц') || lower.includes('драгобрат')) regionKey = 'svydovets';
-      else if (lower.includes('мармарос')) regionKey = 'marmarosy';
+      if (lower.includes('чорногор') || lower.includes('говерл') || lower.includes('петрос') || lower.includes('піп іван') || lower.includes('chornohora') || lower.includes('hoverla')) regionKey = 'chornohora';
+      else if (lower.includes('ґорґан') || lower.includes('сивул') || lower.includes('хом') || lower.includes('довбуш') || lower.includes('gorgany') || lower.includes('syvulya')) regionKey = 'gorgany';
+      else if (lower.includes('свидовець') || lower.includes('близниц') || lower.includes('драгобрат') || lower.includes('svydovets') || lower.includes('blyznytsya')) regionKey = 'svydovets';
+      else if (lower.includes('мармарос') || lower.includes('marmarosy')) regionKey = 'marmarosy';
 
       const newPost = {
         id: 'post-user-' + Date.now(),
@@ -82,12 +83,12 @@ function initCommunityPage() {
         title: postTitle,
         route: postRoute,
         regionKey: regionKey,
-        date: postDate || 'Узгоджується з групою',
-        groupSize: groupSize || '1-3 особи',
-        pace: postPace || 'Середній темп',
+        date: postDate || (isEn ? 'To be agreed' : 'Узгоджується з групою'),
+        groupSize: groupSize || (isEn ? '1-3 people' : '1-3 особи'),
+        pace: postPace || (isEn ? 'Moderate pace' : 'Середній темп'),
         contactTelegram: postContact.startsWith('@') ? postContact : '@' + postContact,
         description: postDesc,
-        createdAt: new Date().toLocaleDateString('uk-UA')
+        createdAt: new Date().toLocaleDateString(isEn ? 'en-US' : 'uk-UA')
       };
 
       saveCustomPost(newPost);
@@ -118,6 +119,7 @@ function saveCustomPost(post) {
 }
 
 function renderCommunityPosts(container) {
+  const isEn = document.documentElement.lang === 'en';
   const customPosts = getStoredPosts();
   let allPosts = [...customPosts, ...(window.COMMUNITY_DATA || [])];
   const countBadge = document.getElementById('community-count-badge');
@@ -127,10 +129,10 @@ function renderCommunityPosts(container) {
     allPosts = allPosts.filter(p => {
       if (p.regionKey) return p.regionKey === currentCommunityRegion;
       const lower = (p.title + ' ' + p.route).toLowerCase();
-      if (currentCommunityRegion === 'chornohora') return lower.includes('чорногор') || lower.includes('говерл') || lower.includes('шпиц') || lower.includes('бребенескул');
-      if (currentCommunityRegion === 'gorgany') return lower.includes('ґорґан') || lower.includes('сивул') || lower.includes('хом') || lower.includes('довбуш');
-      if (currentCommunityRegion === 'svydovets') return lower.includes('свидовець') || lower.includes('близниц') || lower.includes('драгобрат');
-      if (currentCommunityRegion === 'marmarosy') return lower.includes('мармарос');
+      if (currentCommunityRegion === 'chornohora') return lower.includes('чорногор') || lower.includes('говерл') || lower.includes('шпиц') || lower.includes('бребенескул') || lower.includes('chornohora') || lower.includes('hoverla');
+      if (currentCommunityRegion === 'gorgany') return lower.includes('ґорґан') || lower.includes('сивул') || lower.includes('хом') || lower.includes('довбуш') || lower.includes('gorgany') || lower.includes('syvulya');
+      if (currentCommunityRegion === 'svydovets') return lower.includes('свидовець') || lower.includes('близниц') || lower.includes('драгобрат') || lower.includes('svydovets');
+      if (currentCommunityRegion === 'marmarosy') return lower.includes('мармарос') || lower.includes('marmarosy');
       return true;
     });
   }
@@ -146,15 +148,17 @@ function renderCommunityPosts(container) {
   }
 
   if (countBadge) {
-    countBadge.textContent = `Актуальні пропозиції (${allPosts.length}) від учасників спільноти`;
+    countBadge.textContent = isEn 
+      ? `Active proposals (${allPosts.length}) from community members`
+      : `Актуальні пропозиції (${allPosts.length}) від учасників спільноти`;
   }
 
   if (!allPosts.length) {
     container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 50px;" class="glass-card">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin-bottom: 12px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <h3 style="margin-bottom: 6px;">Оголошень у цьому районі не знайдено</h3>
-        <p style="color: var(--text-muted);">Будьте першим — створіть власне оголошення про похід!</p>
+        <h3 style="margin-bottom: 6px;">${isEn ? 'No posts found in this region' : 'Оголошень у цьому районі не знайдено'}</h3>
+        <p style="color: var(--text-muted);">${isEn ? 'Be the first to create a post about a trip!' : 'Будьте першим — створіть власне оголошення про похід!'}</p>
       </div>
     `;
     return;
@@ -168,8 +172,8 @@ function renderCommunityPosts(container) {
             ${post.author.charAt(0)}
           </div>
           <div>
-            <div class="post-author">${post.author} ${post.isAuthor ? '<span style="font-size: 0.75rem; color: var(--accent-amber); font-weight: 600;">(Автор сайту)</span>' : ''}</div>
-            <div class="post-date">Опубліковано: ${post.createdAt}</div>
+            <div class="post-author">${post.author} ${post.isAuthor ? `<span style="font-size: 0.75rem; color: var(--accent-amber); font-weight: 600;">(${isEn ? 'Site Author' : 'Автор сайту'})</span>` : ''}</div>
+            <div class="post-date">${isEn ? 'Published:' : 'Опубліковано:'} ${post.createdAt}</div>
           </div>
         </div>
       </div>
@@ -182,8 +186,21 @@ function renderCommunityPosts(container) {
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: var(--text-secondary); background: rgba(0, 0, 0, 0.2); padding: 12px; border-radius: var(--radius-sm);">
-        <div>📅 <strong>Дати:</strong> ${post.date}</div>
-        <div>👥 <strong>Група:</strong> ${post.groupSize}</div>
+        <div>📅 <strong>${isEn ? 'Dates:' : 'Дати:'}</strong> ${post.date}</div>
+        <div>👥 <strong>${isEn ? 'Group:' : 'Група:'}</strong> ${post.groupSize}</div>
+        <div>⚡ <strong>${isEn ? 'Pace / conditions:' : 'Темп / умови:'}</strong> ${post.pace}</div>
+      </div>
+
+      <p class="post-content">${post.description}</p>
+
+      <div class="post-footer">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">${isEn ? 'Contact:' : 'Зв\'язок:'} <strong style="color: var(--accent-emerald);">${post.contactTelegram}</strong></span>
+        <a href="https://t.me/${post.contactTelegram.replace('@', '')}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+          ${isEn ? 'Message on Telegram →' : 'Написати в Telegram →'}
+        </a>
+      </div>
+    </div>
+  `).join('');v>👥 <strong>Група:</strong> ${post.groupSize}</div>
         <div>⚡ <strong>Темп / умови:</strong> ${post.pace}</div>
       </div>
 
@@ -202,7 +219,33 @@ function renderCommunityPosts(container) {
 /* ==========================================================================
    2. Книга вражень та відгуків (Trail Guestbook)
    ========================================================================== */
-const INITIAL_GUESTBOOK = [
+const isEnPage = window.location.pathname.includes('/en/');
+
+const enGuestbook = [
+  {
+    id: "gb-1",
+    author: "Olena Karpenko",
+    trail: "Chornohora Traverse (Hoverla-Petros)",
+    text: "Thanks to the author for the accurate description of water sources under Petros! Your track helped us find a cozy campsite at Skopeska.",
+    date: "14.08.2026"
+  },
+  {
+    id: "gb-2",
+    author: "Yuriy Verkhovynets",
+    trail: "Eastern Gorgany (Syvulya)",
+    text: "Syvulya rocks are love for life! Stiff hiking boots are key, just as the author advises.",
+    date: "08.08.2026"
+  },
+  {
+    id: "gb-3",
+    author: "Dmytro & Anya",
+    trail: "Marmarosy (Pip Ivan Marmarosky)",
+    text: "True Carpathian Alps! The September 2024 report helped us perfectly plan the hiking time from Lysycha meadow.",
+    date: "01.08.2026"
+  }
+];
+
+const INITIAL_GUESTBOOK = isEnPage ? enGuestbook : [
   {
     id: "gb-1",
     author: "Олена Карпенко",
@@ -214,7 +257,7 @@ const INITIAL_GUESTBOOK = [
     id: "gb-2",
     author: "Юрій Верховинець",
     trail: "Східні Ґорґани (Велика Сивуля)",
-    text: "Похід по цекотах Сивулі — це любов на все життя! Головне — мати надійне взуття з жорсткою підошвою, як радить автор сайту.",
+    text: "Похід по цекотах Сивулі — це любовь на все життя! Головне — мати надійне взуття з жорсткою підошвою, як радить автор сайту.",
     date: "08.08.2026"
   },
   {
@@ -270,7 +313,7 @@ function initGuestbook() {
         author: author,
         trail: trail,
         text: text,
-        date: new Date().toLocaleDateString('uk-UA')
+        date: new Date().toLocaleDateString(isEnPage ? 'en-US' : 'uk-UA')
       };
 
       saveGuestbookEntry(newEntry);
