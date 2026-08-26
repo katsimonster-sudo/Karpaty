@@ -666,41 +666,66 @@
           slide.style.backgroundImage = `url('${heroMobilePhotoUrls[i]}')`;
         }
       });
-      // 1. Топ-3 походи
+      // 1. Top-3 trips
       const container = document.getElementById('featured-trips-container');
       if (container && window.TRIPS_DATA) {
         const featured = window.TRIPS_DATA.filter(t => t.year === 2026).slice(0, 3);
-        container.innerHTML = featured.map(trip => `
-          <div class="glass-card trip-card">
-            <div class="trip-card-image-wrap">
-              <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy">
+        container.innerHTML = featured.map(trip => {
+          const maxAlt = (trip.stats && trip.stats.maxAlt)
+            ? trip.stats.maxAlt
+            : (trip.elevationProfile ? Math.max(...trip.elevationProfile.map(p => p.alt)) : null);
+          const statsHTML = trip.stats ? `
+            <div class="trip-fitness-stats">
+              <div class="trip-stat-chip">
+                <span class="trip-stat-chip-icon">⏱️</span>
+                <span class="trip-stat-chip-val">${trip.stats.movingTime}</span>
+                <span class="trip-stat-chip-label">moving</span>
+              </div>
+              <div class="trip-stat-chip">
+                <span class="trip-stat-chip-icon">🕐</span>
+                <span class="trip-stat-chip-val">${trip.stats.totalTime}</span>
+                <span class="trip-stat-chip-label">total</span>
+              </div>
+              <div class="trip-stat-chip">
+                <span class="trip-stat-chip-icon">👣</span>
+                <span class="trip-stat-chip-val">${trip.stats.steps.toLocaleString('en-US')}</span>
+                <span class="trip-stat-chip-label">steps</span>
+              </div>
+              <div class="trip-stat-chip">
+                <span class="trip-stat-chip-icon">🔥</span>
+                <span class="trip-stat-chip-val">${trip.stats.calories.toLocaleString('en-US')}</span>
+                <span class="trip-stat-chip-label">kcal</span>
+              </div>
+            </div>` : `<div class="trip-no-stats">Detailed stats not available</div>`;
+          return `
+            <div class="glass-card trip-card" onclick="location.href='trips.html?id=${trip.id}'" role="button" tabindex="0" style="cursor:pointer;" aria-label="${trip.title}">
+              <div class="trip-card-image-wrap">
+                <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy">
+              </div>
+              <div class="trip-card-gradient"></div>
               <span class="trip-year-badge">${trip.season}</span>
-              <span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
-            </div>
-            <div class="trip-card-body">
-              <h3 class="trip-title">${trip.title}</h3>
-              <div class="trip-metrics">
-                <div class="metric-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                  <span>${trip.durationDays} days</span>
+              <div class="trip-card-body">
+                <div class="trip-key-metrics">
+                  <div class="trip-key-metric">
+                    <span class="trip-key-metric-value">${trip.durationDays} days</span>
+                    <span class="trip-key-metric-label">duration</span>
+                  </div>
+                  <div class="trip-key-metric">
+                    <span class="trip-key-metric-value">${trip.distanceKm} km</span>
+                    <span class="trip-key-metric-label">distance</span>
+                  </div>
+                  <div class="trip-key-metric">
+                    <span class="trip-key-metric-value">${maxAlt ? maxAlt + ' m' : '—'}</span>
+                    <span class="trip-key-metric-label">max alt</span>
+                  </div>
                 </div>
-                <div class="metric-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-                  <span>${trip.distanceKm} km</span>
-                </div>
-                <div class="metric-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
-                  <span>+${trip.elevationGainM} m</span>
-                </div>
+                <h3 class="trip-title">${trip.title}</h3>
+                ${statsHTML}
               </div>
-              <p style="font-size: 0.9rem; margin-bottom: 18px; color: var(--text-secondary);">${trip.shortDesc}</p>
-              <div class="trip-card-footer">
-                <a href="trips.html?id=${trip.id}" class="btn btn-sm btn-outline">Route details →</a>
-              </div>
-            </div>
-          </div>
-        `).join('');
+            </div>`;
+        }).join('');
       }
+
     });
   </script>
 </body>
