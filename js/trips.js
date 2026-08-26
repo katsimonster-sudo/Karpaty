@@ -136,6 +136,7 @@ function renderTrips(container, countBadge) {
   }
 
   container.innerHTML = filtered.map(trip => {
+<<<<<<< HEAD
     const isEn = document.documentElement.lang === 'en';
 
     // Метрики верхньої плашки
@@ -204,6 +205,55 @@ function renderTrips(container, countBadge) {
           </div>
           <h3 class="trip-title">${trip.title}</h3>
           ${statsHTML}
+=======
+
+    return `
+      <div class="glass-card trip-card">
+        <div class="trip-card-image-wrap">
+          <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy" onclick="openTripById('${trip.id}')" style="cursor: pointer;">
+          <span class="trip-year-badge">${trip.season}</span>
+          <span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
+        </div>
+        <div class="trip-card-body">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+            ${trip.region}
+          </div>
+          <h3 class="trip-title">${trip.title}</h3>
+          
+          <div class="trip-metrics">
+            <div class="metric-item" title="${isEn ? 'Duration' : 'Тривалість'}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>${trip.durationDays} ${isEn ? (trip.durationDays === 1 ? 'day' : 'days') : 'дн.'}</span>
+            </div>
+            <div class="metric-item" title="${isEn ? 'Distance' : 'Дистанція'}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+              <span>${trip.distanceKm} ${isEn ? 'km' : 'км'}</span>
+            </div>
+            <div class="metric-item" title="${isEn ? 'Elevation gain' : 'Набір висоти'}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+              <span>+${trip.elevationGainM} ${isEn ? 'm' : 'м'}</span>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5;">
+            ${trip.shortDesc}
+          </p>
+
+          <div style="margin-bottom: 16px;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; font-weight: 600;">${isEn ? 'Key landmarks:' : 'Визначні точки:'}</div>
+            <div class="trip-poi-list">
+              ${trip.poi.slice(0, 3).map(p => `<span class="poi-tag">${p}</span>`).join('')}
+              ${trip.poi.length > 3 ? `<span class="poi-tag">+${trip.poi.length - 3}</span>` : ''}
+            </div>
+          </div>
+
+          <div class="trip-card-footer" style="margin-top: 14px;">
+            <button class="btn btn-sm btn-primary" onclick="openTripById('${trip.id}')" style="width: 100%;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              ${isEn ? 'Details, Elevation & GPX' : 'Деталі, графік висот & GPX'}
+            </button>
+          </div>
+>>>>>>> 4f5e498408176f81e6a060dacf5e05499fd5e8f5
         </div>
       </div>
     `;
