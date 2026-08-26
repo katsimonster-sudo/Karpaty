@@ -32,6 +32,40 @@
     display: block;
   }
 
+  .header-actions {
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-text {
+    font-size: 1.05rem;
+  }
+
+  .header-actions .btn-sm.btn-primary {
+    padding: 8px;
+    font-size: 0;
+    gap: 0;
+  }
+
+  .header-actions .btn-sm.btn-primary svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  .lang-switcher {
+    padding: 2px;
+  }
+
+  .lang-btn {
+    padding: 3px 5px;
+    font-size: 0.7rem;
+  }
+
   .nav-menu {
     position: fixed;
     top: var(--header-height);
@@ -123,7 +157,29 @@
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
+  .brand-text {
+    font-size: 0.92rem;
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .lang-btn {
+    padding: 2px 4px;
+    font-size: 0.65rem;
+  }
+
+  .header-actions .btn-sm.btn-primary {
+    padding: 7px;
+  }
+
   .filter-tabs {
     gap: 6px;
   }
