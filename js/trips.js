@@ -109,7 +109,7 @@ function getFilteredTrips() {
     });
   }
 
-  return list;
+  return list.sort((a, b) => b.year - a.year);
 }
 
 function renderTrips(container, countBadge) {
