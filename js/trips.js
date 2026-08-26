@@ -136,9 +136,12 @@ function renderTrips(container, countBadge) {
   }
 
   container.innerHTML = filtered.map(trip => {
+    const isEn = document.documentElement.lang === 'en';
+
     // Метрики верхньої плашки
-    const daysLabel = isEn ? 'days' : 'дн.';
-    const kmLabel   = isEn ? 'km' : 'км';
+    const daysLabel  = isEn ? 'days' : 'дн.';
+    const kmLabel    = isEn ? 'km' : 'км';
+    const altLabel   = isEn ? 'm asl' : 'м вис.';
 
     // Визначаємо maxAlt: з stats.maxAlt або з elevationProfile
     const maxAlt = (trip.stats && trip.stats.maxAlt)
@@ -206,7 +209,6 @@ function renderTrips(container, countBadge) {
     `;
   }).join('');
 }
-
 
 /* ==========================================================================
    Інтерактивна Карта Leaflet
