@@ -1,757 +1,696 @@
-/* ==========================================================================
-   Сайт «Дожити до фініша...» — Логіка походів (Trips Logic, Map, Elevation & UX)
-   ========================================================================== */
-
-let currentYearFilter = 'all';
-let currentRegionFilter = 'all';
-let currentSearchQuery = '';
-
-// Lightbox стан
-let lightboxImages = [];
-let currentLightboxIndex = 0;
-let currentLightboxCaption = '';
-
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PW603MSJ0"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0PW603MSJ0');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дожити до фініша... — Карпатські мандри та спільнота</title>
+<meta name="description" content="Особистий веб-сайт про 15 гірських походів Карпатами (2024–2026 рр.), огляд спорядження з вагами, дошка знайомств для пошуку попутників та чат.">
+<!-- CSS Styles -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#10b981">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+.hero-bg-slideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-slide {
+position: absolute; inset: 0;
+background-size: cover;
+background-position: center;
+opacity: 0;
+animation: heroFade 150s infinite;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 15s; }
+.hero-slide:nth-child(3) { animation-delay: 30s; }
+.hero-slide:nth-child(4) { animation-delay: 45s; }
+.hero-slide:nth-child(5) { animation-delay: 60s; }
+.hero-slide:nth-child(6) { animation-delay: 75s; }
+.hero-slide:nth-child(7) { animation-delay: 90s; }
+.hero-slide:nth-child(8) { animation-delay: 105s; }
+.hero-slide:nth-child(9) { animation-delay: 120s; }
+.hero-slide:nth-child(10) { animation-delay: 135s; }
+@keyframes heroFade {
+0% { opacity: 0; }
+1.333% { opacity: 1; }
+8.667% { opacity: 1; }
+10% { opacity: 0; }
+100% { opacity: 0; }
+}
+.hero-bg-overlay {
+position: absolute; inset: 0; z-index: 1;
+background: linear-gradient(180deg, rgba(7,10,13,0.42) 0%, rgba(7,10,13,0.32) 40%, rgba(7,10,13,0.68) 100%);
+}
+.hero-slideshow-section { position: relative; overflow: hidden; }
+.hero-slideshow-section .container { position: relative; z-index: 2; }
+.hero-bg-slideshow-mobile { position: absolute; inset: 0; z-index: 0; overflow: hidden; display: none; }
+.hero-slide-mobile {
+position: absolute; inset: 0;
+background-size: cover;
+background-position: center;
+opacity: 0;
+animation: heroFadeMobile 135s infinite;
+}
+.hero-slide-mobile:nth-child(1) { animation-delay: 0s; }
+.hero-slide-mobile:nth-child(2) { animation-delay: 15s; }
+.hero-slide-mobile:nth-child(3) { animation-delay: 30s; }
+.hero-slide-mobile:nth-child(4) { animation-delay: 45s; }
+.hero-slide-mobile:nth-child(5) { animation-delay: 60s; }
+.hero-slide-mobile:nth-child(6) { animation-delay: 75s; }
+.hero-slide-mobile:nth-child(7) { animation-delay: 90s; }
+.hero-slide-mobile:nth-child(8) { animation-delay: 105s; }
+.hero-slide-mobile:nth-child(9) { animation-delay: 120s; }
+@keyframes heroFadeMobile {
+0% { opacity: 0; }
+0.741% { opacity: 1; }
+10.370% { opacity: 1; }
+11.111% { opacity: 0; }
+100% { opacity: 0; }
+}
+@media (max-width: 768px) {
+.hero-bg-slideshow { display: none; }
+.hero-bg-slideshow-mobile { display: block; }
+.hero-slideshow-section {
+min-height: 480px;
+}
+}
+</style>
+</head>
+<body>
+<!-- 1. Навігаційна шапка -->
+<header class="site-header">
+<div class="container header-container">
+<a href="index.html" class="brand-logo">
+<div class="brand-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+</svg>
+</div>
+<div class="brand-text">Дожити до <span>фініша...</span></div>
+</a>
+<nav>
+<ul class="nav-menu">
+<li><a href="index.html" class="nav-link active">Головна</a></li>
+<li><a href="trips.html" class="nav-link">Подорожі (15)</a></li>
+<li><a href="gear.html" class="nav-link">Спорядження</a></li>
+<li><a href="community.html" class="nav-link">Спільнота & Знайомства</a></li>
+<li><a href="donate.html" class="nav-link donate-nav-link"><span>☕</span> Донат на подорожі</a></li>
+</ul>
+</nav>
+<div class="header-actions">
+        <div class="lang-switcher">
+          <span class="lang-btn active">UA</span>
+          <a href="en/index.html" class="lang-btn">EN</a>
+        </div>
+        <a href="https://t.me/Dovig" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+Telegram
+</a>
+<button class="mobile-menu-toggle" aria-label="Меню">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="3" y1="12" x2="21" y2="12"></line>
+<line x1="3" y1="6" x2="21" y2="6"></line>
+<line x1="3" y1="18" x2="21" y2="18"></line>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- 2. Головний вміст -->
+<main class="main-content">
+<!-- Hero Секція -->
+<section class="section hero-slideshow-section" style="padding-top: 40px; padding-bottom: 60px;">
+<div class="hero-bg-slideshow">
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+</div>
+<div class="hero-bg-slideshow-mobile">
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+<div class="hero-slide-mobile"></div>
+</div>
+<div class="hero-bg-overlay"></div>
+<div class="container">
+<div style="text-align: center; max-width: 860px; margin: 0 auto;">
+<div class="section-tag">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z"/></svg>
+Усе, що нас не вбиває — робить чудовий фотоальбом.
+</div>
+<h1 class="section-title" style="font-size: 3.4rem; margin-bottom: 24px;">
+«Дожити до <span>фініша...»</span>
+</h1>
+<p style="font-size: 1.15rem; font-style: italic; color: var(--accent-amber); margin-bottom: 20px;">
+Готовий потрапити в наступний альбом?
+</p>
+<p class="section-subtitle" style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 36px; color: var(--text-secondary);">
+Хроніка 15 гірських походів Карпатами за три роки (2024–2026).
+</p>
+<div style="max-width: 560px; margin: 0 auto 36px; padding: 24px; border-radius: var(--radius-lg); background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); backdrop-filter: blur(6px); text-shadow: 0 2px 8px rgba(0,0,0,0.6);">
+<div style="font-size: 0.85rem; color: #ffffff; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px;">
+⛰️ До старту наступного походу
+</div>
+<div style="font-size: 0.85rem; color: #ffffff; margin-bottom: 16px;">
+Яремче · 29 серпня 2026, 06:00
+</div>
+<div id="countdown-timer" style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+<div style="min-width: 64px;">
+<div id="cd-days" style="font-size: 2rem; font-weight: 800; color: #ffffff;">—</div>
+<div style="font-size: 0.7rem; color: #ffffff; text-transform: uppercase;">дні</div>
+</div>
+<div style="min-width: 64px;">
+<div id="cd-hours" style="font-size: 2rem; font-weight: 800; color: #ffffff;">—</div>
+<div style="font-size: 0.7rem; color: #ffffff; text-transform: uppercase;">год</div>
+</div>
+<div style="min-width: 64px;">
+<div id="cd-minutes" style="font-size: 2rem; font-weight: 800; color: #ffffff;">—</div>
+<div style="font-size: 0.7rem; color: #ffffff; text-transform: uppercase;">хв</div>
+</div>
+<div style="min-width: 64px;">
+<div id="cd-seconds" style="font-size: 2rem; font-weight: 800; color: #ffffff;">—</div>
+<div style="font-size: 0.7rem; color: #ffffff; text-transform: uppercase;">сек</div>
+</div>
+</div>
+</div>
+<div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+<a href="trips.html" class="btn btn-primary">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+Всі 15 походів (2024–2026)
+</a>
+</div>
+</div>
+<!-- Лічильники статистики — реальні дані 2026 рік -->
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">5</div>
+<div class="stat-label">Походів у 2026 році</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">633 км</div>
+<div class="stat-label">Пройдено стежками</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">30к+ м</div>
+<div class="stat-label">Сумарний набір висоти</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">34 дні</div>
+<div class="stat-label">У горах за рік</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 12px; margin-bottom: -4px;">
+<span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Статистика за 2025 рік — повний сезон</span>
+</div>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">5</div>
+<div class="stat-label">Походів у 2025 році</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">628 км</div>
+<div class="stat-label">Пройдено стежками</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">31к+ м</div>
+<div class="stat-label">Сумарний набір висоти</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">39 днів</div>
+<div class="stat-label">У горах за рік</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 12px; margin-bottom: -4px;">
+<span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Статистика за 2024 рік — повний сезон</span>
+</div>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">5</div>
+<div class="stat-label">Походів у 2024 році</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">361 км</div>
+<div class="stat-label">Пройдено стежками</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">17.4к м</div>
+<div class="stat-label">Сумарний набір висоти</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">31 день</div>
+<div class="stat-label">У горах за рік</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 12px; margin-bottom: -4px;">
+<span style="font-size: 0.8rem; color: var(--accent-amber); font-weight: 700; font-style: italic;">Разом за 2024–2026 — усі 15 походів опрацьовано</span>
+</div>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">15</div>
+<div class="stat-label">Походів за 3 роки</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">1622 км</div>
+<div class="stat-label">Пройдено стежками</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">78.5к+ м</div>
+<div class="stat-label">Сумарний набір висоти</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">104 дні</div>
+<div class="stat-label">Днів у горах</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Секція вибраних походів (Highlights) -->
+<section class="section">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">Хайлайти походів</div>
+<h2 class="section-title">Яскраві <span>вершини Карпат</span></h2>
+<p class="section-subtitle">
+Погляньте на вибрані експедиції з 15 пройдених маршрутів за 2024–2026 роки.
+</p>
+</div>
+<div class="trips-grid" id="featured-trips-container">
+<!-- Динамічно завантажуються топ-3 походи -->
+</div>
+<div style="text-align: center; margin-top: 40px;">
+<a href="trips.html" class="btn btn-primary">
+Переглянути повну хронологію всіх 15 походів →
+</a>
+</div>
+</div>
+</section>
+<!-- Секція: Інтерактивний погодний інформер Карпатських хребтів -->
+<section class="section" style="background: rgba(0, 0, 0, 0.25); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">Гірський інформер</div>
+<h2 class="section-title">Погода на <span>хребтах Карпат</span></h2>
+<p class="section-subtitle">
+Оцінка умов для безпечного виходу в гори. Перевіряйте вітер та рівень безпеки перед виходом на маршрут.
+</p>
+</div>
+<div class="weather-grid">
+<!-- Чорногора -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">⛰️ Чорногора</div>
+<div class="weather-altitude">г. Говерла / г. Піп Іван (2028м)</div>
+</div>
+<span class="weather-badge weather-badge-warning">Помірний вітер</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+11°C</div>
+<div class="weather-condition">Мінлива хмарність</div>
+</div>
+<div style="font-size: 2.2rem;">🌤️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 12 м/с</span>
+<span>💧 Вологість: 68%</span>
+<span>⚠️ Ризик: Низький</span>
+</div>
+</div>
+<!-- Ґорґани -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">🪨 Ґорґани</div>
+<div class="weather-altitude">г. Велика Сивуля (1836м)</div>
+</div>
+<span class="weather-badge weather-badge-safe">Сприятливо</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+14°C</div>
+<div class="weather-condition">Ясно, сухий курумник</div>
+</div>
+<div style="font-size: 2.2rem;">☀️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 6 м/с</span>
+<span>💧 Вологість: 52%</span>
+<span>⚠️ Ризик: Мінімальний</span>
+</div>
+</div>
+<!-- Свидовець -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">🌊 Свидовець</div>
+<div class="weather-altitude">г. Близниця (1881м)</div>
+</div>
+<span class="weather-badge weather-badge-safe">Комфортно</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+15°C</div>
+<div class="weather-condition">Сонячно, теплий вітер</div>
+</div>
+<div style="font-size: 2.2rem;">🌤️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 8 м/с</span>
+<span>💧 Вологість: 58%</span>
+<span>⚠️ Ризик: Мінімальний</span>
+</div>
+</div>
+<!-- Мармароси -->
+<div class="weather-card">
+<div class="weather-header">
+<div>
+<div class="weather-region-name">🧗 Станимир</div>
+<div class="weather-altitude">хребет Станимир, г. Станимир</div>
+</div>
+<span class="weather-badge weather-badge-warning">Можливий туман</span>
+</div>
+<div class="weather-body">
+<div class="weather-temp-wrap">
+<div class="weather-temp">+12°C</div>
+<div class="weather-condition">Ранковий туман</div>
+</div>
+<div style="font-size: 2.2rem;">🌫️</div>
+</div>
+<div class="weather-metrics-row">
+<span>💨 Вітер: 10 м/с</span>
+<span>💧 Вологість: 75%</span>
+<span>⚠️ Ризик: Середній</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Секція: Карпатські поради & Безпека -->
+<section class="section" style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid var(--glass-border);">
+<div class="container">
+<!-- Контакти рятувальників -->
+<div>
+<h3 style="text-align: center; font-size: 1.3rem; margin-bottom: 20px;">🚨 Екстрені контакти рятувальних постів Карпат (ДПРЧ / ДСНС):</h3>
+<div class="rescue-grid">
+<div class="rescue-card">
+<div class="rescue-title">🏔️ Чорногірський рятувальний пост</div>
+<p style="font-size: 0.85rem;">Пошуково-рятувальне відділення на горі Піп Іван (обсерваторія «Білий Слон»).</p>
+<a href="tel:+380673420491" class="rescue-phone-btn">📞 +38 (067) 342-04-91</a>
+</div>
+<div class="rescue-card">
+<div class="rescue-title">🌲 Ворохтянське ПРВ (Івано-Франківськ)</div>
+<p style="font-size: 0.85rem;">Зона відповідальності: Говерла, Заросляк, Кукул, Кострича, Східні Ґорґани.</p>
+<a href="tel:+380673420492" class="rescue-phone-btn">📞 +38 (067) 342-04-92</a>
+</div>
+<div class="rescue-card">
+<div class="rescue-title">🌊 Ясінянське ПРВ (Закарпаття)</div>
+<p style="font-size: 0.85rem;">Зона відповідальності: Свидовець, Близниця, Драгобрат, Петрос, Чорна Тиса.</p>
+<a href="tel:+380673420493" class="rescue-phone-btn">📞 +38 (067) 342-04-93</a>
+</div>
+<div class="rescue-card">
+<div class="rescue-title">🆘 Єдиний номер порятунку</div>
+<p style="font-size: 0.85rem;">Екстрена допомога рятувальників по всій території України (безкоштовно з мобільного).</p>
+<a href="tel:112" class="rescue-phone-btn" style="background: #ef4444;">🚨 112 / 101</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Секція «Донат на подорожі» (Підтримка карпатських експедицій) -->
+<section class="section" id="donation-section" style="background: linear-gradient(180deg, rgba(7, 10, 13, 0.6) 0%, rgba(22, 32, 42, 0.8) 100%);">
+<div class="container">
+<div class="section-header">
+<div class="section-tag" style="color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.15);">
+☕ Підтримка проекту
+</div>
+<h2 class="section-title">Донат на <span>подорожі</span></h2>
+<p class="section-subtitle">
+Підтримайте нові сходження, створення безкоштовних GPX-треків та тестування спорядження в Карпатах!
+</p>
+</div>
+<div class="donate-methods-grid">
+<!-- Monobank -->
+<div class="donate-method-card mono">
+<div class="donate-card-header">
+<div class="donate-brand-badge" style="color: #eb5757;">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+Монобанк (Monobank)
+</div>
+<span class="weather-badge weather-badge-safe">Банка / Картка</span>
+</div>
+<div class="donate-card-number-box">
+<div>
+<div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Номер картки:</div>
+<div class="donate-number-text">4441 1111 4381 4170</div>
+</div>
+<button class="donate-copy-btn" onclick="navigator.clipboard.writeText('4441111143814170'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
+</div>
+<a href="https://send.monobank.ua/jar/6fnNdeHKGa" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-mono">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+Задонатити в Monobank (Банка) →
+</a>
+</div>
+<!-- PrivatBank -->
+<div class="donate-method-card privat">
+<div class="donate-card-header">
+<div class="donate-brand-badge" style="color: #5ebb3e;">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+ПриватБанк (Privat24)
+</div>
+<span class="weather-badge weather-badge-safe">Приват24</span>
+</div>
+<div class="donate-card-number-box">
+<div>
+<div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Номер картки:</div>
+<div class="donate-number-text">4149 6090 6510 1349</div>
+</div>
+<button class="donate-copy-btn" onclick="navigator.clipboard.writeText('4149609065101349'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
+</div>
+<a href="https://www.privat24.ua/send/477n8" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-privat">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+Задонатити через Приват24 →
+</a>
+</div>
+<!-- PayPal -->
+<div class="donate-method-card paypal">
+<div class="donate-card-header">
+<div class="donate-brand-badge" style="color: #38bdf8;">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.293-.418 2.68-1.574 4.352-3.447 5.253-1.026.495-2.274.743-3.71.743h-2.12c-.443 0-.822.319-.89.757l-.87 5.568-.27 1.728a.64.64 0 0 1-.633.541z"/></svg>
+PayPal (Міжнародний)
+</div>
+<span class="weather-badge weather-badge-safe">USD / EUR / PLN</span>
+</div>
+<div class="donate-card-number-box">
+<div>
+<div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">PayPal:</div>
+<div class="donate-number-text" style="font-size: 0.95rem;">katsimonster@gmail.com</div>
+</div>
+<button class="donate-copy-btn" onclick="navigator.clipboard.writeText('katsimonster@gmail.com'); this.innerText='✓ Скопійовано!'; setTimeout(()=>this.innerText='📋 Копіювати', 2000)">📋 Копіювати</button>
+</div>
+<a href="https://paypal.me/katsimonster" target="_blank" rel="noopener noreferrer" class="donate-action-btn btn-paypal">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+Задонатити через PayPal →
+</a>
+</div>
+</div>
+<div style="text-align: center; margin-top: 24px;">
+<a href="donate.html" class="btn btn-amber">
+<span>☕</span> Відкрити повну сторінку донатів & цілей збору →
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- 3. Підвал (Footer) -->
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col">
+<div class="brand-logo" style="margin-bottom: 12px;">
+<div class="brand-icon">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+</div>
+<div class="brand-text">Дожити до <span>фініша...</span></div>
+</div>
+<p class="footer-desc">
+Особистий щоденник гірських мандрівок Українськими Карпатами. 15 походів, практичні поради, вага спорядження та спільнота мандрівників.
+</p>
+</div>
+<div class="footer-col">
+<h4>Навігація</h4>
+<ul class="footer-links">
+<li><a href="index.html">Головна</a></li>
+<li><a href="trips.html">Подорожі (2024–2026)</a></li>
+<li><a href="gear.html">Каталог спорядження</a></li>
+<li><a href="community.html">Спільнота & Знайомства</a></li>
+<li><a href="donate.html" style="color: var(--accent-amber); font-weight: 700;">☕ Донат на подорожі</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Сезони</h4>
+<ul class="footer-links">
+<li><a href="trips.html?year=2024">Походи 2024 (5)</a></li>
+<li><a href="trips.html?year=2025">Походи 2025 (5)</a></li>
+<li><a href="trips.html?year=2026">Походи 2026 (5)</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Контакти</h4>
+<ul class="footer-links">
+<li><a href="https://t.me/Dovig" target="_blank" rel="noopener noreferrer">Telegram: @Dovig</a></li>
+<li><a href="community.html">Дошка оголошень</a></li>
+<li><span>Локація: Українські Карпати</span></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2024–2026 «Дожити до фініша...». Всі права захищено.</div>
+<div>Зроблено з любов'ю до Карпатських гір 🌲⛰️</div>
+</div>
+</div>
+</footer>
+<!-- Скрипти -->
+<script src="js/data/trips-data.js"></script>
+<script src="js/data/gear-data.js"></script>
+<script src="js/data/community-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Рендеринг 3 топ-походів на головній
 document.addEventListener('DOMContentLoaded', () => {
-  initTripsPage();
-  initLightbox();
+// 0a. Зворотний відлік до наступного походу (29.08.2026, 06:00, Яремче)
+(function initCountdown() {
+const targetDate = new Date('2026-08-29T06:00:00+03:00').getTime();
+const elDays = document.getElementById('cd-days');
+const elHours = document.getElementById('cd-hours');
+const elMinutes = document.getElementById('cd-minutes');
+const elSeconds = document.getElementById('cd-seconds');
+if (!elDays) return;
+function tick() {
+const now = new Date().getTime();
+const diff = targetDate - now;
+if (diff <= 0) {
+elDays.textContent = '0';
+elHours.textContent = '0';
+elMinutes.textContent = '0';
+elSeconds.textContent = '0';
+const label = document.querySelector('#countdown-timer').previousElementSibling;
+if (label) label.textContent = 'Похід уже почався! 🥾';
+clearInterval(timerInterval);
+return;
+}
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+elDays.textContent = days;
+elHours.textContent = String(hours).padStart(2, '0');
+elMinutes.textContent = String(minutes).padStart(2, '0');
+elSeconds.textContent = String(seconds).padStart(2, '0');
+}
+tick();
+const timerInterval = setInterval(tick, 1000);
+})();
+// 0. Випадковий порядок фото у hero-слайдшоу
+const heroPhotoUrls = [
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-01.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-02.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-03.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-04.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-05.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-06.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-07.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-08.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-09.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/highlight-10.jpg"
+];
+// Fisher-Yates shuffle — новий випадковий порядок при кожному завантаженні сторінки
+for (let i = heroPhotoUrls.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[heroPhotoUrls[i], heroPhotoUrls[j]] = [heroPhotoUrls[j], heroPhotoUrls[i]];
+}
+document.querySelectorAll('.hero-slide').forEach((slide, i) => {
+if (heroPhotoUrls[i]) {
+slide.style.backgroundImage = `url('${heroPhotoUrls[i]}')`;
+}
 });
-
-function initTripsPage() {
-  const container = document.getElementById('trips-grid-container');
-  if (!container || !window.TRIPS_DATA) return;
-
-  const yearButtons = document.querySelectorAll('.filter-btn[data-year]');
-  const regionButtons = document.querySelectorAll('.region-filter-btn[data-region]');
-  const searchInput = document.getElementById('trips-search-input');
-  const countBadge = document.getElementById('trips-count-badge');
-
-  // Перевірка URL параметрів (?year=2024 або ?id=trip-2024-1)
-  const urlParams = new URLSearchParams(window.location.search);
-  const yearParam = urlParams.get('year');
-  const tripIdParam = urlParams.get('id');
-
-  if (yearParam && ['2024', '2025', '2026'].includes(yearParam)) {
-    currentYearFilter = yearParam;
-    yearButtons.forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-year') === yearParam);
-    });
-  }
-
-  // Рендеринг карток
-  renderTrips(container, countBadge);
-
-  // 1. Обробка фільтрів за роками
-  yearButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      yearButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentYearFilter = btn.getAttribute('data-year');
-      renderTrips(container, countBadge);
-    });
-  });
-
-  // 2. Обробка фільтрів за регіонами / масивами
-  regionButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      regionButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentRegionFilter = btn.getAttribute('data-region');
-      renderTrips(container, countBadge);
-    });
-  });
-
-  // 3. Живий пошук
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      currentSearchQuery = e.target.value.toLowerCase().trim();
-      renderTrips(container, countBadge);
-    });
-  }
-
-  // Якщо в URL передано конкретний ID походу — відкриваємо модалку
-  if (tripIdParam) {
-    const targetTrip = window.TRIPS_DATA.find(t => t.id === tripIdParam);
-    if (targetTrip) {
-      setTimeout(() => openTripDetailsModal(targetTrip), 300);
-    }
-  }
+// Мобільні вертикальні фото — окремий набір, теж у випадковому порядку
+const heroMobilePhotoUrls = [
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-01.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-02.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-03.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-04.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-05.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-06.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-07.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-08.jpg",
+"https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/march-2026/mobile-09.jpg"
+];
+for (let i = heroMobilePhotoUrls.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[heroMobilePhotoUrls[i], heroMobilePhotoUrls[j]] = [heroMobilePhotoUrls[j], heroMobilePhotoUrls[i]];
 }
-
-/* ==========================================================================
-   Фільтрація та рендеринг списку
-   ========================================================================== */
-function getFilteredTrips() {
-  let list = [...window.TRIPS_DATA];
-
-  // Фільтр за роком
-  if (currentYearFilter !== 'all') {
-    const yearNum = parseInt(currentYearFilter, 10);
-    list = list.filter(trip => trip.year === yearNum);
-  }
-
-  // Фільтр за регіоном
-  if (currentRegionFilter !== 'all') {
-    if (currentRegionFilter === 'other') {
-      list = list.filter(trip => ['hryniavy', 'pishkonya'].includes(trip.regionKey));
-    } else {
-      list = list.filter(trip => trip.regionKey === currentRegionFilter);
-    }
-  }
-
-  // Фільтр за пошуковим рядком
-  if (currentSearchQuery) {
-    list = list.filter(trip => {
-      const matchTitle = trip.title.toLowerCase().includes(currentSearchQuery);
-      const matchRegion = trip.region.toLowerCase().includes(currentSearchQuery);
-      const matchRoute = trip.route.toLowerCase().includes(currentSearchQuery);
-      const matchPoi = trip.poi.some(p => p.toLowerCase().includes(currentSearchQuery));
-      return matchTitle || matchRegion || matchRoute || matchPoi;
-    });
-  }
-
-  return list.sort((a, b) => b.year - a.year);
+document.querySelectorAll('.hero-slide-mobile').forEach((slide, i) => {
+if (heroMobilePhotoUrls[i]) {
+slide.style.backgroundImage = `url('${heroMobilePhotoUrls[i]}')`;
 }
-
-function renderTrips(container, countBadge) {
-  const filtered = getFilteredTrips();
-  const favorites = getFavoritesList();
-
-  const isEn = document.documentElement.lang === 'en';
-
-  if (countBadge) {
-    countBadge.textContent = isEn 
-      ? `Found: ${filtered.length} of ${window.TRIPS_DATA.length}`
-      : `Знайдено: ${filtered.length} з ${window.TRIPS_DATA.length}`;
-  }
-
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;" class="glass-card">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin-bottom: 16px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <h3 style="margin-bottom: 8px;">${isEn ? 'No trips found' : 'Походів не знайдено'}</h3>
-        <p style="color: var(--text-muted);">${isEn ? 'Try changing filters, choosing another region, or resetting search.' : 'Спробуйте змінити фільтри, обрати інший масив або скинути пошук.'}</p>
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = filtered.map(trip => {
-
-    return `
-      <div class="glass-card trip-card">
-        <div class="trip-card-image-wrap">
-          <img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy" onclick="openTripById('${trip.id}')" style="cursor: pointer;">
-          <span class="trip-year-badge">${trip.season}</span>
-          <span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
-        </div>
-        <div class="trip-card-body">
-          <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-            ${trip.region}
-          </div>
-          <h3 class="trip-title">${trip.title}</h3>
-          
-          <div class="trip-metrics">
-            <div class="metric-item" title="${isEn ? 'Duration' : 'Тривалість'}">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>${trip.durationDays} ${isEn ? (trip.durationDays === 1 ? 'day' : 'days') : 'дн.'}</span>
-            </div>
-            <div class="metric-item" title="${isEn ? 'Distance' : 'Дистанція'}">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-              <span>${trip.distanceKm} ${isEn ? 'km' : 'км'}</span>
-            </div>
-            <div class="metric-item" title="${isEn ? 'Elevation gain' : 'Набір висоти'}">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
-              <span>+${trip.elevationGainM} ${isEn ? 'm' : 'м'}</span>
-            </div>
-          </div>
-
-          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5;">
-            ${trip.shortDesc}
-          </p>
-
-          <div style="margin-bottom: 16px;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; font-weight: 600;">${isEn ? 'Key landmarks:' : 'Визначні точки:'}</div>
-            <div class="trip-poi-list">
-              ${trip.poi.slice(0, 3).map(p => `<span class="poi-tag">${p}</span>`).join('')}
-              ${trip.poi.length > 3 ? `<span class="poi-tag">+${trip.poi.length - 3}</span>` : ''}
-            </div>
-          </div>
-
-          <div class="trip-card-footer" style="margin-top: 14px;">
-            <button class="btn btn-sm btn-primary" onclick="openTripById('${trip.id}')" style="width: 100%;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              ${isEn ? 'Details, Elevation & GPX' : 'Деталі, графік висот & GPX'}
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
+});
+// 1. Топ-3 походи
+const container = document.getElementById('featured-trips-container');
+if (container && window.TRIPS_DATA) {
+const featured = window.TRIPS_DATA.filter(t => t.year === 2026).slice(0, 3);
+container.innerHTML = featured.map(trip => `
+<div class="glass-card trip-card">
+<div class="trip-card-image-wrap">
+<img src="${trip.coverImage}" alt="${trip.title}" class="trip-card-img" loading="lazy">
+<span class="trip-year-badge">${trip.season}</span>
+<span class="trip-diff-badge diff-${trip.difficulty}">${trip.difficultyLabel}</span>
+</div>
+<div class="trip-card-body">
+<h3 class="trip-title">${trip.title}</h3>
+<div class="trip-metrics">
+<div class="metric-item">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>${trip.durationDays} дні</span>
+</div>
+<div class="metric-item">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+<span>${trip.distanceKm} км</span>
+</div>
+<div class="metric-item">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"></path></svg>
+<span>+${trip.elevationGainM} м</span>
+</div>
+</div>
+<p style="font-size: 0.9rem; margin-bottom: 18px; color: var(--text-secondary);">${trip.shortDesc}</p>
+<div class="trip-card-footer">
+<a href="trips.html?id=${trip.id}" class="btn btn-sm btn-outline">Деталі маршруту →</a>
+</div>
+</div>
+</div>
+`).join('');
 }
-
-/* ==========================================================================
-   Інтерактивна Карта Leaflet
-   ========================================================================== */
-function initLeafletMap() {
-  const mapEl = document.getElementById('trips-map-container');
-  if (!mapEl || typeof L === 'undefined') return;
-
-  // Центр Карпат (район Чорногори та Ґорґан)
-  carpathianMap = L.map('trips-map-container').setView([48.25, 24.38], 9);
-
-  // Стилізована підкладка карти (CartoDB Dark Matter / Voyager)
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; CARTO',
-    maxZoom: 16,
-    subdomains: 'abcd'
-  }).addTo(carpathianMap);
-
-  updateMapMarkers();
-}
-
-function updateMapMarkers() {
-  if (!carpathianMap || typeof L === 'undefined') return;
-
-  // Очищення попередніх маркерів
-  mapMarkers.forEach(m => carpathianMap.removeLayer(m));
-  mapMarkers = [];
-
-  const trips = getFilteredTrips();
-  const bounds = [];
-
-  trips.forEach(trip => {
-    if (!trip.coordinates) return;
-
-    const [lat, lng] = trip.coordinates;
-    bounds.push([lat, lng]);
-
-    // Кастомна іконка маркера
-    const iconHtml = `
-      <div class="carpathian-marker ${trip.difficulty === 'extreme' ? 'extreme' : ''}" title="${trip.title}">
-        ⛰️
-      </div>
-    `;
-
-    const customIcon = L.divIcon({
-      html: iconHtml,
-      className: 'custom-leaflet-marker-wrap',
-      iconSize: [36, 36],
-      iconAnchor: [18, 18],
-      popupAnchor: [0, -20]
-    });
-
-    const popupHtml = `
-      <div class="map-popup-card">
-        <img src="${trip.coverImage}" alt="${trip.title}" class="map-popup-img">
-        <div class="map-popup-title">${trip.title}</div>
-        <div class="map-popup-meta">
-          <span>${trip.season}</span> • <span>${trip.distanceKm} км</span> • <span>+${trip.elevationGainM}м</span>
-        </div>
-        <button class="btn btn-sm btn-primary" onclick="openTripById('${trip.id}')" style="width: 100%; font-size: 0.8rem; padding: 6px 12px;">
-          Відкрити деталі маршруту →
-        </button>
-      </div>
-    `;
-
-    const marker = L.marker([lat, lng], { icon: customIcon })
-      .bindPopup(popupHtml)
-      .addTo(carpathianMap);
-
-    mapMarkers.push(marker);
-  });
-
-  if (bounds.length > 0) {
-    carpathianMap.fitBounds(bounds, { padding: [40, 40] });
-  }
-}
-
-/* ==========================================================================
-   Модальне вікно деталей походу & Профіль висот & GPX
-   ========================================================================== */
-window.openTripById = function(id) {
-  const trip = window.TRIPS_DATA.find(t => t.id === id);
-  if (trip) openTripDetailsModal(trip);
-};
-
-function openTripDetailsModal(trip) {
-  const modal = document.getElementById('trip-details-modal');
-  const modalBody = document.getElementById('trip-modal-body');
-  if (!modal || !modalBody) return;
-
-  const isEn = document.documentElement.lang === 'en';
-  const isFav = getFavoritesList().includes(trip.id);
-  const elevationSvgHtml = renderElevationProfileSvg(trip.elevationProfile || []);
-
-  // Розрахунок часу за формулою Нейсміта (Naismith's rule) та калорій
-  const walkHours = ((trip.distanceKm / 4.2) + (trip.elevationGainM / 400)).toFixed(1);
-  const estCalories = Math.round(trip.distanceKm * 65 + trip.elevationGainM * 0.55);
-
-  // Специфічний чек-лист під тип маршруту
-  let gearChecklist = isEn 
-    ? ["Stove & gas", "First aid kit", "Rain jacket", "Headlamp"]
-    : ["Пальник та газ", "Аптечка", "Мембранна куртка", "Налобний ліхтар"];
-  if (trip.regionKey === 'gorgany') {
-    if (isEn) gearChecklist.push("Gaiters", "Trekking poles", "Stiff boots");
-    else gearChecklist.push("Гамаші від каміння", "Трекінгові палиці", "Черевики з жорстким рантом");
-  } else if (trip.regionKey === 'marmarosy') {
-    if (isEn) gearChecklist.push("Passport / border permit", "Satellite GPS", "Water filter");
-    else gearChecklist.push("Паспорт / дозвіл ДПСУ", "Супутниковий GPS", "Фільтр для води");
-  } else if (trip.difficulty === 'extreme' || trip.season.toLowerCase().includes('січень') || trip.season.toLowerCase().includes('зимов') || trip.season.toLowerCase().includes('january') || trip.season.toLowerCase().includes('winter')) {
-    if (isEn) gearChecklist.push("Crampons", "Snowshoes", "Thermos 1L", "Winter down jacket");
-    else gearChecklist.push("Кішки альпіністські", "Снігоступи", "Термос 1л", "Зимовий пуховик");
-  } else {
-    if (isEn) gearChecklist.push("Water supply 2L", "Sunscreen", "Light sleeping bag");
-    else gearChecklist.push("Запас води 2л", "Крем від сонця", "Легкий спальник");
-  }
-
-  modalBody.innerHTML = `
-    <div style="margin-bottom: 20px;">
-      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
-        <span class="trip-year-badge" style="position: static;">${trip.season}</span>
-        <span class="trip-diff-badge diff-${trip.difficulty}" style="position: static;">${trip.difficultyLabel}</span>
-        <span style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 600;">${trip.region}</span>
-      </div>
-      <h2 style="font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; line-height: 1.35; font-family: var(--font-sans, inherit);">${trip.title}</h2>
-      
-      <div class="trip-metrics" style="padding: 14px 0; font-size: 1.15rem; font-weight: 700; display: flex; flex-wrap: wrap; gap: 16px 28px;">
-        <div class="metric-item"><strong style="color: var(--accent-emerald);">${isEn ? 'Duration' : 'Тривалість'}:</strong> <span>${trip.durationDays} ${isEn ? (trip.durationDays === 1 ? 'day' : 'days') : (trip.durationDays === 1 || trip.durationDays >= 5 ? 'днів' : 'дні')}</span></div>
-        <div class="metric-item"><strong style="color: var(--accent-emerald);">${isEn ? 'Distance' : 'Дистанція'}:</strong> <span>${trip.distanceKm} ${isEn ? 'km' : 'км'}</span></div>
-        <div class="metric-item"><strong style="color: var(--accent-emerald);">${isEn ? 'Elevation gain' : 'Набір висоти'}:</strong> <span>+${trip.elevationGainM} ${isEn ? 'm' : 'м'}</span></div>
-      </div>
-    </div>
-
-    <!-- GPS Метрики (Реальні зі Strava або розрахункові) -->
-    ${trip.stats ? `
-    <div style="margin-bottom: 20px;">
-      <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-emerald); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.05em;">📊 ${isEn ? 'Strava GPS Tracking Metrics:' : '📊 Фіксовані GPS-метрики (Strava Tracking):'}</div>
-      <div class="trip-calc-row" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.4);">
-        <div class="calc-box">
-          <div class="calc-value">🏃 ${trip.stats.movingTime}</div>
-          <div class="calc-label">${isEn ? 'Moving Time' : 'Час у русі'}</div>
-        </div>
-        <div class="calc-box">
-          <div class="calc-value">⏱️ ${trip.stats.totalTime}</div>
-          <div class="calc-label">${isEn ? 'Total Time' : 'Загальний час'}</div>
-        </div>
-        <div class="calc-box">
-          <div class="calc-value">👣 ${trip.stats.steps ? trip.stats.steps.toLocaleString(isEn ? 'en-US' : 'uk-UA') : '—'}</div>
-          <div class="calc-label">${isEn ? 'Steps' : 'Кроки'}</div>
-        </div>
-        <div class="calc-box">
-          <div class="calc-value">🔥 ${trip.stats.calories ? trip.stats.calories.toLocaleString(isEn ? 'en-US' : 'uk-UA') + (isEn ? ' kcal' : ' ккал') : '—'}</div>
-          <div class="calc-label">${isEn ? 'Energy Burnt' : 'Витрата енергії'}</div>
-        </div>
-      </div>
-    </div>
-    ` : `
-    <!-- Калькулятор ходового часу (Naismith Rule) та калорій -->
-    <div class="trip-calc-row">
-      <div class="calc-box">
-        <div class="calc-value">⏱️ ~${walkHours} ${isEn ? 'h' : 'год'}</div>
-        <div class="calc-label">${isEn ? 'Est. Moving Time' : 'Чистий час ходи'}</div>
-      </div>
-      <div class="calc-box">
-        <div class="calc-value">🔥 ~${estCalories} ${isEn ? 'kcal' : 'ккал'}</div>
-        <div class="calc-label">${isEn ? 'Est. Energy Burnt' : 'Енерговитрати'}</div>
-      </div>
-      <div class="calc-box">
-        <div class="calc-value">💧 2.5–3 ${isEn ? 'l/day' : 'л/день'}</div>
-        <div class="calc-label">${isEn ? 'Recommended Water' : 'Рекомендована вода'}</div>
-      </div>
-    </div>
-    `}
-
-    <!-- Маршрут, кнопки GPX та Копіювання -->
-    <div style="margin-bottom: 24px; padding: 18px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md); border-left: 3px solid var(--accent-emerald); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-      <div style="flex: 1; min-width: 260px;">
-        <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--accent-emerald); margin-bottom: 6px; letter-spacing: 0.05em;">${isEn ? 'Route path (GPS track):' : 'Нить маршруту (GPS трек):'}</h4>
-        <p style="font-size: 0.95rem; color: #ffffff; font-weight: 500;">${trip.route}</p>
-      </div>
-      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-        <button class="btn btn-sm btn-gpx" onclick="downloadTripGpx('${trip.id}')" title="${isEn ? 'Download for Garmin / OsmAnd / Gaia GPS' : 'Завантажити для Garmin / OsmAnd / Gaia GPS'}">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          ${isEn ? 'GPX track' : 'GPX трек'}
-        </button>
-        <button class="btn btn-sm btn-secondary" onclick="copyTripRoute('${trip.id}', this)" title="${isEn ? 'Copy route description to clipboard' : 'Скопіювати опис для друзів у чат'}">
-          📋 ${isEn ? 'Copy' : 'Скопіювати'}
-        </button>
-      </div>
-    </div>
-
-    <!-- Поденний детальний розбір маршруту (якщо є) -->
-    ${trip.daysBreakdown && trip.daysBreakdown.length > 0 ? `
-    <div style="margin-bottom: 24px;">
-      <h4 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-emerald); display: flex; align-items: center; gap: 8px;">
-        <span>🗓️</span> ${isEn ? 'Daily Breakdown' : 'Щоденний розбір етапів'} (${trip.daysBreakdown.length} ${isEn ? (trip.daysBreakdown.length === 1 ? 'day' : 'days') : 'дні'}):
-      </h4>
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        ${trip.daysBreakdown.map(d => `
-          <div style="padding: 14px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-md); transition: var(--transition-fast);">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
-              <span style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">
-                ${isEn ? 'Day' : 'День'} ${d.day} — ${d.date} ${d.start ? `<span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(${isEn ? 'Start:' : 'Старт:'} ${d.start})</span>` : ''}
-              </span>
-              <div style="display: flex; gap: 8px; font-size: 0.85rem;">
-                <span style="padding: 2px 8px; background: rgba(16, 185, 129, 0.15); border-radius: 4px; color: var(--accent-emerald); font-weight: 600;">${d.distanceKm} ${isEn ? 'km' : 'км'}</span>
-                <span style="padding: 2px 8px; background: rgba(245, 158, 11, 0.15); border-radius: 4px; color: var(--accent-amber); font-weight: 600;">+${d.elevationM} ${isEn ? 'm' : 'м'}</span>
-                ${d.maxAltM ? `<span style="padding: 2px 8px; background: rgba(59, 130, 246, 0.15); border-radius: 4px; color: #93c5fd; font-weight: 600;">⛰️ ${d.maxAltM}${isEn ? 'm' : 'м'}</span>` : ''}
-              </div>
-            </div>
-            <div style="font-size: 0.88rem; color: var(--accent-amber); font-weight: 600; margin-bottom: 4px;">
-              📍 ${d.route}
-            </div>
-            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
-              ${d.notes}
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    ` : ''}
-
-    <!-- Графік перепаду висот (Elevation Profile) -->
-    <div class="elevation-card">
-      <div class="elevation-header">
-        <div class="elevation-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          ${isEn ? 'Route Elevation Profile' : 'Профіль перепаду висот маршруту'}
-        </div>
-        <div class="elevation-max-badge">
-          ${isEn ? 'Max alt:' : 'Макс. висота:'} ${Math.max(...(trip.elevationProfile || [{alt: 2000}]).map(p => p.alt))} ${isEn ? 'm' : 'м'}
-        </div>
-      </div>
-      <div class="elevation-chart-wrap">
-        ${elevationSvgHtml}
-      </div>
-    </div>
-
-    <!-- Фотозвіт (Клік відкриває Lightbox) -->
-    <div style="margin-bottom: 20px;">
-      <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-primary);">${isEn ? 'Photos from the trip (click to view full size):' : 'Фотозвіт з походу (клік для повноекранного перегляду):'}</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-        ${trip.images.map((img, idx) => `
-          <div style="border-radius: var(--radius-md); overflow: hidden; height: 160px; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightboxFromTrip('${trip.id}', ${idx})">
-            <img src="${img}" alt="${isEn ? 'Photo' : 'Фото'} ${idx + 1}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-fast);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-
-  window.openModal(modal);
-}
-
-// Функція копіювання маршруту в буфер
-window.copyTripRoute = function(tripId, btn) {
-  const trip = window.TRIPS_DATA.find(t => t.id === tripId);
-  if (!trip) return;
-  const isEn = document.documentElement.lang === 'en';
-
-  const textToCopy = isEn
-    ? `⛰️ “${trip.title}” (${trip.season})\n` +
-      `📍 Region: ${trip.region}\n` +
-      `📏 Distance: ${trip.distanceKm} km | Elevation gain: +${trip.elevationGainM} m | ${trip.durationDays} days\n` +
-      `🧭 Route: ${trip.route}\n` +
-      `🔗 View details: ${window.location.origin}/en/trips.html?id=${trip.id}`
-    : `⛰️ «${trip.title}» (${trip.season})\n` +
-      `📍 Район: ${trip.region}\n` +
-      `📏 Дистанція: ${trip.distanceKm} км | Набір: +${trip.elevationGainM} м | ${trip.durationDays} дні\n` +
-      `🧭 Маршрут: ${trip.route}\n` +
-      `🔗 Дивитися деталі: ${window.location.origin}/trips.html?id=${trip.id}`;
-
-  navigator.clipboard.writeText(textToCopy).then(() => {
-    const originalText = btn.innerHTML;
-    btn.innerHTML = isEn ? `✓ Copied!` : `✓ Скопійовано!`;
-    btn.style.background = 'var(--accent-emerald)';
-    btn.style.color = '#fff';
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 2000);
-  }).catch(() => {
-    alert(isEn ? 'Route copied!' : 'Маршрут скопійовано!');
-  });
-};
-
-/* ==========================================================================
-   Генерація динамічного SVG Elevation Profile
-   ========================================================================== */
-function renderElevationProfileSvg(points) {
-  const isEn = document.documentElement.lang === 'en';
-  if (!points || points.length < 2) {
-    return `<p style="color: var(--text-muted); font-size: 0.85rem;">${isEn ? 'Elevation profile data is loading...' : 'Дані профілю висот формуються...'}</p>`;
-  }
-
-  const width = 640;
-  const height = 150;
-  const paddingX = 40;
-  const paddingTop = 25;
-  const paddingBottom = 35;
-
-  const minAlt = Math.min(...points.map(p => p.alt)) - 100;
-  const maxAlt = Math.max(...points.map(p => p.alt)) + 100;
-
-  const getX = (idx) => paddingX + (idx / (points.length - 1)) * (width - paddingX * 2);
-  const getY = (alt) => paddingTop + (1 - (alt - minAlt) / (maxAlt - minAlt)) * (height - paddingTop - paddingBottom);
-
-  let pathD = `M ${getX(0)} ${getY(points[0].alt)}`;
-  for (let i = 1; i < points.length; i++) {
-    pathD += ` L ${getX(i)} ${getY(points[i].alt)}`;
-  }
-
-  const areaD = `${pathD} L ${getX(points.length - 1)} ${height - paddingBottom} L ${getX(0)} ${height - paddingBottom} Z`;
-
-  const circlesAndLabels = points.map((p, i) => {
-    const x = getX(i);
-    const y = getY(p.alt);
-    return `
-      <g>
-        <circle cx="${x}" cy="${y}" r="4.5" fill="#10b981" stroke="#ffffff" stroke-width="1.5" />
-        <text x="${x}" y="${y - 8}" fill="#f59e0b" font-size="10" font-weight="700" text-anchor="middle">${p.alt}м</text>
-        <text x="${x}" y="${height - 10}" fill="#94a3b8" font-size="9.5" text-anchor="middle">${p.point}</text>
-      </g>
-    `;
-  }).join('');
-
-  return `
-    <svg viewBox="0 0 ${width} ${height}" class="elevation-svg" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="elevGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#10b981" stop-opacity="0.45" />
-          <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
-        </linearGradient>
-      </defs>
-      <!-- Сітка висот -->
-      <line x1="${paddingX}" y1="${height - paddingBottom}" x2="${width - paddingX}" y2="${height - paddingBottom}" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
-      <path d="${areaD}" fill="url(#elevGrad)" />
-      <path d="${pathD}" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-      ${circlesAndLabels}
-    </svg>
-  `;
-}
-
-/* ==========================================================================
-   Експорт валідного GPX 1.1 треку для навігаторів
-   ========================================================================== */
-window.downloadTripGpx = function(tripId) {
-  const trip = window.TRIPS_DATA.find(t => t.id === tripId);
-  if (!trip) return;
-
-  const [lat, lng] = trip.coordinates || [48.16, 24.50];
-  const ele = trip.elevationProfile?.[2]?.alt || 1800;
-
-  const gpxContent = `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="Дожити до фініша... — https://carpathian-trail.ua" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata>
-    <name>${trip.title}</name>
-    <desc>${trip.route}</desc>
-    <time>${new Date().toISOString()}</time>
-  </metadata>
-  <wpt lat="${lat}" lon="${lng}">
-    <ele>${ele}</ele>
-    <name>${trip.title}</name>
-    <desc>Region: ${trip.region} | Distance: ${trip.distanceKm}km | Elevation gain: +${trip.elevationGainM}m</desc>
-    <sym>Summit</sym>
-  </wpt>
-  ${(trip.elevationProfile || []).map((pt, idx) => `
-  <wpt lat="${(lat + (idx * 0.005 - 0.01)).toFixed(4)}" lon="${(lng + (idx * 0.005 - 0.01)).toFixed(4)}">
-    <ele>${pt.alt}</ele>
-    <name>${pt.point}</name>
-    <sym>Waypoint</sym>
-  </wpt>
-  `).join('')}
-  <trk>
-    <name>${trip.title} (GPS Track)</name>
-    <trkseg>
-      ${(trip.elevationProfile || []).map((pt, idx) => `
-      <trkpt lat="${(lat + (idx * 0.005 - 0.01)).toFixed(4)}" lon="${(lng + (idx * 0.005 - 0.01)).toFixed(4)}">
-        <ele>${pt.alt}</ele>
-        <time>${new Date().toISOString()}</time>
-      </trkpt>
-      `).join('')}
-    </trkseg>
-  </trk>
-</gpx>`;
-
-  const blob = new Blob([gpxContent], { type: 'application/gpx+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `${trip.id}-${trip.regionKey || 'carpathians'}.gpx`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-};
-
-/* ==========================================================================
-   Система «Обране» (Favorites) з LocalStorage
-   ========================================================================== */
-function getFavoritesList() {
-  try {
-    return JSON.parse(localStorage.getItem('carpathian_favorites') || '[]');
-  } catch (e) {
-    return [];
-  }
-}
-
-window.toggleFavorite = function(tripId, e) {
-  if (e) e.stopPropagation();
-  let favs = getFavoritesList();
-  if (favs.includes(tripId)) {
-    favs = favs.filter(id => id !== tripId);
-  } else {
-    favs.push(tripId);
-  }
-  localStorage.setItem('carpathian_favorites', JSON.stringify(favs));
-  updateFavoriteBadge();
-
-  const container = document.getElementById('trips-grid-container');
-  const countBadge = document.getElementById('trips-count-badge');
-  if (container) renderTrips(container, countBadge);
-
-  // Оновлення модалки якщо відкрита
-  const modalFavBtn = document.querySelector('#trip-modal-body .trip-fav-btn');
-  if (modalFavBtn) {
-    const isNowFav = favs.includes(tripId);
-    modalFavBtn.classList.toggle('active', isNowFav);
-    modalFavBtn.querySelector('svg').setAttribute('fill', isNowFav ? '#ef4444' : 'none');
-  }
-};
-
-function updateFavoriteBadge() {
-  const badge = document.getElementById('fav-counter-badge');
-  if (badge) {
-    badge.textContent = getFavoritesList().length;
-  }
-}
-
-/* ==========================================================================
-   Система Реакцій (🔥 ⛰️ ⛺ ❄️) з LocalStorage
-   ========================================================================== */
-function getUserReactionsMap() {
-  try {
-    return JSON.parse(localStorage.getItem('carpathian_user_reactions') || '{}');
-  } catch (e) {
-    return {};
-  }
-}
-
-function getUserReaction(tripId) {
-  const map = getUserReactionsMap();
-  return map[tripId] || null;
-}
-
-function getTripReactions(trip) {
-  const customReactions = JSON.parse(localStorage.getItem('carpathian_custom_reactions') || '{}');
-  const stored = customReactions[trip.id] || trip.reactions || { fire: 10, mountain: 15, tent: 8, snow: 3 };
-  return stored;
-}
-
-window.toggleReaction = function(tripId, reactionType, e) {
-  if (e) e.stopPropagation();
-  const trip = window.TRIPS_DATA.find(t => t.id === tripId);
-  if (!trip) return;
-
-  const userMap = getUserReactionsMap();
-  const currentReaction = userMap[tripId];
-  const customReactions = JSON.parse(localStorage.getItem('carpathian_custom_reactions') || '{}');
-  const tripReacts = { ...(customReactions[tripId] || trip.reactions) };
-
-  if (currentReaction === reactionType) {
-    // Скасувати реакцію
-    tripReacts[reactionType] = Math.max(0, (tripReacts[reactionType] || 1) - 1);
-    delete userMap[tripId];
-  } else {
-    // Зняти попередню якщо була
-    if (currentReaction && tripReacts[currentReaction]) {
-      tripReacts[currentReaction] = Math.max(0, tripReacts[currentReaction] - 1);
-    }
-    // Додати нову
-    tripReacts[reactionType] = (tripReacts[reactionType] || 0) + 1;
-    userMap[tripId] = reactionType;
-  }
-
-  customReactions[tripId] = tripReacts;
-  localStorage.setItem('carpathian_custom_reactions', JSON.stringify(customReactions));
-  localStorage.setItem('carpathian_user_reactions', JSON.stringify(userMap));
-
-  const container = document.getElementById('trips-grid-container');
-  const countBadge = document.getElementById('trips-count-badge');
-  if (container) renderTrips(container, countBadge);
-};
-
-/* ==========================================================================
-   Повноекранна галерея Lightbox
-   ========================================================================== */
-function initLightbox() {
-  const modal = document.getElementById('lightbox-modal');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('lightbox-prev');
-  const nextBtn = document.getElementById('lightbox-next');
-
-  if (!modal) return;
-
-  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-  if (prevBtn) prevBtn.addEventListener('click', showPrevLightboxImage);
-  if (nextBtn) nextBtn.addEventListener('click', showNextLightboxImage);
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeLightbox();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') showPrevLightboxImage();
-    if (e.key === 'ArrowRight') showNextLightboxImage();
-  });
-}
-
-window.openLightboxFromTrip = function(tripId, startIndex = 0) {
-  const trip = window.TRIPS_DATA.find(t => t.id === tripId);
-  if (!trip || !trip.images || !trip.images.length) return;
-
-  lightboxImages = trip.images;
-  currentLightboxIndex = startIndex;
-  currentLightboxCaption = trip.title;
-  updateLightboxContent();
-
-  const modal = document.getElementById('lightbox-modal');
-  if (modal) modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-};
-
-function closeLightbox() {
-  const modal = document.getElementById('lightbox-modal');
-  if (modal) modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function showPrevLightboxImage() {
-  if (!lightboxImages.length) return;
-  currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
-  updateLightboxContent();
-}
-
-function showNextLightboxImage() {
-  if (!lightboxImages.length) return;
-  currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
-  updateLightboxContent();
-}
-
-function updateLightboxContent() {
-  const imgEl = document.getElementById('lightbox-image');
-  const captionEl = document.getElementById('lightbox-caption');
-  const counterEl = document.getElementById('lightbox-counter');
-
-  const isEn = document.documentElement.lang === 'en';
-  if (imgEl) imgEl.src = lightboxImages[currentLightboxIndex];
-  if (captionEl) captionEl.textContent = currentLightboxCaption;
-  if (counterEl) {
-    counterEl.textContent = isEn 
-      ? `Photo ${currentLightboxIndex + 1} of ${lightboxImages.length}`
-      : `Фото ${currentLightboxIndex + 1} з ${lightboxImages.length}`;
-  }
-}
+});
+</script>
+</body>
+</html>
