@@ -364,6 +364,35 @@
         { date: "March 10", route: "Rest camp at the highest point of the route", notes: "Final rest day before the final descent to Yasinya." },
         { date: "March 11", route: "Descent to the Chorna Tysa river → Yasinya (finish)", notes: "Descent from the high mountains to the Chorna Tysa river and an easy valley finish transit to Yasinya. The highest average moving speed of the trip: 4.6 km/h. Split: 9:02 min/km." }
       ]
+    },
+    "trip-2026-6": {
+      season: "August 29 – September 4, 2026",
+      title: "Seven-Day Traverse of Gorgany & Beskids: Yaremche — Perehinske — Slavske",
+      region: "Gorgany — Skolivski Beskids",
+      difficultyLabel: "Extreme (166.2 km)",
+      route: "Yaremche — Pasichna — Stanymyr ridge — Perehinske — Mt. Popadya — Mt. Grofa (1728 m) — Vyshkivskyi Gorgan — Torun pass — Slavske",
+      poi: ["Yaremche", "Pasichna", "Stanymyr ridge", "Mt. Kateryna", "Perehinske", "Mt. Petros Gorgan", "Mt. Popadya", "Mt. Grofa (1728 m)", "Vyshkivskyi Gorgan", "Torun pass", "Slavske"],
+      shortDesc: "A 7-day extreme traverse covering 166.2 km from Yaremche through Gorgany (Stanymyr ridge, Mt. Grofa) and Skolivski Beskids to Slavske, with 8175 m of total elevation gain.",
+      elevationProfile: [
+        { point: "Yaremche (start)" },
+        { point: "Pasichna — Syniachka — Shuvarenka" },
+        { point: "Stanymyr ridge — Mt. Kateryna" },
+        { point: "Polonyna Borevka — Perehinske" },
+        { point: "Mt. Petros Gorgan — Mt. Popadya" },
+        { point: "Mt. Parenky — Mt. Grofa (summit)" },
+        { point: "Vyshkivskyi Gorgan — Mt. Magura" },
+        { point: "Torun pass — Mt. Vysokyi Verkh" },
+        { point: "Slavske (finish)" }
+      ],
+      daysBreakdown: [
+        { date: "August 29", route: "Yaremche → Syniachka → Shuvarenka → Pasichna", notes: "Start from Yaremche. Moving time 4:33:37, pace 14:22 min/km. Steps 26,936, calories 1357 kcal." },
+        { date: "August 30", route: "Pasichna → Zelena → Stanymyr ridge → Mt. Kateryna", notes: "Moving time 4:16:59, pace 14:24 min/km. Steps 25,652, calories 1271 kcal." },
+        { date: "August 31", route: "Mt. Kateryna → Polonyna Borevka → Rizarnia → Perehinske", notes: "Longest day of the route (34.3 km, 46,654 steps). Moving time 7:22:25, pace 12:54 min/km. Calories 2445 kcal." },
+        { date: "September 1", route: "Perehinske → Mt. Petros Gorgan → Koretvyna → Mt. Popadya → Mt. Mala Popadya", notes: "A high-mountain push day with the biggest specific elevation gain. Moving time 4:35:44, pace 19:05 min/km. Steps 7444, calories 1030 kcal." },
+        { date: "September 2", route: "Mt. Mala Popadya → Mt. Parenky → Mt. Grofa → Polonyna Solotvynka", notes: "Highest point of the entire route (1728 m). Moving time 5:36:02, pace 16:43 min/km. Steps 31,526, calories 1433 kcal." },
+        { date: "September 3", route: "Polonyna Solotvynka → Mt. Yarova Kychera → Vyshkivskyi Gorgan → Mt. Magura", notes: "Moving time 5:25:35, pace 13:33 min/km. Steps 33,720, calories 1713 kcal." },
+        { date: "September 4 (Finish)", route: "Mt. Magura → Torun pass → Mt. Shchovb → Mt. Obnoha → Mt. Chorna Rypa → Mt. Vysokyi Verkh → Slavske", notes: "Final and longest day (36.42 km). Moving time 7:09:09, pace 11:47 min/km. Steps 47,816, calories 2596 kcal." }
+      ]
     }
   };
 
