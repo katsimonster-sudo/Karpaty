@@ -189,3 +189,22 @@
     font-size: 0.8rem;
   }
 }
+
+/* Hero subtitle break control */
+.hero-sub-break {
+  display: inline;
+}
+
+@media (min-width: 641px) {
+  .hero-sub-break {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-subtitle {
+    font-size: clamp(0.88rem, 3.8vw, 1.12rem) !important;
+    line-height: 1.45 !important;
+  }
+}
+
