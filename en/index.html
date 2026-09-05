@@ -29,8 +29,8 @@
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#10b981">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/components.css?v=20260905-2">
+  <link rel="stylesheet" href="../css/responsive.css?v=20260905-2">
   <style>
     .hero-bg-slideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
     .hero-slide {
@@ -180,29 +180,29 @@
           <p class="section-subtitle" style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 36px; color: var(--text-secondary);">
             Chronicle of 16 mountain hikes in the Carpathians over three years (2024–2026).
           </p>
-          <div class="countdown-card">
-            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px;">
+          <div class="countdown-card" style="max-width: 500px; margin: 0 auto 36px; padding: 18px 12px; border-radius: 16px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); text-shadow: 0 2px 8px rgba(0,0,0,0.6);">
+            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px; text-align: center;">
               ⛰️ Countdown to the next hike
             </div>
-            <div style="font-size: 0.85rem; color: #ffffff; margin-bottom: 16px;">
+            <div style="font-size: 0.85rem; color: #ffffff; margin-bottom: 14px; text-align: center;">
               Volovets · November 6, 2026, 08:00
             </div>
-            <div id="countdown-timer" class="countdown-timer-wrap">
-              <div class="countdown-col">
-                <div id="cd-days" class="countdown-num">—</div>
-                <div class="countdown-lbl">days</div>
+            <div id="countdown-timer" class="countdown-timer-wrap" style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; justify-content: space-between !important; align-items: stretch !important; gap: 6px !important; width: 100% !important; max-width: 420px !important; margin: 0 auto !important;">
+              <div class="countdown-col" style="flex: 1 1 0 !important; min-width: 0 !important; text-align: center !important; padding: 8px 2px !important; background: rgba(0, 0, 0, 0.3) !important; border-radius: 8px !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <div id="cd-days" class="countdown-num" style="font-size: clamp(1.2rem, 5.5vw, 2rem) !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.1 !important; white-space: nowrap !important;">—</div>
+                <div class="countdown-lbl" style="font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important; color: rgba(255, 255, 255, 0.8) !important; text-transform: uppercase !important; margin-top: 3px !important; white-space: nowrap !important;">days</div>
               </div>
-              <div class="countdown-col">
-                <div id="cd-hours" class="countdown-num">—</div>
-                <div class="countdown-lbl">hrs</div>
+              <div class="countdown-col" style="flex: 1 1 0 !important; min-width: 0 !important; text-align: center !important; padding: 8px 2px !important; background: rgba(0, 0, 0, 0.3) !important; border-radius: 8px !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <div id="cd-hours" class="countdown-num" style="font-size: clamp(1.2rem, 5.5vw, 2rem) !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.1 !important; white-space: nowrap !important;">—</div>
+                <div class="countdown-lbl" style="font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important; color: rgba(255, 255, 255, 0.8) !important; text-transform: uppercase !important; margin-top: 3px !important; white-space: nowrap !important;">hrs</div>
               </div>
-              <div class="countdown-col">
-                <div id="cd-minutes" class="countdown-num">—</div>
-                <div class="countdown-lbl">min</div>
+              <div class="countdown-col" style="flex: 1 1 0 !important; min-width: 0 !important; text-align: center !important; padding: 8px 2px !important; background: rgba(0, 0, 0, 0.3) !important; border-radius: 8px !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <div id="cd-minutes" class="countdown-num" style="font-size: clamp(1.2rem, 5.5vw, 2rem) !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.1 !important; white-space: nowrap !important;">—</div>
+                <div class="countdown-lbl" style="font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important; color: rgba(255, 255, 255, 0.8) !important; text-transform: uppercase !important; margin-top: 3px !important; white-space: nowrap !important;">min</div>
               </div>
-              <div class="countdown-col">
-                <div id="cd-seconds" class="countdown-num">—</div>
-                <div class="countdown-lbl">sec</div>
+              <div class="countdown-col" style="flex: 1 1 0 !important; min-width: 0 !important; text-align: center !important; padding: 8px 2px !important; background: rgba(0, 0, 0, 0.3) !important; border-radius: 8px !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <div id="cd-seconds" class="countdown-num" style="font-size: clamp(1.2rem, 5.5vw, 2rem) !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.1 !important; white-space: nowrap !important;">—</div>
+                <div class="countdown-lbl" style="font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important; color: rgba(255, 255, 255, 0.8) !important; text-transform: uppercase !important; margin-top: 3px !important; white-space: nowrap !important;">sec</div>
               </div>
             </div>
           </div>
