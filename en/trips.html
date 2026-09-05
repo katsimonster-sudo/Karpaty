@@ -114,13 +114,23 @@
 
   <!-- Повноекранний Lightbox для фотозвітів -->
   <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true">
-    <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close">✕</button>
+    <div class="lightbox-toolbar" id="lightbox-toolbar">
+      <button class="lightbox-tool-btn" id="lightbox-zoom-out" aria-label="Zoom out" title="Zoom out (−)">−</button>
+      <span class="lightbox-zoom-level" id="lightbox-zoom-level">100%</span>
+      <button class="lightbox-tool-btn" id="lightbox-zoom-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
+      <button class="lightbox-tool-btn" id="lightbox-zoom-reset" aria-label="Reset zoom" title="Reset (0)">↺</button>
+      <button class="lightbox-tool-btn" id="lightbox-fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close" title="Close (Esc)">✕</button>
+    </div>
     <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Previous photo">❮</button>
     <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next photo">❯</button>
-    <div class="lightbox-content">
-      <img src="" alt="Trip Photo" class="lightbox-img" id="lightbox-image">
+    <div class="lightbox-content" id="lightbox-content">
+      <div class="lightbox-img-wrapper" id="lightbox-img-wrapper">
+        <img src="" alt="Trip Photo" class="lightbox-img" id="lightbox-image" draggable="false">
+      </div>
       <div class="lightbox-caption" id="lightbox-caption"></div>
       <div class="lightbox-counter" id="lightbox-counter">Photo 1 of 3</div>
+      <div class="lightbox-hint" id="lightbox-hint">Click or mouse wheel to zoom • Drag to pan</div>
     </div>
   </div>
 

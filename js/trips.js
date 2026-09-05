@@ -732,13 +732,108 @@ window.toggleReaction = function(tripId, reactionType, e) {
 };
 
 /* ==========================================================================
-   Повноекранна галерея Lightbox
+   Повноекранна галерея Lightbox з інтерактивним зумом та панорамуванням
    ========================================================================== */
+let currentZoom = 1;
+let panX = 0;
+let panY = 0;
+let isDragging = false;
+let hasMovedDrag = false;
+let dragStartX = 0;
+let dragStartY = 0;
+let panStartX = 0;
+let panStartY = 0;
+let touchStartDist = 0;
+let touchStartZoom = 1;
+
+function applyZoomTransform(animate = true) {
+  const img = document.getElementById('lightbox-image');
+  const zoomLevelEl = document.getElementById('lightbox-zoom-level');
+  if (!img) return;
+
+  if (currentZoom <= 1) {
+    currentZoom = 1;
+    panX = 0;
+    panY = 0;
+    img.classList.remove('is-zoomed', 'is-dragging');
+  } else {
+    img.classList.add('is-zoomed');
+  }
+
+  if (animate) {
+    img.classList.remove('is-dragging');
+  } else {
+    img.classList.add('is-dragging');
+  }
+
+  img.style.transform = `translate(${panX}px, ${panY}px) scale(${currentZoom})`;
+  if (zoomLevelEl) {
+    zoomLevelEl.textContent = `${Math.round(currentZoom * 100)}%`;
+  }
+}
+
+function resetZoom() {
+  currentZoom = 1;
+  panX = 0;
+  panY = 0;
+  applyZoomTransform(true);
+}
+
+function setZoom(newZoom, focalX = 0, focalY = 0) {
+  const oldZoom = currentZoom;
+  const targetZoom = Math.max(1, Math.min(4, Math.round(newZoom * 100) / 100));
+
+  if (targetZoom === 1) {
+    resetZoom();
+    return;
+  }
+
+  if (oldZoom !== targetZoom && oldZoom > 1) {
+    const scaleFactor = targetZoom / oldZoom;
+    panX = focalX - (focalX - panX) * scaleFactor;
+    panY = focalY - (focalY - panY) * scaleFactor;
+  }
+  currentZoom = targetZoom;
+  clampPan();
+  applyZoomTransform(true);
+}
+
+function clampPan() {
+  const img = document.getElementById('lightbox-image');
+  if (!img || currentZoom <= 1) {
+    panX = 0;
+    panY = 0;
+    return;
+  }
+  const rect = img.getBoundingClientRect();
+  const maxW = Math.max(0, (rect.width * currentZoom - rect.width) / 2 + window.innerWidth * 0.25);
+  const maxH = Math.max(0, (rect.height * currentZoom - rect.height) / 2 + window.innerHeight * 0.25);
+  panX = Math.max(-maxW, Math.min(maxW, panX));
+  panY = Math.max(-maxH, Math.min(maxH, panY));
+}
+
+function toggleFullscreen() {
+  const modal = document.getElementById('lightbox-modal');
+  if (!modal) return;
+  if (!document.fullscreenElement) {
+    if (modal.requestFullscreen) modal.requestFullscreen();
+    else if (modal.webkitRequestFullscreen) modal.webkitRequestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  }
+}
+
 function initLightbox() {
   const modal = document.getElementById('lightbox-modal');
   const closeBtn = document.getElementById('lightbox-close');
   const prevBtn = document.getElementById('lightbox-prev');
   const nextBtn = document.getElementById('lightbox-next');
+  const imgEl = document.getElementById('lightbox-image');
+  const zoomInBtn = document.getElementById('lightbox-zoom-in');
+  const zoomOutBtn = document.getElementById('lightbox-zoom-out');
+  const zoomResetBtn = document.getElementById('lightbox-zoom-reset');
+  const fullscreenBtn = document.getElementById('lightbox-fullscreen');
 
   if (!modal) return;
 
@@ -746,15 +841,133 @@ function initLightbox() {
   if (prevBtn) prevBtn.addEventListener('click', showPrevLightboxImage);
   if (nextBtn) nextBtn.addEventListener('click', showNextLightboxImage);
 
+  if (zoomInBtn) zoomInBtn.addEventListener('click', (e) => { e.stopPropagation(); setZoom(currentZoom + 0.5); });
+  if (zoomOutBtn) zoomOutBtn.addEventListener('click', (e) => { e.stopPropagation(); setZoom(currentZoom - 0.5); });
+  if (zoomResetBtn) zoomResetBtn.addEventListener('click', (e) => { e.stopPropagation(); resetZoom(); });
+  if (fullscreenBtn) fullscreenBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleFullscreen(); });
+
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeLightbox();
   });
 
+  if (imgEl) {
+    // 1. Клік мишею: якщо 1x — зум до 2.2x, якщо зум > 1x і не було перетягування — скидання до 1x
+    imgEl.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (hasMovedDrag) return;
+      if (currentZoom === 1) {
+        const rect = imgEl.getBoundingClientRect();
+        const focalX = (rect.left + rect.width / 2) - e.clientX;
+        const focalY = (rect.top + rect.height / 2) - e.clientY;
+        panX = focalX * 1.2;
+        panY = focalY * 1.2;
+        currentZoom = 2.2;
+        clampPan();
+        applyZoomTransform(true);
+      } else {
+        resetZoom();
+      }
+    });
+
+    // 2. Коліщатко миші
+    imgEl.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const rect = imgEl.getBoundingClientRect();
+      const focalX = (rect.left + rect.width / 2) - e.clientX;
+      const focalY = (rect.top + rect.height / 2) - e.clientY;
+      const delta = e.deltaY < 0 ? 0.3 : -0.3;
+      setZoom(currentZoom + delta, focalX, focalY);
+    }, { passive: false });
+
+    // 3. Затискання та перетягування мишею
+    imgEl.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      isDragging = true;
+      hasMovedDrag = false;
+      dragStartX = e.clientX;
+      dragStartY = e.clientY;
+      panStartX = panX;
+      panStartY = panY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - dragStartX;
+      const dy = e.clientY - dragStartY;
+      if (Math.hypot(dx, dy) > 5) {
+        hasMovedDrag = true;
+      }
+      if (currentZoom > 1) {
+        panX = panStartX + dx;
+        panY = panStartY + dy;
+        clampPan();
+        applyZoomTransform(false);
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (currentZoom > 1) {
+        applyZoomTransform(true);
+      }
+    });
+
+    // 4. Сенсорні жести для смартфонів (Pinch-to-zoom & Touch Pan)
+    imgEl.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        hasMovedDrag = false;
+        dragStartX = e.touches[0].clientX;
+        dragStartY = e.touches[0].clientY;
+        panStartX = panX;
+        panStartY = panY;
+      } else if (e.touches.length === 2) {
+        isDragging = false;
+        touchStartDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        touchStartZoom = currentZoom;
+      }
+    }, { passive: true });
+
+    imgEl.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1 && isDragging && currentZoom > 1) {
+        const dx = e.touches[0].clientX - dragStartX;
+        const dy = e.touches[0].clientY - dragStartY;
+        if (Math.hypot(dx, dy) > 6) hasMovedDrag = true;
+        panX = panStartX + dx;
+        panY = panStartY + dy;
+        clampPan();
+        applyZoomTransform(false);
+      } else if (e.touches.length === 2 && touchStartDist > 0) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const ratio = dist / touchStartDist;
+        setZoom(touchStartZoom * ratio);
+      }
+    }, { passive: true });
+
+    imgEl.addEventListener('touchend', () => {
+      isDragging = false;
+      touchStartDist = 0;
+      if (currentZoom > 1) applyZoomTransform(true);
+    });
+  }
+
+  // 5. Клавіатура
   document.addEventListener('keydown', (e) => {
     if (!modal.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') showPrevLightboxImage();
     if (e.key === 'ArrowRight') showNextLightboxImage();
+    if (e.key === '+' || e.key === '=') setZoom(currentZoom + 0.5);
+    if (e.key === '-' || e.key === '_') setZoom(currentZoom - 0.5);
+    if (e.key === '0') resetZoom();
+    if (e.key === 'f' || e.key === 'F') toggleFullscreen();
   });
 }
 
@@ -762,6 +975,7 @@ window.openLightboxFromTrip = function(tripId, startIndex = 0) {
   const trip = window.TRIPS_DATA.find(t => t.id === tripId);
   if (!trip || !trip.images || !trip.images.length) return;
 
+  resetZoom();
   lightboxImages = trip.images;
   currentLightboxIndex = startIndex;
   currentLightboxCaption = trip.title;
@@ -773,6 +987,10 @@ window.openLightboxFromTrip = function(tripId, startIndex = 0) {
 };
 
 function closeLightbox() {
+  resetZoom();
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  }
   const modal = document.getElementById('lightbox-modal');
   if (modal) modal.classList.remove('active');
   document.body.style.overflow = '';
@@ -780,12 +998,14 @@ function closeLightbox() {
 
 function showPrevLightboxImage() {
   if (!lightboxImages.length) return;
+  resetZoom();
   currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
   updateLightboxContent();
 }
 
 function showNextLightboxImage() {
   if (!lightboxImages.length) return;
+  resetZoom();
   currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
   updateLightboxContent();
 }

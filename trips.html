@@ -116,13 +116,23 @@
 
   <!-- Повноекранний Lightbox для фотозвітів -->
   <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true">
-    <button class="lightbox-close-btn" id="lightbox-close" aria-label="Закрити">✕</button>
+    <div class="lightbox-toolbar" id="lightbox-toolbar">
+      <button class="lightbox-tool-btn" id="lightbox-zoom-out" aria-label="Зменшити" title="Зменшити (−)">−</button>
+      <span class="lightbox-zoom-level" id="lightbox-zoom-level">100%</span>
+      <button class="lightbox-tool-btn" id="lightbox-zoom-in" aria-label="Збільшити" title="Збільшити (+)">+</button>
+      <button class="lightbox-tool-btn" id="lightbox-zoom-reset" aria-label="Скинути масштаб" title="Скинути (0)">↺</button>
+      <button class="lightbox-tool-btn" id="lightbox-fullscreen" aria-label="На весь екран" title="На весь екран (F)">⛶</button>
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Закрити" title="Закрити (Esc)">✕</button>
+    </div>
     <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Попереднє фото">❮</button>
     <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Наступне фото">❯</button>
-    <div class="lightbox-content">
-      <img src="" alt="Фото походу" class="lightbox-img" id="lightbox-image">
+    <div class="lightbox-content" id="lightbox-content">
+      <div class="lightbox-img-wrapper" id="lightbox-img-wrapper">
+        <img src="" alt="Фото походу" class="lightbox-img" id="lightbox-image" draggable="false">
+      </div>
       <div class="lightbox-caption" id="lightbox-caption"></div>
       <div class="lightbox-counter" id="lightbox-counter">Фото 1 з 3</div>
+      <div class="lightbox-hint" id="lightbox-hint">Клік або коліщатко миші для масштабування • Перетягуйте фото</div>
     </div>
   </div>
 
