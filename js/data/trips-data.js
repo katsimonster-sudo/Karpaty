@@ -1421,6 +1421,13 @@ reactions: { fire: 74, mountain: 88, tent: 52, snow: 21 },
     elevationGainM: 8175,
     durationDays: 7,
     coordinates: [48.55, 24.0],
+    stats: {
+      movingTime: "38г 59хв",
+      totalTime: "55г 40хв",
+      steps: 219748,
+      calories: 11845,
+      maxAlt: 1728
+    },
     elevationProfile: [
       { point: "Яремче (старт)", alt: 550 },
       { point: "Пасічна — Синячка — Шуваренка", alt: 1313 },

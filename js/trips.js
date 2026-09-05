@@ -185,22 +185,22 @@ function renderTrips(container, countBadge) {
         <div class="trip-fitness-stats">
           <div class="trip-stat-chip">
             <span class="trip-stat-chip-icon">⏱️</span>
-            <span class="trip-stat-chip-val">${trip.stats.movingTime}</span>
+            <span class="trip-stat-chip-val">${isEn ? trip.stats.movingTime.replace(/г/g, 'h').replace(/хв/g, 'm') : trip.stats.movingTime}</span>
             <span class="trip-stat-chip-label">${isEn ? 'moving' : 'у русі'}</span>
           </div>
           <div class="trip-stat-chip">
             <span class="trip-stat-chip-icon">🕐</span>
-            <span class="trip-stat-chip-val">${trip.stats.totalTime}</span>
+            <span class="trip-stat-chip-val">${isEn ? trip.stats.totalTime.replace(/г/g, 'h').replace(/хв/g, 'm') : trip.stats.totalTime}</span>
             <span class="trip-stat-chip-label">${isEn ? 'total' : 'заг. час'}</span>
           </div>
           <div class="trip-stat-chip">
             <span class="trip-stat-chip-icon">👣</span>
-            <span class="trip-stat-chip-val">${trip.stats.steps.toLocaleString('uk-UA')}</span>
+            <span class="trip-stat-chip-val">${trip.stats.steps.toLocaleString(isEn ? 'en-US' : 'uk-UA')}</span>
             <span class="trip-stat-chip-label">${isEn ? 'steps' : 'кроки'}</span>
           </div>
           <div class="trip-stat-chip">
             <span class="trip-stat-chip-icon">🔥</span>
-            <span class="trip-stat-chip-val">${trip.stats.calories.toLocaleString('uk-UA')}</span>
+            <span class="trip-stat-chip-val">${trip.stats.calories.toLocaleString(isEn ? 'en-US' : 'uk-UA')}</span>
             <span class="trip-stat-chip-label">${isEn ? 'kcal' : 'ккал'}</span>
           </div>
         </div>`;
@@ -375,11 +375,11 @@ function openTripDetailsModal(trip) {
       <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-emerald); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.05em;">📊 ${isEn ? 'Strava GPS Tracking Metrics:' : '📊 Фіксовані GPS-метрики (Strava Tracking):'}</div>
       <div class="trip-calc-row" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.4);">
         <div class="calc-box">
-          <div class="calc-value">🏃 ${trip.stats.movingTime}</div>
+          <div class="calc-value">🏃 ${isEn ? trip.stats.movingTime.replace(/г/g, 'h').replace(/хв/g, 'm') : trip.stats.movingTime}</div>
           <div class="calc-label">${isEn ? 'Moving Time' : 'Час у русі'}</div>
         </div>
         <div class="calc-box">
-          <div class="calc-value">⏱️ ${trip.stats.totalTime}</div>
+          <div class="calc-value">⏱️ ${isEn ? trip.stats.totalTime.replace(/г/g, 'h').replace(/хв/g, 'm') : trip.stats.totalTime}</div>
           <div class="calc-label">${isEn ? 'Total Time' : 'Загальний час'}</div>
         </div>
         <div class="calc-box">

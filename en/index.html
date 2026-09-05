@@ -690,12 +690,12 @@
             <div class="trip-fitness-stats">
               <div class="trip-stat-chip">
                 <span class="trip-stat-chip-icon">⏱️</span>
-                <span class="trip-stat-chip-val">${trip.stats.movingTime}</span>
+                <span class="trip-stat-chip-val">${trip.stats.movingTime.replace(/г/g, 'h').replace(/хв/g, 'm')}</span>
                 <span class="trip-stat-chip-label">moving</span>
               </div>
               <div class="trip-stat-chip">
                 <span class="trip-stat-chip-icon">🕐</span>
-                <span class="trip-stat-chip-val">${trip.stats.totalTime}</span>
+                <span class="trip-stat-chip-val">${trip.stats.totalTime.replace(/г/g, 'h').replace(/хв/g, 'm')}</span>
                 <span class="trip-stat-chip-label">total</span>
               </div>
               <div class="trip-stat-chip">
