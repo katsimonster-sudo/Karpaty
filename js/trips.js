@@ -80,6 +80,29 @@ function initTripsPage() {
 /* ==========================================================================
    Фільтрація та рендеринг списку
    ========================================================================== */
+function getTripSortDate(trip) {
+  if (trip.startDate) return trip.startDate;
+  if (!trip.season) return `${trip.year || 2026}-01-01`;
+  const monthMap = {
+    'січ': '01', 'лют': '02', 'бер': '03', 'кві': '04', 'тра': '05', 'чер': '06',
+    'лип': '07', 'сер': '08', 'вер': '09', 'жов': '10', 'лис': '11', 'гру': '12',
+    'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'may': '05', 'jun': '06',
+    'jul': '07', 'aug': '08', 'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12'
+  };
+  const str = trip.season.toLowerCase();
+  const dayMatch = str.match(/^(\d{1,2})/);
+  const day = dayMatch ? dayMatch[1].padStart(2, '0') : '01';
+  let month = '01';
+  for (const [key, val] of Object.entries(monthMap)) {
+    if (str.includes(key)) {
+      month = val;
+      break;
+    }
+  }
+  const year = trip.year || (str.match(/\b(202\d)\b/) ? str.match(/\b(202\d)\b/)[1] : '2026');
+  return `${year}-${month}-${day}`;
+}
+
 function getFilteredTrips() {
   let list = [...window.TRIPS_DATA];
 
@@ -109,7 +132,12 @@ function getFilteredTrips() {
     });
   }
 
-  return list.sort((a, b) => b.year - a.year);
+  // Сортування: найновіший похід зверху, найстаріший знизу
+  return list.sort((a, b) => {
+    const dateA = a.startDate || getTripSortDate(a);
+    const dateB = b.startDate || getTripSortDate(b);
+    return dateB.localeCompare(dateA);
+  });
 }
 
 function renderTrips(container, countBadge) {

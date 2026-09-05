@@ -681,7 +681,7 @@
       // 1. Top-3 trips
       const container = document.getElementById('featured-trips-container');
       if (container && window.TRIPS_DATA) {
-        const featured = window.TRIPS_DATA.filter(t => t.year === 2026).slice(0, 3);
+        const featured = window.TRIPS_DATA.filter(t => t.year === 2026).sort((a, b) => (b.startDate || '').localeCompare(a.startDate || '')).slice(0, 3);
         container.innerHTML = featured.map(trip => {
           const maxAlt = (trip.stats && trip.stats.maxAlt)
             ? trip.stats.maxAlt
