@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Сайт «Дожити до фініша...» — Компоненти інтерфейсу (UI Components)
    ========================================================================== */
 
@@ -37,9 +37,9 @@
   gap: 12px;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: #e04845;
 }
 
 .brand-icon {
@@ -132,16 +132,16 @@
   border: 0;
 }
 
-/* Перемикач мов (вертикальний у самому краї) */
+/* Перемикач мов (горизонтальний) */
 .lang-switcher {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1px;
+  gap: 2px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
-  padding: 2px 3px;
+  padding: 3px 4px;
   border-radius: 6px;
   line-height: 1;
 }
