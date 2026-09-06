@@ -200,19 +200,6 @@ function renderCommunityPosts(container) {
         </a>
       </div>
     </div>
-  `).join('');v>👥 <strong>Група:</strong> ${post.groupSize}</div>
-        <div>⚡ <strong>Темп / умови:</strong> ${post.pace}</div>
-      </div>
-
-      <p class="post-content">${post.description}</p>
-
-      <div class="post-footer">
-        <span style="font-size: 0.85rem; color: var(--text-muted);">Зв'язок: <strong style="color: var(--accent-emerald);">${post.contactTelegram}</strong></span>
-        <a href="https://t.me/${post.contactTelegram.replace('@', '')}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-          Написати в Telegram →
-        </a>
-      </div>
-    </div>
   `).join('');
 }
 
