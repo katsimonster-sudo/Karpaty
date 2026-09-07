@@ -474,6 +474,27 @@ function openTripDetailsModal(trip) {
       </div>
     </div>
 
+    <!-- Відеозамальовка (якщо є) -->
+    ${trip.videoEmbed ? `
+    <div style="margin-bottom: 24px;">
+      <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(59,130,246,0.2)); border-radius: 8px; font-size:14px;">🎬</span>
+        ${isEn ? 'Video from the trail:' : 'Відеозамальовка з маршруту:'}
+      </h4>
+      <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.4); position: relative; max-width: 100%;">
+        <video
+          controls
+          preload="metadata"
+          style="width: 100%; max-height: 420px; display: block; border-radius: var(--radius-lg);"
+          poster="${trip.coverImage}"
+        >
+          <source src="${trip.videoEmbed}" type="video/mp4">
+          ${isEn ? 'Your browser does not support video playback.' : 'Ваш браузер не підтримує відтворення відео.'}
+        </video>
+      </div>
+    </div>
+    ` : ''}
+
     <!-- Фотозвіт (Клік відкриває Lightbox) -->
     <div style="margin-bottom: 20px;">
       <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-primary);">${isEn ? 'Photos from the trip (click to view full size):' : 'Фотозвіт з походу (клік для повноекранного перегляду):'}</h4>

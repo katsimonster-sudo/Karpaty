@@ -1572,7 +1572,7 @@ reactions: { fire: 74, mountain: 88, tent: 52, snow: 21 },
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/aug-sep-2026/aug-sep-2026-63.jpg",
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/aug-sep-2026/aug-sep-2026-64.jpg"
     ],
-    videoEmbed: "",
+    videoEmbed: "videos/trips/trip-2026-08-1.mp4",
     route: "Яремче — Пасічна — хребет Станимир — Перегінське — г. Попадя — г. Ґрофа (1728 м) — г. Вишківський Ґорґан — Торунський перевал — Славсько",
     poi: ["Яремче", "Пасічна", "хребет Станимир", "г. Катерина", "Перегінське", "г. Петрос Ґорґанський", "г. Попадя", "г. Ґрофа (1728 м)", "г. Вишківський Ґорґан", "Торунський перевал", "Славсько"],
     shortDesc: "7-денний екстремальний траверс на 166.2 км від Яремче через Ґорґани (хребет Станимир, г. Ґрофа) та Сколівські Бескиди до Славська, з набором висоти 8175 м.",
