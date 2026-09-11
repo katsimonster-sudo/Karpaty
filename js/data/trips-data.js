@@ -212,6 +212,7 @@ window.TRIPS_DATA = [
       }
     ],
     reactions: { fire: 33, mountain: 45, tent: 21, snow: 2 },
+    stats: { movingTime: "19г 27хв", totalTime: "32г 04хв", steps: 105628, calories: 4767, maxAlt: 1656 },
     coverImage: "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/2025/pokhid-01-2025-001.jpg",
     images: [
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/2025/pokhid-01-2025-001.jpg",
@@ -391,6 +392,7 @@ window.TRIPS_DATA = [
       }
     ],
     reactions: { fire: 58, mountain: 71, tent: 39, snow: 3 },
+    stats: { movingTime: "36г 58хв", totalTime: "66г 11хв", steps: 207088, calories: 9132, maxAlt: 1820 },
     coverImage: "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/2025/pokhid-02-2025-001.jpg",
     images: [
       "https://raw.githubusercontent.com/katsimonster-sudo/Karpaty/main/images/2025/pokhid-02-2025-001.jpg",
