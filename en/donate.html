@@ -103,18 +103,25 @@
               <span class="weather-badge weather-badge-safe">Visa / Mastercard / PayPal</span>
             </div>
 
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+            <p class="donate-desc">
               International creator support platform. Easy to donate from anywhere in the world via Visa / Mastercard.
             </p>
 
             <div class="donate-card-number-box">
               <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Ko-fi Page:</div>
-                <div class="donate-number-text" style="font-size: 1rem;">ko-fi.com/R4F626FWMU</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Ko-fi Page:</div>
+                <div class="donate-number-text">ko-fi.com/R4F626FWMU</div>
               </div>
               <button class="donate-copy-btn" onclick="copyCardNumber('https://ko-fi.com/R4F626FWMU', this)">
                 📋 Copy
               </button>
+            </div>
+
+            <div class="donate-qr-container">
+              <div class="donate-qr-box">
+                <img src="../images/qr/kofi-qr.png" alt="Ko-fi QR Code" class="donate-qr-img" loading="lazy">
+              </div>
+              <div class="donate-qr-hint">📱 Scan QR code to go to Ko-fi</div>
             </div>
 
             <div style="margin-bottom: 18px; font-size: 0.85rem; color: var(--text-muted);">
@@ -137,13 +144,13 @@
               <span class="weather-badge weather-badge-safe">Jar / Card</span>
             </div>
 
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+            <p class="donate-desc">
               Most convenient way: direct transfer to a card or topping up the collection jar.
             </p>
 
             <div class="donate-card-number-box">
               <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Monobank Card Number:</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Monobank Card Number:</div>
                 <div class="donate-number-text" id="mono-card-num">4441 1111 4381 4170</div>
               </div>
               <button class="donate-copy-btn" onclick="copyCardNumber('4441111143814170', this)">
@@ -178,13 +185,13 @@
               <span class="weather-badge weather-badge-safe">Privat24</span>
             </div>
 
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+            <p class="donate-desc">
               Instant top-up via Privat24, self-service terminals, or by card number.
             </p>
 
             <div class="donate-card-number-box">
               <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">PrivatBank Card Number:</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">PrivatBank Card Number:</div>
                 <div class="donate-number-text" id="privat-card-num">4149 6090 6510 1349</div>
               </div>
               <button class="donate-copy-btn" onclick="copyCardNumber('4149609065101349', this)">
@@ -219,18 +226,25 @@
               <span class="weather-badge weather-badge-safe">USD / EUR / PLN</span>
             </div>
 
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+            <p class="donate-desc">
               For support from abroad in any currency (USD, EUR, PLN). Fast and secure.
             </p>
 
             <div class="donate-card-number-box">
               <div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">PayPal Email / Account:</div>
-                <div class="donate-number-text" style="font-size: 1rem;">katsimonster@gmail.com</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">PayPal Email / Account:</div>
+                <div class="donate-number-text">katsimonster@gmail.com</div>
               </div>
               <button class="donate-copy-btn" onclick="copyCardNumber('katsimonster@gmail.com', this)">
                 📋 Copy
               </button>
+            </div>
+
+            <div class="donate-qr-container">
+              <div class="donate-qr-box">
+                <img src="../images/qr/paypal-qr.png" alt="PayPal QR Code" class="donate-qr-img" loading="lazy">
+              </div>
+              <div class="donate-qr-hint">📱 Scan QR code to go to PayPal</div>
             </div>
 
             <div style="margin-bottom: 18px; font-size: 0.85rem; color: var(--text-muted);">
@@ -253,7 +267,7 @@
               <span class="weather-badge weather-badge-safe">Tron TRX</span>
             </div>
 
-            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 12px;">
+            <p class="donate-desc">
               Cryptocurrency transfer in USDT stablecoins via Tron network (TRC20). Low fees and instant transfer processing.
             </p>
 
@@ -285,7 +299,7 @@
               <span class="weather-badge weather-badge-safe">BNB Chain</span>
             </div>
 
-            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 12px;">
+            <p class="donate-desc">
               Cryptocurrency transfer in USDT via BNB Smart Chain (BEP20). Fast &amp; convenient for Binance transfers.
             </p>
 
