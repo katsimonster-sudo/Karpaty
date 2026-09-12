@@ -2544,3 +2544,42 @@
   border-color: #00c2cb;
   box-shadow: 0 12px 35px rgba(0, 194, 203, 0.3);
 }
+
+.donate-method-card.usdt-trc {
+  border-color: rgba(38, 161, 123, 0.4);
+  background: rgba(38, 161, 123, 0.03);
+}
+.donate-method-card.usdt-trc:hover {
+  border-color: #26a17b;
+  box-shadow: 0 12px 35px rgba(38, 161, 123, 0.3);
+}
+
+.btn-usdt-trc {
+  background: linear-gradient(135deg, #26a17b 0%, #1a7a5d 100%);
+  color: #ffffff;
+  border: none;
+}
+.btn-usdt-trc:hover {
+  background: linear-gradient(135deg, #2ec496 0%, #26a17b 100%);
+  box-shadow: 0 6px 20px rgba(38, 161, 123, 0.4);
+}
+
+.donate-method-card.usdt-bep {
+  border-color: rgba(240, 185, 11, 0.4);
+  background: rgba(240, 185, 11, 0.03);
+}
+.donate-method-card.usdt-bep:hover {
+  border-color: #f0b90b;
+  box-shadow: 0 12px 35px rgba(240, 185, 11, 0.3);
+}
+
+.btn-usdt-bep {
+  background: linear-gradient(135deg, #f0b90b 0%, #d49e08 100%);
+  color: #070a0d;
+  font-weight: 800;
+  border: none;
+}
+.btn-usdt-bep:hover {
+  background: linear-gradient(135deg, #fcd535 0%, #f0b90b 100%);
+  box-shadow: 0 6px 20px rgba(240, 185, 11, 0.4);
+}
