@@ -40,6 +40,13 @@
   font-size: 1.6rem;
   letter-spacing: -0.02em;
   color: var(--text-primary);
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  white-space: nowrap !important;
+  display: inline-block;
 }
 
 .brand-icon {
