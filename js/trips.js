@@ -215,6 +215,7 @@ function renderTrips(container, countBadge) {
         </div>
         <div class="trip-card-gradient"></div>
         <span class="trip-year-badge">${trip.season}</span>
+        ${trip.videoEmbed ? `<span class="trip-year-badge" style="left: auto; right: 12px; background: rgba(16, 185, 129, 0.85); backdrop-filter: blur(8px); display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>${isEn ? 'Video' : 'Відео'}</span>` : ''}
         <div class="trip-card-body">
           <div class="trip-key-metrics">
             <div class="trip-key-metric">
@@ -488,7 +489,7 @@ function openTripDetailsModal(trip) {
           style="width: 100%; max-height: 420px; display: block; border-radius: var(--radius-lg);"
           poster="${trip.coverImage}"
         >
-          <source src="${trip.videoEmbed}" type="video/mp4">
+          <source src="${(trip.videoEmbed.startsWith('http') || trip.videoEmbed.startsWith('/') || !isEn) ? trip.videoEmbed : '../' + trip.videoEmbed}" type="video/mp4">
           ${isEn ? 'Your browser does not support video playback.' : 'Ваш браузер не підтримує відтворення відео.'}
         </video>
       </div>
