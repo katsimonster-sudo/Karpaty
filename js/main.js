@@ -143,4 +143,45 @@ function registerServiceWorker() {
   }
 }
 
+/* 7. Універсальне копіювання номеру картки/реквізитів */
+window.copyCardNumber = function(text, btn) {
+  const showSuccess = (b) => {
+    if (!b) return;
+    const origText = b.dataset.origText || b.innerText;
+    b.dataset.origText = origText;
+    const isEn = window.location.pathname.includes('/en/');
+    b.innerText = isEn ? '✓ Copied!' : '✓ Скопійовано!';
+    b.classList.add('copied');
+    setTimeout(() => {
+      b.innerText = origText;
+      b.classList.remove('copied');
+    }, 2000);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text)
+      .then(() => showSuccess(btn))
+      .catch(() => fallbackCopy(text, btn, showSuccess));
+  } else {
+    fallbackCopy(text, btn, showSuccess);
+  }
+};
+
+function fallbackCopy(text, btn, callback) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    if (callback) callback(btn);
+  } catch (err) {
+    console.error('Fallback copy failed', err);
+  }
+  document.body.removeChild(ta);
+}
+
+
 
