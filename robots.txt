@@ -1,0 +1,11 @@
+# robots.txt for dozhity.space
+# https://dozhity.space/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://dozhity.space/sitemap.xml
+
+# LLM / AI crawler instructions
+# See also: https://dozhity.space/llm.txt

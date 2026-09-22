@@ -1,0 +1,46 @@
+# Dozhyty do finisha... (Дожити до фініша...)
+# https://dozhity.space
+
+> A personal hiking website documenting 16 mountain expeditions across the Ukrainian Carpathians (2024–2026), with gear reviews, community features, and interactive maps.
+
+## About This Site
+
+This is a bilingual (Ukrainian/English) personal website created by a passionate hiker who documents Carpathian mountain treks. The site name translates to "Survive to the Finish..." — a humorous take on the endurance needed for mountain hiking.
+
+## Site Structure
+
+- **Homepage** (`/` and `/en/`): Overview of all 16 hikes with interactive statistics, photo galleries, achievement system, and animated UI.
+- **Trips** (`/trips.html` and `/en/trips.html`): Detailed chronology of 16 mountain hikes with interactive Leaflet maps, GPX tracks, elevation profiles, and per-trip statistics covering Chornohora, Gorgany, Marmarosy, Svydovets, and Borzhava mountain ranges.
+- **Gear** (`/gear.html` and `/en/gear.html`): Personal catalog of hiking gear organized by category (tents, sleeping bags, footwear, cooking, electronics, first aid) with exact weights in grams and field reviews.
+- **Donate** (`/donate.html` and `/en/donate.html`): Support page with Monobank jar, PrivatBank, and PayPal options for funding new expeditions and gear upgrades.
+- **Community** (`/community.html` and `/en/community.html`): Bulletin board for finding hiking companions, posting trip announcements, and connecting with fellow Carpathian hikers.
+
+## Key Content
+
+- 16 documented hikes spanning 2024, 2025, and 2026
+- Mountain ranges covered: Чорногора (Chornohora), Ґорґани (Gorgany), Мармароси (Marmarosy), Свидовець (Svydovets), Боржава (Borzhava)
+- GPS tracks and routes in GPX format
+- Detailed gear weight analysis (base weight, consumables, total pack weight)
+- Community-driven hiking partner matching
+
+## Languages
+
+- Ukrainian (primary): https://dozhity.space/
+- English: https://dozhity.space/en/
+
+## Technical Details
+
+- Static HTML/CSS/JS site hosted on GitHub Pages
+- Progressive Web App (PWA) with service worker and manifest
+- Interactive maps powered by Leaflet.js
+- Analytics: Google Analytics (G-DX5YH602XL) + Microsoft Clarity
+- Custom domain: dozhity.space
+
+## Contact
+
+The author can be reached through the community page at https://dozhity.space/community.html
+
+## Crawling
+
+- Sitemap: https://dozhity.space/sitemap.xml
+- Robots: https://dozhity.space/robots.txt

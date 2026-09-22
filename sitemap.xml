@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Головна / Home -->
+  <url>
+    <loc>https://dozhity.space/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://dozhity.space/en/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Подорожі / Trips -->
+  <url>
+    <loc>https://dozhity.space/trips.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/trips.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/trips.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/trips.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://dozhity.space/en/trips.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/trips.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/trips.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/trips.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Спорядження / Gear -->
+  <url>
+    <loc>https://dozhity.space/gear.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/gear.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/gear.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/gear.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://dozhity.space/en/gear.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/gear.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/gear.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/gear.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Донат / Donate -->
+  <url>
+    <loc>https://dozhity.space/donate.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/donate.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/donate.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/donate.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://dozhity.space/en/donate.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/donate.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/donate.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/donate.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Спільнота / Community -->
+  <url>
+    <loc>https://dozhity.space/community.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/community.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/community.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/community.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://dozhity.space/en/community.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://dozhity.space/community.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dozhity.space/en/community.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dozhity.space/community.html" />
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
