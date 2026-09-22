@@ -139,7 +139,7 @@
 }
 
 /* ==========================================================================
-   Преміум Анімований Заголовок (В один рядок: Aurora + GPS Trail + Bounce)
+   Преміум Анімований Заголовок — Вогнище (Campfire Glow)
    ========================================================================== */
 .hero-title-main {
   font-family: var(--font-heading);
@@ -149,46 +149,63 @@
   text-align: center;
   white-space: nowrap !important;
   margin: 0 auto 24px !important;
-  color: #ffffff;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  color: #fef3c7;
+  text-shadow: 0 2px 20px rgba(245,158,11,0.3), 0 0 60px rgba(239,68,68,0.1);
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 0.15em;
   flex-wrap: nowrap !important;
+  animation: campfireFlicker 4s ease-in-out infinite;
 }
 
 .trail-text-wrap {
-  display: inline-inline-block;
+  display: inline-block;
   position: relative;
   vertical-align: baseline;
 }
 
 .trail-text-animated {
-  background: linear-gradient(120deg, #f59e0b 0%, #fbbf24 25%, #38bdf8 50%, #34d399 75%, #f59e0b 100%);
-  background-size: 300% 300%;
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #f59e0b, #fbbf24);
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: auroraTextGrad 5s ease infinite, floatText 3s ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.5));
+  animation: fireGrad 3s ease infinite;
+  filter: drop-shadow(0 0 24px rgba(239,68,68,0.5)) drop-shadow(0 0 48px rgba(245,158,11,0.3));
   font-weight: 900;
   display: inline-block;
 }
 
 .trail-line-svg {
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 100%;
-  height: 12px;
-  overflow: visible;
+  display: none;
 }
 
 .trail-path {
-  stroke-dasharray: 180;
-  stroke-dashoffset: 180;
-  animation: drawTrailLine 2.5s ease-in-out infinite alternate, trailGlow 2.5s ease-in-out infinite alternate;
+  display: none;
 }
+
+/* Ember particles */
+.hero-embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.hero-ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fbbf24;
+  animation: emberFloat 2.5s ease-in infinite;
+  opacity: 0;
+}
+.hero-ember:nth-child(1) { left: 10%; animation-delay: 0s; }
+.hero-ember:nth-child(2) { left: 25%; animation-delay: 0.5s; }
+.hero-ember:nth-child(3) { left: 45%; animation-delay: 1s; }
+.hero-ember:nth-child(4) { left: 65%; animation-delay: 1.5s; }
+.hero-ember:nth-child(5) { left: 80%; animation-delay: 0.8s; }
+.hero-ember:nth-child(6) { left: 55%; animation-delay: 1.8s; }
 
 .bounce-dots {
   display: inline-flex;
@@ -198,39 +215,44 @@
 
 .bounce-dots span {
   display: inline-block;
-  color: #38bdf8;
-  -webkit-text-fill-color: #38bdf8;
+  color: #ef4444;
+  -webkit-text-fill-color: #ef4444;
   font-weight: 900;
-  animation: bounceDotPulse 1.4s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+  animation: fireDotPulse 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(239,68,68,0.8));
 }
 .bounce-dots span:nth-child(1) { animation-delay: 0s; }
-.bounce-dots span:nth-child(2) { animation-delay: 0.2s; }
-.bounce-dots span:nth-child(3) { animation-delay: 0.4s; }
+.bounce-dots span:nth-child(2) { animation-delay: 0.15s; }
+.bounce-dots span:nth-child(3) { animation-delay: 0.3s; }
 
-@keyframes auroraTextGrad {
+.hero-title-main .hero-guillemet {
+  color: rgba(254,243,199,0.3);
+  -webkit-text-fill-color: rgba(254,243,199,0.3);
+}
+
+@keyframes campfireFlicker {
+  0%, 100% { text-shadow: 0 2px 20px rgba(245,158,11,0.3), 0 0 60px rgba(239,68,68,0.1); }
+  25% { text-shadow: 0 2px 24px rgba(245,158,11,0.5), 0 0 80px rgba(239,68,68,0.15); }
+  50% { text-shadow: 0 2px 18px rgba(245,158,11,0.25), 0 0 40px rgba(239,68,68,0.08); }
+  75% { text-shadow: 0 2px 28px rgba(245,158,11,0.45), 0 0 90px rgba(239,68,68,0.18); }
+}
+
+@keyframes fireGrad {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-@keyframes floatText {
-  0% { transform: translateY(0px); filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4)); }
-  100% { transform: translateY(-4px); filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.7)); }
+@keyframes fireDotPulse {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  40% { transform: translateY(-12px) scale(1.4); opacity: 1; }
+  60% { transform: translateY(-10px) scale(1.1); opacity: 0.9; }
 }
 
-@keyframes drawTrailLine {
-  0% { stroke-dashoffset: 180; opacity: 0.4; }
-  100% { stroke-dashoffset: 0; opacity: 1; }
-}
-
-@keyframes trailGlow {
-  0% { filter: drop-shadow(0 0 2px #f59e0b); }
-  100% { filter: drop-shadow(0 0 10px #38bdf8); }
-}
-
-@keyframes bounceDotPulse {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
-  50% { transform: translateY(-7px) scale(1.3); opacity: 1; color: #fbbf24; -webkit-text-fill-color: #fbbf24; filter: drop-shadow(0 0 8px #fbbf24); }
+@keyframes emberFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-50px) translateX(10px) scale(0); opacity: 0; }
 }
 
 /* Меню навігації */
