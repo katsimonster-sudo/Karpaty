@@ -156,7 +156,8 @@
   justify-content: center !important;
   gap: 0.15em;
   flex-wrap: nowrap !important;
-  animation: campfireFlicker 4s ease-in-out infinite;
+  animation: titleBreathing 4.5s ease-in-out infinite;
+  transform-origin: center center;
 }
 
 .trail-text-wrap {
@@ -170,8 +171,7 @@
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fireGrad 3s ease infinite;
-  filter: drop-shadow(0 0 24px rgba(239,68,68,0.5)) drop-shadow(0 0 48px rgba(245,158,11,0.3));
+  animation: fireGrad 3s ease infinite, fireGlowPulse 4.5s ease-in-out infinite;
   font-weight: 900;
   display: inline-block;
 }
@@ -230,11 +230,24 @@
   -webkit-text-fill-color: rgba(254,243,199,0.3);
 }
 
-@keyframes campfireFlicker {
-  0%, 100% { text-shadow: 0 2px 20px rgba(245,158,11,0.3), 0 0 60px rgba(239,68,68,0.1); }
-  25% { text-shadow: 0 2px 24px rgba(245,158,11,0.5), 0 0 80px rgba(239,68,68,0.15); }
-  50% { text-shadow: 0 2px 18px rgba(245,158,11,0.25), 0 0 40px rgba(239,68,68,0.08); }
-  75% { text-shadow: 0 2px 28px rgba(245,158,11,0.45), 0 0 90px rgba(239,68,68,0.18); }
+@keyframes titleBreathing {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 2px 20px rgba(245, 158, 11, 0.3), 0 0 50px rgba(239, 68, 68, 0.12);
+  }
+  50% {
+    transform: scale(1.038);
+    text-shadow: 0 4px 35px rgba(245, 158, 11, 0.65), 0 0 90px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes fireGlowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 18px rgba(239,68,68,0.4)) drop-shadow(0 0 35px rgba(245,158,11,0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 32px rgba(239,68,68,0.75)) drop-shadow(0 0 65px rgba(245,158,11,0.55));
+  }
 }
 
 @keyframes fireGrad {
