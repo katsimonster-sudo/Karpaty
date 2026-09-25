@@ -12,4 +12,6 @@ Thumbs.db
 
 # IDE & Editor
 .vscode/
-.idea/
+# Media large files
+videos/
+*.mp4

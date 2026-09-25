@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Варіанти заголовка — Дожити до фініша...</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #070a0d;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  padding: 48px 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.page-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+.page-header p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 6px;
+}
+
+.variant-section {
+  padding: 60px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.variant-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.variant-label {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.25);
+  font-weight: 700;
+  background: rgba(255,255,255,0.04);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ======================================================================
+   ВАРІАНТ 1 — Гірський хребет: Літери виростають знизу як гори
+   ====================================================================== */
+.v1-title {
+  font-family: 'Unbounded', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.2;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.v1-title .v1-word {
+  display: inline-flex;
+  align-items: flex-end;
+  margin: 0 0.12em;
+}
+.v1-title .v1-char {
+  display: inline-block;
+  animation: mountainRise 0.8s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  opacity: 0;
+}
+.v1-title .v1-accent {
+  background: linear-gradient(180deg, #38bdf8 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(56,189,248,0.4));
+}
+.v1-title .v1-dots span {
+  display: inline-block;
+  animation: mountainRise 0.8s cubic-bezier(0.22, 1.2, 0.36, 1) both,
+             dotPulseV1 2s ease-in-out infinite;
+  color: #f59e0b;
+  -webkit-text-fill-color: #f59e0b;
+  filter: drop-shadow(0 0 8px rgba(245,158,11,0.6));
+}
+.v1-title .v1-guillemet {
+  color: rgba(255,255,255,0.3);
+  -webkit-text-fill-color: rgba(255,255,255,0.3);
+}
+
+@keyframes mountainRise {
+  0% { transform: translateY(60px) scaleY(0.3); opacity: 0; }
+  100% { transform: translateY(0) scaleY(1); opacity: 1; }
+}
+@keyframes dotPulseV1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); filter: drop-shadow(0 0 14px rgba(245,158,11,0.9)); }
+}
+
+/* ======================================================================
+   ВАРІАНТ 2 — Крижаний туман: Проявлення з туману + мерехтіння
+   ====================================================================== */
+.v2-title {
+  font-family: 'Unbounded', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.3;
+  position: relative;
+}
+.v2-main {
+  display: block;
+  color: #fff;
+  animation: fogReveal 2.5s ease-out both;
+  text-shadow: 0 0 40px rgba(56,189,248,0.3);
+}
+.v2-finish {
+  display: inline-block;
+  background: linear-gradient(90deg, #e0f2fe, #38bdf8, #a5f3fc, #e0f2fe);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: iceShimmer 3s linear infinite, fogReveal 2.5s ease-out 0.4s both;
+  filter: drop-shadow(0 0 20px rgba(56,189,248,0.5));
+}
+.v2-dots {
+  display: inline;
+}
+.v2-dots span {
+  display: inline-block;
+  color: #a5f3fc;
+  -webkit-text-fill-color: #a5f3fc;
+  animation: fogReveal 2.5s ease-out both, iceDotFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(165,243,252,0.7));
+}
+.v2-dots span:nth-child(1) { animation-delay: 0.6s, 0s; }
+.v2-dots span:nth-child(2) { animation-delay: 0.8s, 0.5s; }
+.v2-dots span:nth-child(3) { animation-delay: 1.0s, 1.0s; }
+.v2-guillemet {
+  color: rgba(165,243,252,0.3);
+  -webkit-text-fill-color: rgba(165,243,252,0.3);
+}
+
+@keyframes fogReveal {
+  0% { opacity: 0; filter: blur(20px); transform: translateY(10px); }
+  60% { filter: blur(2px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+@keyframes iceShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+@keyframes iceDotFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-10px) scale(1.2); opacity: 1; }
+}
+
+/* ======================================================================
+   ВАРІАНТ 3 — Вогнище: Тепла палітра з ефектом тремтіння полум'я
+   ====================================================================== */
+.v3-title {
+  font-family: 'Unbounded', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.3;
+}
+.v3-main {
+  display: block;
+  color: #fef3c7;
+  text-shadow: 0 2px 20px rgba(245,158,11,0.3);
+  animation: campfireFlicker 4s ease-in-out infinite;
+}
+.v3-finish {
+  display: inline-block;
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #f59e0b, #fbbf24);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fireGrad 3s ease infinite;
+  filter: drop-shadow(0 0 24px rgba(239,68,68,0.5)) drop-shadow(0 0 48px rgba(245,158,11,0.3));
+  position: relative;
+}
+.v3-embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.v3-ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fbbf24;
+  animation: emberFloat 2.5s ease-in infinite;
+  opacity: 0;
+}
+.v3-ember:nth-child(1) { left: 10%; animation-delay: 0s; }
+.v3-ember:nth-child(2) { left: 30%; animation-delay: 0.5s; }
+.v3-ember:nth-child(3) { left: 55%; animation-delay: 1s; }
+.v3-ember:nth-child(4) { left: 75%; animation-delay: 1.5s; }
+.v3-ember:nth-child(5) { left: 90%; animation-delay: 0.8s; }
+
+.v3-dots span {
+  display: inline-block;
+  color: #ef4444;
+  -webkit-text-fill-color: #ef4444;
+  animation: fireDotPulse 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(239,68,68,0.8));
+}
+.v3-dots span:nth-child(1) { animation-delay: 0s; }
+.v3-dots span:nth-child(2) { animation-delay: 0.15s; }
+.v3-dots span:nth-child(3) { animation-delay: 0.3s; }
+.v3-guillemet {
+  color: rgba(254,243,199,0.3);
+  -webkit-text-fill-color: rgba(254,243,199,0.3);
+}
+
+@keyframes campfireFlicker {
+  0%, 100% { text-shadow: 0 2px 20px rgba(245,158,11,0.3), 0 0 60px rgba(239,68,68,0.1); }
+  25% { text-shadow: 0 2px 24px rgba(245,158,11,0.5), 0 0 80px rgba(239,68,68,0.15); }
+  50% { text-shadow: 0 2px 18px rgba(245,158,11,0.25), 0 0 40px rgba(239,68,68,0.08); }
+  75% { text-shadow: 0 2px 28px rgba(245,158,11,0.45), 0 0 90px rgba(239,68,68,0.18); }
+}
+@keyframes fireGrad {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes fireDotPulse {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  40% { transform: translateY(-12px) scale(1.4); opacity: 1; }
+  60% { transform: translateY(-10px) scale(1.1); opacity: 0.9; }
+}
+@keyframes emberFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-50px) translateX(10px) scale(0); opacity: 0; }
+}
+
+/* ======================================================================
+   ВАРІАНТ 4 — GPS-трек: Typewriter + GPS-лінія що малюється
+   ====================================================================== */
+.v4-title {
+  font-family: 'Unbounded', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.3;
+  position: relative;
+}
+.v4-main {
+  display: block;
+  color: #fff;
+}
+.v4-char {
+  display: inline-block;
+  opacity: 0;
+  animation: typeReveal 0.05s forwards;
+}
+.v4-finish-wrap {
+  display: inline-block;
+  position: relative;
+}
+.v4-finish {
+  display: inline-block;
+  background: linear-gradient(90deg, #34d399, #10b981, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(16,185,129,0.5));
+}
+.v4-gps-line {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  overflow: visible;
+}
+.v4-gps-path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawGPS 2s ease-in-out 1.5s forwards;
+}
+.v4-gps-dot {
+  opacity: 0;
+  animation: gpsDotPing 2s ease-in-out 3.2s infinite;
+}
+.v4-dots span {
+  display: inline-block;
+  color: #10b981;
+  -webkit-text-fill-color: #10b981;
+  opacity: 0;
+  animation: typeReveal 0.05s forwards, gpsBlip 1.8s ease-in-out infinite;
+}
+.v4-guillemet {
+  color: rgba(255,255,255,0.2);
+  -webkit-text-fill-color: rgba(255,255,255,0.2);
+  opacity: 0;
+  animation: typeReveal 0.05s forwards;
+}
+
+@keyframes typeReveal {
+  to { opacity: 1; }
+}
+@keyframes drawGPS {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes gpsDotPing {
+  0%, 100% { opacity: 0.4; r: 3; }
+  50% { opacity: 1; r: 5; filter: drop-shadow(0 0 8px #10b981); }
+}
+@keyframes gpsBlip {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 4px rgba(16,185,129,0.3)); }
+  50% { transform: translateY(-6px); filter: drop-shadow(0 0 12px rgba(16,185,129,0.8)); }
+}
+
+/* ======================================================================
+   ВАРІАНТ 5 — Зоряне небо: Літери мерехтять як зірки + constellation lines
+   ====================================================================== */
+.v5-section::before {
+  background: radial-gradient(ellipse at center, rgba(99,102,241,0.06) 0%, transparent 70%);
+}
+.v5-title {
+  font-family: 'Unbounded', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.3;
+  position: relative;
+}
+.v5-main {
+  display: block;
+  color: rgba(255,255,255,0.85);
+}
+.v5-star-char {
+  display: inline-block;
+  animation: starTwinkle 3s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(199,210,254,0.3);
+}
+.v5-finish {
+  display: inline-block;
+  background: linear-gradient(135deg, #c7d2fe, #818cf8, #a5b4fc, #e0e7ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: constellationShift 6s ease infinite;
+  filter: drop-shadow(0 0 20px rgba(129,140,248,0.5));
+}
+.v5-dots span {
+  display: inline-block;
+  color: #fbbf24;
+  -webkit-text-fill-color: #fbbf24;
+  animation: starDotPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(251,191,36,0.8));
+}
+.v5-dots span:nth-child(1) { animation-delay: 0s; }
+.v5-dots span:nth-child(2) { animation-delay: 0.4s; }
+.v5-dots span:nth-child(3) { animation-delay: 0.8s; }
+.v5-guillemet {
+  color: rgba(199,210,254,0.25);
+  -webkit-text-fill-color: rgba(199,210,254,0.25);
+}
+
+/* Constellation canvas behind */
+.v5-constellation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 120px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.6; text-shadow: 0 0 4px rgba(199,210,254,0.2); }
+  50% { opacity: 1; text-shadow: 0 0 16px rgba(199,210,254,0.6), 0 0 30px rgba(129,140,248,0.3); }
+}
+@keyframes constellationShift {
+  0% { background-position: 0% 0%; }
+  33% { background-position: 100% 50%; }
+  66% { background-position: 50% 100%; }
+  100% { background-position: 0% 0%; }
+}
+@keyframes starDotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.5); opacity: 1; filter: drop-shadow(0 0 14px rgba(251,191,36,1)); }
+}
+
+/* Star particles for V5 */
+.v5-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.v5-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #c7d2fe;
+  animation: starParticle 4s ease-in-out infinite;
+}
+
+@keyframes starParticle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.5); box-shadow: 0 0 6px rgba(199,210,254,0.8); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .v1-title, .v2-title, .v3-title, .v4-title, .v5-title {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+  }
+  .variant-section { padding: 50px 16px; min-height: 220px; }
+}
+
+/* Current label */
+.variant-label-current {
+  background: rgba(245,158,11,0.15);
+  border-color: rgba(245,158,11,0.3);
+  color: rgba(245,158,11,0.7);
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Варіанти заголовка «Дожити до фініша...»</h1>
+  <p>Оберіть номер варіанта, який подобається найбільше</p>
+</div>
+
+<!-- ====== ВАРІАНТ 1: Гірський хребет ====== -->
+<div class="variant-section">
+  <span class="variant-label">Варіант 1 — Гірський хребет</span>
+  <h2 class="v1-title" id="v1">
+    <span class="v1-word">
+      <span class="v1-char v1-guillemet" style="animation-delay:0s">«</span>
+    </span>
+    <span class="v1-word">
+      <span class="v1-char" style="animation-delay:0.05s">Д</span>
+      <span class="v1-char" style="animation-delay:0.1s">о</span>
+      <span class="v1-char" style="animation-delay:0.15s">ж</span>
+      <span class="v1-char" style="animation-delay:0.2s">и</span>
+      <span class="v1-char" style="animation-delay:0.25s">т</span>
+      <span class="v1-char" style="animation-delay:0.3s">и</span>
+    </span>
+    <span class="v1-word">
+      <span class="v1-char" style="animation-delay:0.4s">д</span>
+      <span class="v1-char" style="animation-delay:0.45s">о</span>
+    </span>
+    <span class="v1-word">
+      <span class="v1-char v1-accent" style="animation-delay:0.55s">ф</span>
+      <span class="v1-char v1-accent" style="animation-delay:0.6s">і</span>
+      <span class="v1-char v1-accent" style="animation-delay:0.65s">н</span>
+      <span class="v1-char v1-accent" style="animation-delay:0.7s">і</span>
+      <span class="v1-char v1-accent" style="animation-delay:0.75s">ш</span>
+      <span class="v1-char v1-accent" style="animation-delay:0.8s">а</span>
+    </span>
+    <span class="v1-word v1-dots">
+      <span style="animation-delay:0.9s, 0s">.</span>
+      <span style="animation-delay:0.95s, 0.3s">.</span>
+      <span style="animation-delay:1.0s, 0.6s">.</span>
+    </span>
+    <span class="v1-word">
+      <span class="v1-char v1-guillemet" style="animation-delay:1.1s">»</span>
+    </span>
+  </h2>
+</div>
+
+<!-- ====== ВАРІАНТ 2: Крижаний туман ====== -->
+<div class="variant-section">
+  <span class="variant-label">Варіант 2 — Крижаний туман</span>
+  <h2 class="v2-title">
+    <span class="v2-main">
+      <span class="v2-guillemet">«</span>Дожити до
+      <span class="v2-finish">фініша</span>
+      <span class="v2-dots">
+        <span>.</span><span>.</span><span>.</span>
+      </span>
+      <span class="v2-guillemet">»</span>
+    </span>
+  </h2>
+</div>
+
+<!-- ====== ВАРІАНТ 3: Вогнище ====== -->
+<div class="variant-section">
+  <span class="variant-label">Варіант 3 — Вогнище</span>
+  <h2 class="v3-title">
+    <span class="v3-main">
+      <span class="v3-guillemet">«</span>Дожити до
+      <span class="v3-finish" style="position:relative;">
+        фініша
+        <span class="v3-embers">
+          <span class="v3-ember"></span>
+          <span class="v3-ember"></span>
+          <span class="v3-ember"></span>
+          <span class="v3-ember"></span>
+          <span class="v3-ember"></span>
+        </span>
+      </span>
+      <span class="v3-dots">
+        <span>.</span><span>.</span><span>.</span>
+      </span>
+      <span class="v3-guillemet">»</span>
+    </span>
+  </h2>
+</div>
+
+<!-- ====== ВАРІАНТ 4: GPS-трек ====== -->
+<div class="variant-section">
+  <span class="variant-label">Варіант 4 — GPS-трек</span>
+  <h2 class="v4-title">
+    <span class="v4-main">
+      <span class="v4-char v4-guillemet" style="animation-delay:0s">«</span>
+      <span class="v4-char" style="animation-delay:0.06s">Д</span>
+      <span class="v4-char" style="animation-delay:0.12s">о</span>
+      <span class="v4-char" style="animation-delay:0.18s">ж</span>
+      <span class="v4-char" style="animation-delay:0.24s">и</span>
+      <span class="v4-char" style="animation-delay:0.30s">т</span>
+      <span class="v4-char" style="animation-delay:0.36s">и</span>
+      <span class="v4-char" style="animation-delay:0.48s"> </span>
+      <span class="v4-char" style="animation-delay:0.54s">д</span>
+      <span class="v4-char" style="animation-delay:0.60s">о</span>
+      <span class="v4-char" style="animation-delay:0.72s"> </span>
+      <span class="v4-finish-wrap">
+        <span class="v4-finish">
+          <span class="v4-char" style="animation-delay:0.78s">ф</span>
+          <span class="v4-char" style="animation-delay:0.84s">і</span>
+          <span class="v4-char" style="animation-delay:0.90s">н</span>
+          <span class="v4-char" style="animation-delay:0.96s">і</span>
+          <span class="v4-char" style="animation-delay:1.02s">ш</span>
+          <span class="v4-char" style="animation-delay:1.08s">а</span>
+        </span>
+        <svg class="v4-gps-line" viewBox="0 0 120 16" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gpsGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#34d399" />
+              <stop offset="50%" stop-color="#10b981" />
+              <stop offset="100%" stop-color="#38bdf8" />
+            </linearGradient>
+          </defs>
+          <path class="v4-gps-path" d="M0 10 Q15 2, 30 8 T60 6 T90 10 T120 4" fill="none" stroke="url(#gpsGrad4)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle class="v4-gps-dot" cx="120" cy="4" r="3" fill="#38bdf8"/>
+        </svg>
+      </span>
+      <span class="v4-dots">
+        <span style="animation-delay:1.2s, 0s">.</span>
+        <span style="animation-delay:1.3s, 0.3s">.</span>
+        <span style="animation-delay:1.4s, 0.6s">.</span>
+      </span>
+      <span class="v4-char v4-guillemet" style="animation-delay:1.5s">»</span>
+    </span>
+  </h2>
+</div>
+
+<!-- ====== ВАРІАНТ 5: Зоряне небо ====== -->
+<div class="variant-section v5-section">
+  <span class="variant-label">Варіант 5 — Зоряне небо</span>
+  <!-- Star particles -->
+  <div class="v5-stars">
+    <div class="v5-star" style="top:15%; left:10%; animation-delay:0s;"></div>
+    <div class="v5-star" style="top:25%; left:25%; animation-delay:0.8s;"></div>
+    <div class="v5-star" style="top:10%; left:40%; animation-delay:1.6s;"></div>
+    <div class="v5-star" style="top:30%; left:55%; animation-delay:0.4s;"></div>
+    <div class="v5-star" style="top:20%; left:70%; animation-delay:1.2s;"></div>
+    <div class="v5-star" style="top:15%; left:85%; animation-delay:2.0s;"></div>
+    <div class="v5-star" style="top:60%; left:15%; animation-delay:0.6s;"></div>
+    <div class="v5-star" style="top:70%; left:35%; animation-delay:1.4s;"></div>
+    <div class="v5-star" style="top:65%; left:60%; animation-delay:0.2s;"></div>
+    <div class="v5-star" style="top:75%; left:80%; animation-delay:1.8s;"></div>
+    <div class="v5-star" style="top:40%; left:5%; animation-delay:2.4s;"></div>
+    <div class="v5-star" style="top:50%; left:92%; animation-delay:1.0s;"></div>
+  </div>
+  <h2 class="v5-title">
+    <span class="v5-main">
+      <span class="v5-guillemet">«</span>
+      <span class="v5-star-char" style="animation-delay:0s">Д</span>
+      <span class="v5-star-char" style="animation-delay:0.3s">о</span>
+      <span class="v5-star-char" style="animation-delay:0.6s">ж</span>
+      <span class="v5-star-char" style="animation-delay:0.9s">и</span>
+      <span class="v5-star-char" style="animation-delay:1.2s">т</span>
+      <span class="v5-star-char" style="animation-delay:1.5s">и</span>
+      &nbsp;
+      <span class="v5-star-char" style="animation-delay:0.15s">д</span>
+      <span class="v5-star-char" style="animation-delay:0.45s">о</span>
+      &nbsp;
+      <span class="v5-finish">фініша</span>
+      <span class="v5-dots">
+        <span>.</span><span>.</span><span>.</span>
+      </span>
+      <span class="v5-guillemet">»</span>
+    </span>
+  </h2>
+</div>
+
+</body>
+</html>

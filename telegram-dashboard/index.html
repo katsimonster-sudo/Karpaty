@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Bot Control Dashboard | Карпатські Стежки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2L2 11.5l7 3.5 3.5 7L22 2z"/>
+          </svg>
+        </div>
+        <div class="brand-title">Telegram Bot HQ</div>
+      </div>
+
+      <div class="bot-card">
+        <div class="bot-avatar">🤖</div>
+        <div class="bot-info">
+          <div class="bot-name" id="botName">Завантаження...</div>
+          <div class="bot-status"><span class="status-dot online"></span> Онлайн</div>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-tab="inbox">
+          <span class="nav-icon">💬</span> Вхідні чати
+          <span class="badge" id="unreadBadge" style="display:none;">0</span>
+        </button>
+        <button class="nav-btn" data-tab="broadcast">
+          <span class="nav-icon">📢</span> Публікація / Вещание
+        </button>
+        <button class="nav-btn" data-tab="ai-settings">
+          <span class="nav-icon">🤖</span> ШІ Автовідповіді
+        </button>
+        <button class="nav-btn" data-tab="logs">
+          <span class="nav-icon">📊</span> Логи системи
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="stat-item">
+          <div class="stat-label">Активних чатів</div>
+          <div class="stat-value" id="chatsCount">0</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- TAB: Live Inbox -->
+      <section class="tab-page active" id="tab-inbox">
+        <div class="inbox-layout">
+          <!-- Chat list -->
+          <div class="chat-list-panel">
+            <div class="panel-header">
+              <h3>Чати з користувачами</h3>
+              <button class="icon-btn" id="refreshChatsBtn" title="Оновити">🔄</button>
+            </div>
+            <div class="chat-items" id="chatItems">
+              <div class="empty-state">Очікування повідомлень від користувачів...</div>
+            </div>
+          </div>
+
+          <!-- Chat Detail & Messages -->
+          <div class="chat-detail-panel" id="chatDetailPanel">
+            <div class="chat-detail-header" id="chatDetailHeader">
+              <div class="chat-detail-user">
+                <h3 id="currentChatName">Оберіть чат</h3>
+                <span id="currentChatUsername" class="chat-username">@...</span>
+              </div>
+              <div class="chat-actions">
+                <button class="btn btn-sm btn-outline" id="toggleAiBtn">
+                  <span class="ai-status-icon">🤖</span> ШІ Автовідповідь: <strong id="aiStateText">Вимкнено</strong>
+                </button>
+              </div>
+            </div>
+
+            <div class="messages-container" id="messagesContainer">
+              <div class="empty-state">Оберіть чат зі списку ліворуч, щоб переглянути листування.</div>
+            </div>
+
+            <div class="message-input-bar">
+              <textarea id="replyTextInput" placeholder="Напишіть відповідь користувачу від імені бота..."></textarea>
+              <button class="btn btn-primary" id="sendReplyBtn">Надіслати 🚀</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Broadcast -->
+      <section class="tab-page" id="tab-broadcast">
+        <div class="content-card">
+          <h2>📢 Публікація в Telegram-канал або групу</h2>
+          <p class="card-desc">Створюйте пости, анонси походів та новини для швидкої публікації в канал @Dovig або конкретні чати.</p>
+
+          <form id="broadcastForm" class="form-grid">
+            <div class="form-group">
+              <label for="broadcastTarget">Цільовий канал / Username або ID:</label>
+              <input type="text" id="broadcastTarget" value="@Dovig" placeholder="@Dovig або chat_id">
+            </div>
+
+            <div class="form-group">
+              <label for="broadcastText">Текст допису (підтримує HTML-форматування):</label>
+              <textarea id="broadcastText" rows="7" placeholder="🏔️ Анонс нового походу! &#10;&#10;Запрошуємо на сходження...&#10;&#10;#Карпати #похід"></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline" id="presetPostBtn">✨ Вставити шаблон допису</button>
+              <button type="submit" class="btn btn-primary">Опублікувати зараз 🚀</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- TAB: AI Settings -->
+      <section class="tab-page" id="tab-ai-settings">
+        <div class="content-card">
+          <h2>🤖 Налаштування ШІ-асистента бота</h2>
+          <p class="card-desc">Керуйте автоматичними відповідями бота для консультування відвідувачів про походи, спорядження та реєстрацію.</p>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>Глобальна автовідповідь ШІ</h4>
+              <p>Автоматично відповідати новим користувачам бота при вхідних запитаннях</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="globalAiToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="aiTemplateInput">Текст автовідповіді бота ({name} замінюється на ім'я користувача):</label>
+            <textarea id="aiTemplateInput" rows="4">Вітаю, {name}! Дякую за повідомлення. Отримав ваше запитання та незабаром відповім.</textarea>
+            <button type="button" class="btn btn-sm btn-primary" id="saveTemplateBtn" style="margin-top: 0.75rem; align-self: flex-start;">Зберегти шаблон автовідповіді 💾</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Logs -->
+      <section class="tab-page" id="tab-logs">
+        <div class="content-card">
+          <h2>📊 Логи системи та активності</h2>
+          <div class="logs-console" id="logsConsole">
+            <div class="log-line">[System] Очікування подій...</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
