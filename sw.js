@@ -3,7 +3,7 @@
    Забезпечує роботу в горах без мобільного зв'язку (Офлайн-режим)
    ========================================================================== */
 
-const CACHE_NAME = 'carpathian-trail-v3.5';
+const CACHE_NAME = 'carpathian-trail-v3.6';
 
 const STATIC_ASSETS = [
   './',
@@ -12,12 +12,14 @@ const STATIC_ASSETS = [
   './gear.html',
   './community.html',
   './donate.html',
+  './links.html',
   './en/',
   './en/index.html',
   './en/trips.html',
   './en/gear.html',
   './en/community.html',
   './en/donate.html',
+  './en/links.html',
   './manifest.json',
   './robots.txt',
   './sitemap.xml',
@@ -31,6 +33,8 @@ const STATIC_ASSETS = [
   './js/gear.js',
   './js/community.js',
   './js/chat.js',
+  './js/data/news-data.js',
+  './js/data/news-data-en.js',
   './js/data/trips-data.js',
   './js/data/gear-data.js',
   './js/data/community-data.js',
@@ -43,7 +47,7 @@ const STATIC_ASSETS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Кешування статичних ресурсів для офлайн-режиму v3.5');
+      console.log('[SW] Кешування статичних ресурсів для офлайн-режиму v3.6');
       return cache.addAll(STATIC_ASSETS);
     }).then(() => self.skipWaiting())
   );

@@ -483,6 +483,27 @@
       </div>
     </section>
 
+    <!-- News & Announcements Section -->
+    <section class="section" id="news-section" style="padding-top: 10px; padding-bottom: 40px;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Community & News</div>
+          <h2 class="section-title">Latest <span>News</span> & Updates</h2>
+          <p class="section-subtitle">
+            Fresh reports on Carpathian trails, water sources, gear reviews, and project news
+          </p>
+        </div>
+        <div id="home-news-grid" class="news-grid">
+          <!-- Rendered dynamically -->
+        </div>
+        <div style="text-align: center; margin-top: 28px;">
+          <a href="community.html" class="btn btn-outline" style="border-radius: 30px; padding: 12px 28px; font-weight: 600;">
+            All news & community →
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Секція «Донат на подорожі» -->
     <section class="section" id="donation-section" style="background: linear-gradient(180deg, rgba(7, 10, 13, 0.6) 0%, rgba(22, 32, 42, 0.8) 100%);">
       <div class="container">
@@ -705,6 +726,7 @@
   </footer>
 
   <!-- Скрипти -->
+  <script src="../js/data/news-data-en.js"></script>
   <script src="../js/data/trips-data.js"></script>
   <script src="../js/data/trips-data-en.js"></script>
   <script src="../js/data/gear-data.js"></script>
@@ -713,8 +735,36 @@
   <script src="../js/data/community-data-en.js"></script>
   <script src="../js/main.js"></script>
   <script>
-    // Рендеринг 3 топ-походів на головній
+    // Рендеринг 3 топ-походів та новин на головній
     document.addEventListener('DOMContentLoaded', () => {
+      // 0. Render Home News
+      (function initHomeNews() {
+        const container = document.getElementById('home-news-grid');
+        if (!container || !window.NEWS_DATA_EN) return;
+        const topNews = window.NEWS_DATA_EN.slice(0, 3);
+        container.innerHTML = topNews.map(item => `
+          <article class="news-card">
+            <div class="news-card-img-wrapper">
+              <img src="../${item.image}" alt="${item.title}" class="news-card-img" loading="lazy">
+            </div>
+            <div class="news-card-body">
+              <div class="news-card-meta">
+                <span class="news-category-badge">${item.category}</span>
+                <span class="news-read-time">⏱️ ${item.readTime}</span>
+              </div>
+              <h3 class="news-card-title"><a href="community.html" style="color: inherit; text-decoration: none;">${item.title}</a></h3>
+              <p class="news-card-summary">${item.summary}</p>
+              <div class="news-card-footer">
+                <span style="font-size: 0.8rem; color: var(--text-muted);">📅 ${item.date}</span>
+                <a href="${item.instagramUrl}" target="_blank" rel="noopener noreferrer" class="news-instagram-sync-btn" title="View on Instagram">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  Instagram Sync
+                </a>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      })();
       // 0a. Countdown to the next hike (Nov 6, 2026, 08:00, Volovets)
       (function initCountdown() {
         const targetDate = new Date('2026-11-06T08:00:00+02:00').getTime();
