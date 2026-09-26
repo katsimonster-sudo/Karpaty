@@ -59,5 +59,19 @@ window.NEWS_DATA = [
     instagramSynced: true,
     author: "Віталік • Автор сайту",
     featured: false
+  },
+  {
+    id: "news-ticket-2026",
+    category: "🎟️ Туризм",
+    categoryKey: "travel",
+    title: "У Карпатах запрацював електронний квиток до національних парків",
+    date: "7 Липня 2026",
+    readTime: "2 хв читання",
+    summary: "Відвідувачі можуть придбати квиток онлайн і показати на вході QR-код із телефона. Систему презентували на маршруті до гори Хом’як у Карпатському національному природному парку. Кошти від квитків надходитимуть паркам на туристичну інфраструктуру та природоохоронні заходи.",
+    image: "images/march-2026/highlight-02.jpg",
+    sourceUrl: "https://www.me.gov.ua/News/Detail/cea3648b-882e-49f7-acbd-95738d07a825?isSpecial=True&lang=uk-UA&title=ElektronniiKvitok",
+    sourceLabel: "Міністерство економіки та довкілля України",
+    author: "Редакція",
+    featured: false
   }
 ];

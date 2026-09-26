@@ -59,5 +59,19 @@ window.NEWS_DATA_EN = [
     instagramSynced: true,
     author: "Vitalik • Site Author",
     featured: false
+  },
+  {
+    id: "news-ticket-2026",
+    category: "🎟️ Tourism",
+    categoryKey: "travel",
+    title: "Carpathian national parks launch an electronic ticket",
+    date: "July 7, 2026",
+    readTime: "2 min read",
+    summary: "Visitors can buy a ticket online and show its QR code from their phone at the entrance. The system was presented on the route to Mount Khomyak in the Carpathian National Nature Park. Ticket revenue will support park infrastructure and conservation work.",
+    image: "../images/march-2026/highlight-02.jpg",
+    sourceUrl: "https://www.me.gov.ua/News/Detail/cea3648b-882e-49f7-acbd-95738d07a825?isSpecial=True&lang=uk-UA&title=ElektronniiKvitok",
+    sourceLabel: "Ministry of Economy and Environment of Ukraine",
+    author: "Editorial team",
+    featured: false
   }
 ];
