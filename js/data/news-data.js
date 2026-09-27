@@ -73,5 +73,19 @@ window.NEWS_DATA = [
     sourceLabel: "Міністерство економіки та довкілля України",
     author: "Редакція",
     featured: false
+  },
+  {
+    id: "world-tourism-day-2026",
+    category: "📢 Анонси",
+    categoryKey: "announcements",
+    title: "З Днем туризму! Карпати мали власний план 😄",
+    date: "27 Вересня 2026",
+    readTime: "1 хв читання",
+    summary: "Вітаємо всіх, хто вирушає в гори за краєвидами, пригодами й історіями. Бажаємо надійних стежок, чудової компанії та менше запитань «а де ми?».",
+    image: "images/social/world-tourism-day-2026.png",
+    instagramUrl: "https://www.instagram.com/p/DdzgtHHHSwq/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: false
   }
 ];
