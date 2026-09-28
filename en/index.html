@@ -745,7 +745,7 @@
         container.innerHTML = topNews.map(item => `
           <article class="news-card">
             <div class="news-card-img-wrapper">
-              <img src="../${item.image}" alt="${item.title}" class="news-card-img" loading="lazy">
+              <img src="${item.image.startsWith('../') ? item.image : '../' + item.image}" alt="${item.title}" class="news-card-img" loading="lazy">
             </div>
             <div class="news-card-body">
               <div class="news-card-meta">

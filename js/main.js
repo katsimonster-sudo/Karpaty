@@ -3,6 +3,7 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.style.overflow = '';
   initHeader();
   initMobileMenu();
   initStatCounters();
