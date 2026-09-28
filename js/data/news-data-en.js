@@ -1,21 +1,105 @@
 /* ==========================================================================
    Database: Community & News (Carpathian hikes, gear, routes)
-   Synced with official Instagram account (@dozhity.space)
+   Synced with official Instagram account @dozhity.space
    ========================================================================== */
 
 window.NEWS_DATA_EN = [
   {
-    id: "world-tourism-day-2026",
+    id: "post-DdzgtHHHSwq",
     category: "📢 Announcements",
     categoryKey: "announcements",
     title: "Happy World Tourism Day! The Carpathians had other ideas 😄",
     date: "September 27, 2026",
     readTime: "1 min read",
-    summary: "A cheerful greeting to everyone who heads into the mountains for the views, adventures, and stories. Wishing you beautiful trails, great company, and fewer “are we lost?” moments.",
-    image: "../images/social/world-tourism-day-2026.png",
+    summary: "The plan was simple: a short walk. But the Carpathians, as always, had their own plan. Wishing all mountain explorers reliable trails, great company, and unforgettable views!",
+    image: "../images/social/ig_DdzgtHHHSwq.jpg",
     instagramUrl: "https://www.instagram.com/p/DdzgtHHHSwq/",
     instagramSynced: true,
     author: "Vitalik • Site Author",
     featured: true
+  },
+  {
+    id: "post-DdwzI3bDVa2",
+    category: "🌲 Travel",
+    categoryKey: "travel",
+    title: "Sunset on Mount Kuk Summit (1361 m): A Peaceful Evening at Camp",
+    date: "September 26, 2026",
+    readTime: "2 min read",
+    summary: "Fourth expedition of 2026 (June 10–17). Golden hour over Carpathian ridges on Mount Kuk as our tent waits for a serene twilight. 11 seconds of pure mountain tranquility.",
+    image: "../images/social/ig_DdwzI3bDVa2.jpg",
+    instagramUrl: "https://www.instagram.com/reel/DdwzI3bDVa2/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false
+  },
+  {
+    id: "post-DdtvrFRoLq4",
+    category: "⛰️ Routes",
+    categoryKey: "routes",
+    title: "Trail Markings & Water Source Conditions on Gorgany Ridge (2026)",
+    date: "September 25, 2026",
+    readTime: "3 min read",
+    summary: "Verified updates on drinking water springs near Syvulya, Khomyak, and Popadya. Trail marking conditions and practical advice on crossing wet, slippery Gorgany boulder fields.",
+    image: "../images/social/ig_DdtvrFRoLq4.jpg",
+    instagramUrl: "https://www.instagram.com/p/DdtvrFRoLq4/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false
+  },
+  {
+    id: "post-DdrqF9lmbb9",
+    category: "⛰️ Routes",
+    categoryKey: "routes",
+    title: "Gorgany Autonomous Trek: Yaremche — Stanymyr — Yasinya (93.8 km)",
+    date: "September 24, 2026",
+    readTime: "4 min read",
+    summary: "An 8-day early March traverse across wild Gorgany: 93.8 km distance, +4566 m cumulative elevation gain, and 1692 m max peak. A rewarding and self-sufficient challenge.",
+    image: "../images/social/ig_DdrqF9lmbb9.jpg",
+    instagramUrl: "https://www.instagram.com/p/DdrqF9lmbb9/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false
+  },
+  {
+    id: "post-Ddo50tnDuhi",
+    category: "⛰️ Routes",
+    categoryKey: "routes",
+    title: "Climbing Mount Grofa (1748 m) — The Pure Magic of Wild Gorgany",
+    date: "September 23, 2026",
+    readTime: "2 min read",
+    summary: "Moss-covered scree slopes, crisp ridge winds, and sweeping panoramic views across the Carpathian wilderness. Grofa stands out as one of the most stunning peaks in the range.",
+    image: "../images/social/ig_Ddo50tnDuhi.jpg",
+    instagramUrl: "https://www.instagram.com/reel/Ddo50tnDuhi/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false
+  },
+  {
+    id: "post-DdoAL6xGwM4",
+    category: "🌲 Travel",
+    categoryKey: "travel",
+    title: "Gorgany → Skole Beskids → Slavske: 166 km over 7 Days",
+    date: "September 23, 2026",
+    readTime: "3 min read",
+    summary: "Autumn trekking footage traversing Gorgany and Skole Beskids. Rugged rocky ridges, rust-colored heather, and endless horizons spanning 166 km on foot.",
+    image: "../images/social/ig_DdoAL6xGwM4.jpg",
+    instagramUrl: "https://www.instagram.com/p/DdoAL6xGwM4/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false
+  },
+  {
+    id: "post-DdmqH7Ts0m9",
+    category: "🌲 Travel",
+    categoryKey: "travel",
+    title: "First Ascent of Hoverla (2061 m): 78.4 km Spring Chornohora Trek",
+    date: "September 22, 2026",
+    readTime: "4 min read",
+    summary: "A look back at the snowy 5-day expedition (Kvasy — Mt. Hoverla — Vorokhta, +3938 m elevation gain) that sparked this 16-trip Carpathian chronicle in May 2024.",
+    image: "../images/social/ig_DdmqH7Ts0m9.jpg",
+    instagramUrl: "https://www.instagram.com/reel/DdmqH7Ts0m9/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false
   }
 ];

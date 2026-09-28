@@ -3,7 +3,7 @@
    Забезпечує роботу в горах без мобільного зв'язку (Офлайн-режим)
    ========================================================================== */
 
-const CACHE_NAME = 'carpathian-trail-v3.9';
+const CACHE_NAME = 'carpathian-trail-v4.0';
 
 const STATIC_ASSETS = [
   './',
@@ -36,6 +36,13 @@ const STATIC_ASSETS = [
   './js/data/news-data.js',
   './js/data/news-data-en.js',
   './images/social/world-tourism-day-2026.png',
+  './images/social/ig_DdzgtHHHSwq.jpg',
+  './images/social/ig_DdwzI3bDVa2.jpg',
+  './images/social/ig_DdtvrFRoLq4.jpg',
+  './images/social/ig_DdrqF9lmbb9.jpg',
+  './images/social/ig_Ddo50tnDuhi.jpg',
+  './images/social/ig_DdoAL6xGwM4.jpg',
+  './images/social/ig_DdmqH7Ts0m9.jpg',
   './js/data/trips-data.js',
   './js/data/gear-data.js',
   './js/data/community-data.js',
@@ -48,7 +55,7 @@ const STATIC_ASSETS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Кешування статичних ресурсів для офлайн-режиму v3.7');
+      console.log('[SW] Кешування статичних ресурсів для офлайн-режиму v4.0');
       return cache.addAll(STATIC_ASSETS);
     }).then(() => self.skipWaiting())
   );
