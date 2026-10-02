@@ -5,6 +5,36 @@
 
 window.NEWS_DATA = [
   {
+    id: "post-trip2026-3-stats",
+    category: "📊 Статистика",
+    categoryKey: "stats",
+    title: "Великий Карпатський Траверс: 166 км за 7 днів (Яремче → Славсько)",
+    date: "2 Жовтня 2026",
+    readTime: "3 хв читання",
+    summary: "Третій похід 2026 року — епічний автономний траверс від Яремче до Славська через Ґорґани та Сколівські Бескиди. 166.05 км, +7 866 м набору, 7 днів у горах: кам'янисті ґорганські розсипи, г. Висока (1777 м), Перегінський хребет (1783 м) та переможний фініш на Торунському перевалі.",
+    image: "images/social/ig_gorgany2026.jpg",
+    instagramUrl: "https://www.instagram.com/p/17968075092172635/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: true,
+    tripLink: "trips.html?id=trip-2026-3"
+  },
+  {
+    id: "post-trip2026-2-stats",
+    category: "📊 Статистика",
+    categoryKey: "stats",
+    title: "Боржавський Траверс: 114 км за 7 днів (Воловець → Синевир → Славсько)",
+    date: "28 Вересня 2026",
+    readTime: "3 хв читання",
+    summary: "Другий похід 2026 року — ранньовесняний траверс легендарного Боржавського хребта. 114.4 км, +5 478 м набору висоти, 7 днів від залізничної станції Воловець через г. Гимба (1491 м), с. Синевир аж до Торунського перевалу та фінішу у Славську.",
+    image: "images/social/ig_borzhava2026.jpg",
+    instagramUrl: "https://www.instagram.com/p/18653759938017985/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: false,
+    tripLink: "trips.html?id=trip-2026-4"
+  },
+  {
     id: "post-DdzgtHHHSwq",
     category: "📢 Анонси",
     categoryKey: "announcements",
