@@ -5,6 +5,21 @@
 
 window.NEWS_DATA = [
   {
+    id: "post-DeFUxQVnY1K",
+    category: "🎬 Відео",
+    categoryKey: "travel",
+    title: "Великий Осінній Трансверс 2025: 180.7 км за 9 днів (Боржава → Ґорґани → Красна → Свидовець)",
+    date: "4 Жовтня 2026",
+    readTime: "3 хв читання",
+    summary: "Четвертий похід 2025 року (12–20 вересня) — наймасштабніший автономний траверс сезону на 180.7 км через 4 карпатські масиви: хребет Боржава (Великий Верх 1587 м), дикі Ґорґани (Негровець 1689 м), хребет Красна (Топас і Сигла) та високогірний Свидовець із кульмінацією на масиві Близниці (1870 м).",
+    image: "images/social/ig_trip2025_4.jpg",
+    instagramUrl: "https://www.instagram.com/reel/DeFUxQVnY1K/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: true,
+    tripLink: "trips.html?id=trip-2025-4"
+  },
+  {
     id: "post-trip2026-3-stats",
     category: "📊 Статистика",
     categoryKey: "stats",

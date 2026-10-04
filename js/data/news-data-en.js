@@ -5,6 +5,51 @@
 
 window.NEWS_DATA_EN = [
   {
+    id: "post-DeFUxQVnY1K",
+    category: "🎬 Video",
+    categoryKey: "travel",
+    title: "The Great Autumn Traverse 2025: 180.7 km over 9 Days (Borzhava → Gorgany → Krasna → Svydovets)",
+    date: "October 4, 2026",
+    readTime: "3 min read",
+    summary: "The 4th expedition of 2025 (September 12–20) — an epic 9-day autonomous traverse across 4 major Carpathian mountain ranges: Borzhava Ridge (Velykyi Verkh 1,587 m), wild Gorgany (Negrovets 1,689 m), Krasna Ridge, and alpine Svydovets peaking at Blyznytsya Massif (1,870 m).",
+    image: "../images/social/ig_trip2025_4.jpg",
+    instagramUrl: "https://www.instagram.com/reel/DeFUxQVnY1K/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: true,
+    tripLink: "trips.html?id=trip-2025-4"
+  },
+  {
+    id: "post-trip2026-3-stats",
+    category: "📊 Statistics",
+    categoryKey: "stats",
+    title: "Great Carpathian Traverse: 166 km in 7 Days (Yaremche → Slavske)",
+    date: "October 2, 2026",
+    readTime: "3 min read",
+    summary: "Third expedition of 2026 — an epic autonomous traverse from Yaremche to Slavske across Gorgany and Skole Beskids. 166.05 km, +7,866 m elevation gain, 7 days in the wilderness: boulder fields, Mt. Vysoka (1,777 m), Perehinsky ridge (1,783 m), and finish at Torun Pass.",
+    image: "../images/social/ig_gorgany2026.jpg",
+    instagramUrl: "https://www.instagram.com/p/17968075092172635/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false,
+    tripLink: "trips.html?id=trip-2026-3"
+  },
+  {
+    id: "post-trip2026-2-stats",
+    category: "📊 Statistics",
+    categoryKey: "stats",
+    title: "Borzhava Traverse: 114 km in 7 Days (Volovets → Synevyr → Slavske)",
+    date: "September 28, 2026",
+    readTime: "3 min read",
+    summary: "Second expedition of 2026 — early spring traverse of the legendary Borzhava ridge. 114.4 km, +5,478 m elevation gain, 7 days from Volovets station via Mt. Hymba (1,491 m), Synevyr village to Torun Pass and Slavske finish.",
+    image: "../images/social/ig_borzhava2026.jpg",
+    instagramUrl: "https://www.instagram.com/p/18653759938017985/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: false,
+    tripLink: "trips.html?id=trip-2026-4"
+  },
+  {
     id: "post-DdzgtHHHSwq",
     category: "📢 Announcements",
     categoryKey: "announcements",
