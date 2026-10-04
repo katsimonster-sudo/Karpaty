@@ -5,7 +5,7 @@
 
 window.NEWS_DATA_EN = [
   {
-    id: "post-DeFUxQVnY1K",
+    id: "post-DeFWV11Ae5G",
     category: "🎬 Video",
     categoryKey: "travel",
     title: "The Great Autumn Traverse 2025: 180.7 km over 9 Days (Borzhava → Gorgany → Krasna → Svydovets)",
@@ -13,7 +13,7 @@ window.NEWS_DATA_EN = [
     readTime: "3 min read",
     summary: "The 4th expedition of 2025 (September 12–20) — an epic 9-day autonomous traverse across 4 major Carpathian mountain ranges: Borzhava Ridge (Velykyi Verkh 1,587 m), wild Gorgany (Negrovets 1,689 m), Krasna Ridge, and alpine Svydovets peaking at Blyznytsya Massif (1,870 m).",
     image: "../images/social/ig_trip2025_4.jpg",
-    instagramUrl: "https://www.instagram.com/reel/DeFUxQVnY1K/",
+    instagramUrl: "https://www.instagram.com/reel/DeFWV11Ae5G/",
     instagramSynced: true,
     author: "Vitalik • Site Author",
     featured: true,
