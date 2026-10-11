@@ -5,6 +5,21 @@
 
 window.NEWS_DATA_EN = [
   {
+    id: "post-DeWu7qWmwPL",
+    category: "📊 Statistics",
+    categoryKey: "stats",
+    title: "Transcarpathian Trek: 157 km in 8 Days (Borzhava → Krasna → Svydovets)",
+    date: "October 11, 2026",
+    readTime: "4 min read",
+    summary: "The 4th expedition of 2026 (June 10–17) — an epic 8-day autonomous traverse across 157.2 km (+7,847 m elevation gain) connecting 4 legendary Carpathian ranges: Borzhava Ridge (Stiy & Velykyi Verkh), sunset camp on Mt. Kuk (1,361 m), rugged Krasna Ridge, and alpine Blyznytsya peaks on Svydovets (1,871 m).",
+    image: "../images/social/ig_trip2026_4.jpg",
+    instagramUrl: "https://www.instagram.com/p/DeWu7qWmwPL/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: true,
+    tripLink: "trips.html?id=trip-2026-1"
+  },
+  {
     id: "post-DeFWV11Ae5G",
     category: "🎬 Video",
     categoryKey: "travel",

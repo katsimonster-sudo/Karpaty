@@ -5,6 +5,21 @@
 
 window.NEWS_DATA = [
   {
+    id: "post-DeWu7qWmwPL",
+    category: "📊 Статистика",
+    categoryKey: "stats",
+    title: "Транскарпатський Трекінг: 157 км за 8 днів (Боржава → Красна → Свидовець)",
+    date: "11 Жовтня 2026",
+    readTime: "4 хв читання",
+    summary: "Четвертий похід 2026 року (10–17 червня) — грандіозний 8-денний автономний трек на 157.2 км (+7 847 м набору) через 4 культові хребти Карпат: полонина Боржава (Стій та Великий Верх), захід сонця на горі Кук (1361 м), хребет Красна, колоритні Колочава й Усть-Чорна та альпійські Близниці на Свидовці (1871 м).",
+    image: "images/social/ig_trip2026_4.jpg",
+    instagramUrl: "https://www.instagram.com/p/DeWu7qWmwPL/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: true,
+    tripLink: "trips.html?id=trip-2026-1"
+  },
+  {
     id: "post-DeFWV11Ae5G",
     category: "🎬 Відео",
     categoryKey: "travel",
