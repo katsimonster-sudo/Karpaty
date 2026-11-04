@@ -5,6 +5,21 @@
 
 window.NEWS_DATA = [
   {
+    id: "post-Deq10N7FS1j",
+    category: "📊 Статистика",
+    categoryKey: "stats",
+    title: "Велике Ґорґанське коло: 101.5 км за 4 дні (Яремче — Станимир — Синьогора — Максимець)",
+    date: "19 Жовтня 2026",
+    readTime: "4 хв читання",
+    summary: "П'ятий похід 2026 року (24–27 червня) — дикий автономний кільцевий мега-трек на 101.5 км (+4 475 м набору) найвідлюднішими куточками Східних Ґорґан: хребет Чорний Погар, глибока долина річки Зелениця, затяжний штурм хребта Станимир (1532 м), межа парку «Синьогора», с. Максимець та кам'янисті цекоти заповідника «Ґорґани» (1549 м).",
+    image: "images/social/ig_trip2026_5.jpg",
+    instagramUrl: "https://www.instagram.com/p/Deq10N7FS1j/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: true,
+    tripLink: "trips.html?id=trip-2026-2"
+  },
+  {
     id: "post-DeWu7qWmwPL",
     category: "📊 Статистика",
     categoryKey: "stats",

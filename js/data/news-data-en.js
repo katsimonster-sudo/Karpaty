@@ -5,6 +5,21 @@
 
 window.NEWS_DATA_EN = [
   {
+    id: "post-Deq10N7FS1j",
+    category: "📊 Statistics",
+    categoryKey: "stats",
+    title: "Great Gorgany Loop: 101.5 km in 4 Days (Yaremche — Stanymyr — Synohora — Maksymets)",
+    date: "October 19, 2026",
+    readTime: "4 min read",
+    summary: "The 5th expedition of 2026 (June 24–27) — a wild autonomous 101.5 km loop (+4,475 m elevation gain) through the untamed corners of Eastern Gorgany: Chornyi Pohar Ridge, remote Zelenytsia valley, strenuous ascent of Stanymyr Ridge (1,532 m), Synohora National Park border, Maksymets village, and the boulder-strewn ridges of Gorgany Nature Reserve (1,549 m).",
+    image: "../images/social/ig_trip2026_5.jpg",
+    instagramUrl: "https://www.instagram.com/p/Deq10N7FS1j/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: true,
+    tripLink: "trips.html?id=trip-2026-2"
+  },
+  {
     id: "post-DeWu7qWmwPL",
     category: "📊 Statistics",
     categoryKey: "stats",
