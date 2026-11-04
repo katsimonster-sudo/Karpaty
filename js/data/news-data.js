@@ -5,6 +5,21 @@
 
 window.NEWS_DATA = [
   {
+    id: "post-DfUBgLplThg",
+    category: "📊 Статистика",
+    categoryKey: "stats",
+    title: "Семиденний Траверс Ґорґан і Бескидів: 166.2 км за 7 днів (Яремче — Перегінське — Славсько)",
+    date: "4 Листопада 2026",
+    readTime: "5 хв читання",
+    summary: "Шостий похід 2026 року (29 серпня – 4 вересня) — наймасштабніший автономний мега-траверс сезону на 166.2 км (+8 175 м набору): хребти Синячка і Станимир (г. Катерина 1550 м), дикі цекоти Петроса Ґорґанського та Попаді (1718 м), кам'яний конус Ґрофи (1728 м), перевал Торунський та фінішний перехід через Високий Верх у Славсько.",
+    image: "images/social/ig_trip2026_6.jpg",
+    instagramUrl: "https://www.instagram.com/p/DfUBgLplThg/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: true,
+    tripLink: "trips.html?id=trip-2026-6"
+  },
+  {
     id: "post-Deq10N7FS1j",
     category: "📊 Статистика",
     categoryKey: "stats",
