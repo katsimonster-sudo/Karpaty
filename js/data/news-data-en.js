@@ -5,7 +5,7 @@
 
 window.NEWS_DATA_EN = [
   {
-    id: "post-DfUBgLplThg",
+    id: "post-DfUENZvlak1",
     category: "📊 Statistics",
     categoryKey: "stats",
     title: "Seven-Day Gorgany & Beskids Traverse: 166.2 km in 7 Days (Yaremche — Perehinske — Slavsko)",
@@ -13,7 +13,7 @@ window.NEWS_DATA_EN = [
     readTime: "5 min read",
     summary: "The 6th expedition of 2026 (August 29 – September 4) — the most demanding autonomous 166.2 km mega-traverse (+8,175 m elevation gain): Synyachka and Stanymyr ridges (Mt. Kateryna 1,550 m), untamed boulder fields of Petros Gorgansky and Popadya (1,718 m), rocky pyramid of Grofa (1,728 m), Torun Pass crossing, and final ridge descent via Vysokyi Verkh to Slavsko.",
     image: "../images/social/ig_trip2026_6.jpg",
-    instagramUrl: "https://www.instagram.com/p/DfUBgLplThg/",
+    instagramUrl: "https://www.instagram.com/p/DfUENZvlak1/",
     instagramSynced: true,
     author: "Vitalik • Site Author",
     featured: true,
