@@ -5,6 +5,21 @@
 
 window.NEWS_DATA = [
   {
+    id: "post-DfrO8dNFY8z",
+    category: "📊 Статистика",
+    categoryKey: "stats",
+    title: "Травневий Ґорґанський Перехід: 66.9 км за 5 днів (Яремче — Женець — Ясіня)",
+    date: "13 Листопада 2026",
+    readTime: "4 хв читання",
+    summary: "Перший похід 2025 року (1–5 травня) — автономний 5-денний весняний перехід на 66.9 км (+3 282 м набору): потужний старт із Яремче з підйомом на 1656 м (+1545 м набору за день), хребет біля заповідника «Ґорґани», денівка на полонині Женець, краєвиди Довжини та спуск вздовж Чорної Тиси у смт Ясіня.",
+    image: "images/social/ig_trip2025_1.jpg",
+    instagramUrl: "https://www.instagram.com/p/DfrO8dNFY8z/",
+    instagramSynced: true,
+    author: "Віталік • Автор сайту",
+    featured: true,
+    tripLink: "trips.html?id=trip-2025-1"
+  },
+  {
     id: "post-DfUENZvlak1",
     category: "📊 Статистика",
     categoryKey: "stats",

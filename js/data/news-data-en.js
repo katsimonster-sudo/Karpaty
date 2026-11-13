@@ -5,6 +5,21 @@
 
 window.NEWS_DATA_EN = [
   {
+    id: "post-DfrO8dNFY8z",
+    category: "📊 Statistics",
+    categoryKey: "stats",
+    title: "May Gorgany Crossing: 66.9 km in 5 Days (Yaremche — Zhenets — Yasinia)",
+    date: "November 13, 2026",
+    readTime: "4 min read",
+    summary: "The 1st expedition of 2025 (May 1–5) — an autonomous 5-day spring trek covering 66.9 km (+3,282 m elevation gain): a demanding start from Yaremche ascending to 1,656 m (+1,545 m elevation gain in a single day), ridge traverse near Gorgany Nature Reserve, camp day on Zhenets meadow, Dovzhyna vistas, and river descent along Chorna Tysa to Yasinia.",
+    image: "../images/social/ig_trip2025_1.jpg",
+    instagramUrl: "https://www.instagram.com/p/DfrO8dNFY8z/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: true,
+    tripLink: "trips.html?id=trip-2025-1"
+  },
+  {
     id: "post-DfUENZvlak1",
     category: "📊 Statistics",
     categoryKey: "stats",
