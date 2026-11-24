@@ -5,6 +5,21 @@
 
 window.NEWS_DATA_EN = [
   {
+    id: "post-DgH6rHRIRWE",
+    category: "📊 Statistics",
+    categoryKey: "stats",
+    title: "Gorgany Expedition: 128.1 km in 11 Days (Yaremche — Syvulia — Tavpyshirka — Bratkivska — Yasinia)",
+    date: "November 24, 2026",
+    readTime: "5 min read",
+    summary: "The 2nd expedition of 2025 (June 8–18) — an epic 11-day autonomous traverse through the wild heart of the Gorgany (128.11 km, +6,633 m elevation gain): Synyachka rocky ridges, remote Zelenytsia valley and Synohora National Park, ascent to Mt. Syvulia (1,820 m) with an unforgettable summit sunset, pristine Tavpyshirka reserve, Bratkivska range, and descent along the Chorna Tysa river to Yasinia.",
+    image: "../images/social/ig_trip2025_2.jpg",
+    instagramUrl: "https://www.instagram.com/p/DgH6rHRIRWE/",
+    instagramSynced: true,
+    author: "Vitalik • Site Author",
+    featured: true,
+    tripLink: "trips.html?id=trip-2025-2"
+  },
+  {
     id: "post-DfrQLTMlQFZ",
     category: "📊 Statistics",
     categoryKey: "stats",
